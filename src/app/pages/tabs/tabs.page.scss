@@ -1,7 +1,29 @@
-ion-tab-bar {
-    --background: #000000;
+:host {
+    ion-tab-bar {
+        border: 0;
+        display: flex;
+        justify-content: space-between;
+        --background: #000000;
+        padding: 15px;
+        ion-icon {
+            font-size: 1.6rem;
+        }
+    }
+    ion-tab-button {
+        max-width: 56px;
+        max-height: 36px;
+    }
+    .tab-selected {
+        color: white;
+        max-width: 65px;
+        max-height: 45px;
+        font-size: 15px;
+    }
 }
 
-ion-tab-button {
-    --color-selected: white;
-}
+// ion-tab-bar {
+//     --background: #000000;
+// }
+// ion-tab-button {
+//     --color-selected: white;
+// }
