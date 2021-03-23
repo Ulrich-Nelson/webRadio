@@ -39,7 +39,7 @@ const routes: Routes = [
           },
         ]
       },
-      {
+      {// route par défaut 
         path: '',
         redirectTo: 'tabs/profil',
         pathMatch: 'full'
