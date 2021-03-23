@@ -2,6 +2,10 @@ ion-content {
     --ion-background-color: var(--ion-color-dark);
 }
 
+ion-card {
+    box-shadow: 5px 5px .1rem .1rem white;
+}
+
 .padding {
     padding: 2%!important;
 }
@@ -32,7 +36,7 @@ ion-content {
 .button {
     color: white;
     margin-top: 10px;
-    margin-left: 105px;
+    margin-left: 70px;
 }
 
 .Button {

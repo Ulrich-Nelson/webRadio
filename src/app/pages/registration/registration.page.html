@@ -1,52 +1,53 @@
 <ion-content>
-    <h3>Registration</h3>
-    <form id="container">
-        <ion-list>
-            <ion-item lines="none">
-                <ion-input color="light" type="text" placeholder="First name"></ion-input>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-input color="light" type="text" placeholder="Last name"></ion-input>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-input color="light" type="email" placeholder="Email"></ion-input>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-input color="light" type="email" placeholder="Date of birth"></ion-input>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-input color="light" type="password" placeholder="Password"></ion-input>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-input color="light" type="password" placeholder=" Confirm password"></ion-input>
-            </ion-item>
-        </ion-list>
-        <ion-button color="light" expand="block" shape="round" style="font-size: 20px;" fill="outline">Sign up</ion-button>
-    </form>
-
-    <div>
-        <ion-button fill="clear" size="small" class="privacy" (click)="open()" style="color: red">Terms of Service and Privacy Policy</ion-button>
+    <ion-card>
+        <h3>Registration</h3>
+        <form id="container">
+            <ion-list>
+                <ion-item lines="none">
+                    <ion-input color="light" type="text" placeholder="First name"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-input color="light" type="text" placeholder="Last name"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-input color="light" type="email" placeholder="Email"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-input color="light" type="email" placeholder="Date of birth"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-input color="light" type="password" placeholder="Password"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-input color="light" type="password" placeholder=" Confirm password"></ion-input>
+                </ion-item>
+            </ion-list>
+            <ion-button color="light" expand="block" shape="round" style="font-size: 20px;" fill="outline">Sign up</ion-button>
+        </form>
+        <ion-button fill="clear" size="small" class="privacy" style="color: red">Terms of Service and Privacy Policy</ion-button>
         <ion-footer class="ion-no-border">
-
             <ion-toolbar>
                 <p>You have an account? <span routerLink="/login"> Sign in</span></p>
             </ion-toolbar>
         </ion-footer>
-    </div>
+    </ion-card>
+</ion-content>
 
 
-    <!-- afficher ou masquer le RGPD-->
-    <!--Background overlay-->
-    <div class="bg" (click)="close()"></div>
 
-    <!--Bottom Sheet-->
-    <div class="bottomSheet" (touchmove)="touchMove($event)" (touchend)="touchEnd()">
 
-        <!--Short Line at tp of the Bottom Sheet-->
-        <div class="swipe-handler"></div>
+<!-- afficher ou masquer le RGPD-->
+<!--Background overlay-->
+<!-- <div class="bg" (click)="close()"></div> -->
 
-        <!-- Bottom Sheet Content-->
-        <div class="content">
+<!--Bottom Sheet-->
+<!-- <div class="bottomSheet" (touchmove)="touchMove($event)" (touchend)="touchEnd()"> -->
+
+<!--Short Line at tp of the Bottom Sheet-->
+<!-- <div class="swipe-handler"></div> -->
+
+<!-- Bottom Sheet Content-->
+<!-- <div class="content">
             <h5>Terms of Service and Privacy Policy</h5>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quos aspernatur molestiae deleniti facilis eum repellat similique, perferendis minus? Ea provident impedit facere earum exercitationem totam repellat. Quo,
                 <br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsam obcaecati, distinctio eaq
@@ -56,6 +57,4 @@
                 <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsam obcaecati, distinctio eaque iste consectetur ratione dolor unde optio consequatur eum veniam natus itaque molestiae quam. Quasi aperiam vel unde.
             </p>
         </div>
-    </div>
-
-</ion-content>
+    </div> -->

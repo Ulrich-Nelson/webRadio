@@ -9,6 +9,10 @@ ion-content {
     padding-bottom: 30px;
 }
 
+ion-card {
+    box-shadow: 1px white
+}
+
 // titre de la page
 h3 {
     text-align: center;
@@ -39,7 +43,7 @@ ion-button {
 }
 
 .privacy {
-    margin-left: 80px;
+    margin-left: 50px;
 }
 
 //Mise en forme du footer de la page
@@ -49,7 +53,6 @@ ion-footer {
         p {
             text-align: center;
             padding-bottom: 20px;
-            padding-left: 60px;
             color: white;
             font-size: 20px;
             span {

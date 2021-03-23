@@ -23,8 +23,6 @@ export class RegistrationPage implements OnInit {
     this.close();
   }
 
-
-
   close(){
     this.currentPosition = 0;
     this.startPosition = 0;
