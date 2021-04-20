@@ -1,4 +1,4 @@
-package com.webradio.com;
+package com.webradio;
 
 import android.os.Bundle;
 
