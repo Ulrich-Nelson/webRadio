@@ -1,5 +1,5 @@
 {
-  "appId": "com.webradio",
+  "appId": "com.webradio.app",
   "appName": "Webradio",
   "bundledWebRuntime": false,
   "npmClient": "npm",
@@ -22,8 +22,6 @@
   },
   "server": {
     "url": "http://192.168.1.73:8100",
-    "cleartext": true,
-    "originalUrl": "http://192.168.1.73:8101",
-    "originalCleartext": true
+    "cleartext": true
   }
 }
