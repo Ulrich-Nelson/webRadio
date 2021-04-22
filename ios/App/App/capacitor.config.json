@@ -1,5 +1,5 @@
 {
-  "appId": "com.webradio",
+  "appId": "com.webradio.app",
   "appName": "Webradio",
   "bundledWebRuntime": false,
   "npmClient": "npm",
@@ -19,9 +19,5 @@
       "SplashScreen": "screen",
       "SplashScreenDelay": "3000"
     }
-  },
-  "server": {
-    "url": "http://192.168.1.73:8101",
-    "cleartext": true
   }
 }

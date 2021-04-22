@@ -24,7 +24,6 @@ export class LoginPage implements OnInit {
   }
 
 
-  
    // Ouvir le RGPD
    open(){
     (<HTMLStyleElement>document.querySelector(".bottomSheet")).style.bottom = "0px";
