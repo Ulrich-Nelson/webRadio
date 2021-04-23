@@ -7,22 +7,10 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-// pour la récupération des informations des utilisateurs
-import { HttpClientModule } from '@angular/common/http';
-import { Storage } from '@ionic/storage';
-import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-//function pour exporter les info users
-export function jwtOptionsFactory(storage: any) {
-  return {
-    tokenGetter: () => {
-      return storage.get('Authorization');
-    },
-    whitelistedDomains: ['https://api-radio-world.herokuapp.com']
-  }
-}
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,17 +18,10 @@ export function jwtOptionsFactory(storage: any) {
   imports: [
     BrowserModule, 
     IonicModule.forRoot(),
-    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [Storage],
-      }
-    })
+    HttpClientModule
   ],
 
   providers: [

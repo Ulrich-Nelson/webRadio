@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
-// import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +7,8 @@ import { AuthService } from './services/auth.service';
 })
 
 
-//
 export class AppComponent {
-  constructor(
-    private authService: AuthService,
-    private router: Router) {
-      // this.initializeApp();
-  }
-  // Initialiser l'application
-  // initializeApp() {
-  //     this.authService.authenticationState.subscribe(state => {
-  //       if (state) {
-  //         this.router.navigate(['tabs']);
-  //       } else {
-  //         this.router.navigate(['login']);
-  //       }
-  //     });
- 
-  //   };
+  constructor() {}
+
   
 }

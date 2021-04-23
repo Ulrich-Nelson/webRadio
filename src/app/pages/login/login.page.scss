@@ -2,6 +2,10 @@ ion-content {
     --ion-background-color: var(--ion-color-dark);
 }
 
+.normalToast {
+    --ion-background-color: var(--ion-color-primary)
+}
+
 // titre de la page
 h3 {
     text-align: center;

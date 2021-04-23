@@ -1,28 +1,28 @@
 <ion-content>
     <ion-card>
         <h3>Registration</h3>
-        <form id="container">
+        <form id="container" [formGroup]="registerForm" (ngSubmit)="registerAction()">
             <ion-list>
                 <ion-item lines="none">
-                    <ion-input color="light" type="text" placeholder="First name"></ion-input>
+                    <ion-input color="light" type="text" id="firstname" formControlName="firstname" placeholder="First name"></ion-input>
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-input color="light" type="text" placeholder="Last name"></ion-input>
+                    <ion-input color="light" type="text" id="lastname" formControlName="lastname" placeholder="Last name"></ion-input>
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-input color="light" type="email" placeholder="Email"></ion-input>
+                    <ion-input color="light" type="email" id="email" formControlName="email" placeholder="Email"></ion-input>
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-input color="light" type="date" placeholder="Date of birth"></ion-input>
+                    <ion-input color="light" type="date" id="dateOfBirth" formControlName="dateOfBirth" placeholder="Date of birth"></ion-input>
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-input color="light" type="password" placeholder="Password"></ion-input>
+                    <ion-input color="light" type="password" id="password" formControlName="password" placeholder="Password"></ion-input>
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-input color="light" type="password" placeholder=" Confirm password"></ion-input>
+                    <ion-input color="light" type="password" id="confPassword" formControlName="confPassword" placeholder=" Confirm password"></ion-input>
                 </ion-item>
             </ion-list>
-            <ion-button color="light" expand="block" shape="round" style="font-size: 20px;" fill="outline">Sign up</ion-button>
+            <ion-button color="light" expand="block" shape="round" type="submit" style="font-size: 20px;" fill="outline">Sign up</ion-button>
         </form>
         <ion-button fill="clear" size="small" class="privacy" style="color: red">Terms of Service and Privacy Policy</ion-button>
         <ion-footer class="ion-no-border">
