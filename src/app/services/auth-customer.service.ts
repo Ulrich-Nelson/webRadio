@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthConstants } from '../config/auth-constants';
 import { Customer } from '../interfaces.ts/Custumer';
 import { HttpCustomerService } from './http-customer.service';
@@ -14,8 +14,18 @@ import { StorageCutomerService } from './storage-cutomer.service';
 // Authentification des customers à l'application
 export class AuthCustomerService {
 
+  userData$ = new BehaviorSubject<any>([]);
+  
   constructor( private httpService: HttpCustomerService, private storageService: StorageCutomerService, 
   private router: Router, private httpClient: HttpClient) { }
+
+
+  //Accéder au information de l'utilisateur
+  getUserData() {
+    this.storageService.get(AuthConstants.AUTH).then(res => {
+    this.userData$.next(res);
+    });
+    }
 
     // Connexion des customers
     login(customer: Customer): Observable<object> {
@@ -37,6 +47,17 @@ export class AuthCustomerService {
       });
       }
 
+      //Mise à jour du profil des customers
+      editProfil(customer: Customer): Observable<object> {
+        return this.httpClient.put('http://localhost:3000/customer/edit_profil', {
+          "firstname": customer.dateOfBirth ,
+          "lastname": customer.lastname ,
+          "email": customer.email,
+          "dateOfBirth": customer.dateOfBirth ,
+  
+        });
+        }
+
       //Envoie d'email pour la rénitialisation du mot de passe des customers
       forgotPassword(customer: Customer): Observable<object> {
         return this.httpClient.post('http://localhost:3000/customer/forgot', {
@@ -44,11 +65,17 @@ export class AuthCustomerService {
         });
         }
 
-      
+
       //Déconnexion des customers
-      logout() {
-      this.storageService.removeStorageItem(AuthConstants.AUTH).then(res => {
-      this.router.navigate(['login']);
+      logout(token: string): Observable<object> {
+          const headers = { 'Authorization': token };
+          return this.httpClient.delete('http://localhost:3000/customer/forgot', { headers });
+        }
+      
+      logoutt() {
+        this.storageService.removeStorageItem(AuthConstants.AUTH).then(res => {
+        this.userData$.next('');
+        this.router.navigate(['login']);
       });
       }
 

@@ -15,7 +15,7 @@ import { ToastMessageService } from 'src/app/services/toast-message.service';
 })
 export class LoginPage implements OnInit {
 
- //variage pour l'affichage du RGPD
+ // variage pour l'affichage du RGPD
 currentPosition: any;
 height: any;
 minimumThreshold: any;
@@ -79,6 +79,7 @@ loginAction(){
 
   }
 
+  
   touchMove(evt: TouchEvent){
     if (this.startPosition == 0) {
       this.startPosition = evt.touches[0].clientY;
