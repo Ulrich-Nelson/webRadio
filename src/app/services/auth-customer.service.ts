@@ -29,7 +29,7 @@ export class AuthCustomerService {
 
     // Connexion des customers
     login(customer: Customer): Observable<object> {
-      return this.httpClient.post('http://localhost:3000/customer/login', {
+      return this.httpClient.post('https://api-radio-world.herokuapp.com/customer/login', {
         "email": customer.email,
         "password": customer.password
       });
@@ -37,7 +37,7 @@ export class AuthCustomerService {
       
       //Inscription des customers
       register(customer: Customer): Observable<object> {
-      return this.httpClient.post('http://localhost:3000/customer/register', {
+      return this.httpClient.post('https://api-radio-world.herokuapp.com/customer/register', {
         "firstname": customer.dateOfBirth ,
         "lastname": customer.lastname ,
         "email": customer.email,
@@ -49,7 +49,7 @@ export class AuthCustomerService {
 
       //Mise à jour du profil des customers
       editProfil(customer: Customer): Observable<object> {
-        return this.httpClient.put('http://localhost:3000/customer/edit_profil', {
+        return this.httpClient.put('https://api-radio-world.herokuapp.com/customer/edit_profil', {
           "firstname": customer.dateOfBirth ,
           "lastname": customer.lastname ,
           "email": customer.email,
@@ -60,7 +60,7 @@ export class AuthCustomerService {
 
       //Envoie d'email pour la rénitialisation du mot de passe des customers
       forgotPassword(customer: Customer): Observable<object> {
-        return this.httpClient.post('http://localhost:3000/customer/forgot', {
+        return this.httpClient.post('https://api-radio-world.herokuapp.com/customer/forgot', {
           "email": customer.email,
         });
         }
