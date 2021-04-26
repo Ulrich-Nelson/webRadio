@@ -55,10 +55,10 @@ loginAction(){
     this.storageServive.store(AuthConstants.AUTH, data)
     console.log(data)
     this.router.navigateByUrl('tabs/profil')
-    this.toastMessage.presentToast("Utilisateur connecté.")
+    this.toastMessage.presentToast("Utilisateur connecté.", "success")
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message)
+    this.toastMessage.presentToast(error.error.message, "danger")
   }
   )
 }

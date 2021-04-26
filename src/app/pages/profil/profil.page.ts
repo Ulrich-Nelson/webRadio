@@ -48,12 +48,12 @@ export class ProfilPage implements OnInit {
 
 initForm(){
   this.editnForm = this.formBuilder.group({
-    firstname: [ [Validators.required, Validators.email]],
-    lastname: [[Validators.required, Validators.email]],
+    firstname: [ Validators.required],
+    lastname: [Validators.required],
     email: [[Validators.required, Validators.email]],
-    dateOfBirth: [[Validators.required, Validators.email]],
-    password: [[Validators.required, Validators.email]],
-    confPassword: [ [Validators.required, Validators.email]],
+    dateOfBirth: [Validators.required],
+    password: [Validators.required],
+    confPassword: [ Validators.required],
 
   })
 }

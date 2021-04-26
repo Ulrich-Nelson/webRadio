@@ -48,10 +48,10 @@ forgotAction(){
     this.storageServive.store(AuthConstants.AUTH, data)
     console.log(data)
     this.router.navigateByUrl('login')
-    this.toastMessage.presentToast("Vérifier votre boite email")
+    this.toastMessage.presentToast("Vérifier votre boite email", "success")
   },
   (error) => {
-    this.toastMessage.presentToast(error.error.message)
+    this.toastMessage.presentToast(error.error.message, "danger")
   })
   
 }

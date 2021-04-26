@@ -50,12 +50,12 @@ export class RegistrationPage implements OnInit {
 /*----TRAITEMENT DES DONNEES POUR LA INSCRIPTION-------*/
 initForm(){
   this.registerForm = this.formBuilder.group({
-    firstname: ['', [Validators.required, Validators.email]],
-    lastname: ['', [Validators.required, Validators.email]],
+    firstname: ['', Validators.required],
+    lastname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    dateOfBirth: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.email]],
-    confPassword: ['', [Validators.required, Validators.email]],
+    dateOfBirth: ['', Validators.required],
+    password: ['', Validators.required],
+    confPassword: ['', Validators.required],
 
   })
 }
@@ -65,7 +65,7 @@ registerAction(){
   let confPassword: string = this.registerForm.value.confPassword;
   console.log(this.registerForm.value)
   if (password != confPassword) {
-    this.toastMessage.presentToast("Les mots de passe ne sont pas indentiques")
+    this.toastMessage.presentToast("Les mots de passe ne sont pas indentiques", "success")
   } else {
     this.authservice.register(this.registerForm.value)
     .pipe()
@@ -73,10 +73,10 @@ registerAction(){
       this.storageServive.store(AuthConstants.AUTH, data)
       console.log(data)
       this.router.navigateByUrl('forgot-password')
-      this.toastMessage.presentToast("Utilisateur enregister")
+      this.toastMessage.presentToast("Utilisateur enregister", "success")
     },
     (error) =>{
-      this.toastMessage.presentToast(error.error.message)
+      this.toastMessage.presentToast(error.error.message, "danger")
     })
   }
   

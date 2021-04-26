@@ -69,7 +69,7 @@ export class AuthCustomerService {
       //Déconnexion des customers
       logout(token: string): Observable<object> {
           const headers = { 'Authorization': token };
-          return this.httpClient.delete('http://localhost:3000/customer/forgot', { headers });
+          return this.httpClient.delete('https://api-radio-world.herokuapp.com/customer/forgot', { headers });
         }
       
       logoutt() {
