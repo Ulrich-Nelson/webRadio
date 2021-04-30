@@ -66,13 +66,11 @@ registerAction(){
   let confPassword: string = this.registerForm.value.confPassword;
   console.log(this.registerForm.value)
   if (password != confPassword) {
-    this.toastMessage.presentToast("Les mots de passe ne sont pas indentiques", "success")
+    this.toastMessage.presentToast("Les mots de passe ne sont pas indentiques", "danger")
   } else {
     this.authservice.register(this.registerForm.value)
     .pipe()
-    .subscribe((data: Customer) => {
-      this.storageServive.store(AuthConstants.AUTH, data)
-      console.log(data)
+    .subscribe(() => {
       this.router.navigateByUrl('forgot-password')
       this.toastMessage.presentToast("Utilisateur enregister", "success")
     },

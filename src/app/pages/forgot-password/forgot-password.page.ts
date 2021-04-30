@@ -45,7 +45,6 @@ forgotAction(){
   this.authservice.forgotPassword(this.forgotForm.value)
   .pipe()
   .subscribe((data: Customer) => {
-    this.storageServive.store(AuthConstants.AUTH, data)
     console.log(data)
     this.router.navigateByUrl('login')
     this.toastMessage.presentToast("Vérifier votre boite email", "success")

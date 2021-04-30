@@ -1,5 +1,11 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { IonRange } from '@ionic/angular';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController, IonRange } from '@ionic/angular';
+import { Favorites } from 'src/app/interfaces.ts/Favorites';
+import { AuthCustomerService } from 'src/app/services/auth-customer.service';
+import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
+import { ToastMessageService } from 'src/app/services/toast-message.service';
 
 @Component({
   selector: 'app-favorites',
@@ -43,73 +49,21 @@ export class FavoritesPage implements OnInit {
     singer: "Rihanna & TI",
     img: "../assets/images/rihanna.PNG",
     path: "../assets/songs/rihanna.mp3"
+    },
+    {title: "Maintenant",
+    singer: "Rihanna & TI",
+    img: "../assets/images/rihanna.PNG",
+    path: "../assets/songs/rihanna.mp3"
     }
 
-
-    ,
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    }
-    ,
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    }
-    ,
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    }
-    ,
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    }
-    ,
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    },
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    },
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    },
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    },
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    },
-    {title: "Maintenant",
-    singer: "Rihanna & TI",
-    img: "../assets/images/rihanna.PNG",
-    path: "../assets/songs/rihanna.mp3"
-    }
     ];
 
 
-// détails sur le song courant
-  currTitle: string;
-  currSinger: string;
-  currImage: string;
-
-// barre de progression
+//détails sur le song courant
+currTitle: string;
+currSinger: string;
+currImage: string;
+//barre de progression
 progress : any = 0;
 // Mettre la musique en pause ou pas
 isTouched : boolean = false;
@@ -117,22 +71,50 @@ isPlaying : boolean = false;
 // temps d'écoute de la musique
 currSecsText: any;
 durationText: any;
-
 //ion Current value
 currRangeTime: any;
 maxRangeValue: any;
-
 //current song
 currSong : HTMLAudioElement;
-
 //Upnext song details
- upNextImg:string;
- upNextTitle:string;
- upNextSubtitle:string;
-  constructor() { }
+upNextImg:string;
+upNextTitle:string;
+upNextSubtitle:string;
+
+
+//Récupération des songs en favorites
+favoriteData: Favorites
+
+
+  constructor( public alertController : AlertController, private authservice: AuthCustomerService,
+    private storageServive: StorageCutomerService, private formBuilder: FormBuilder, private toastMessage: ToastMessageService)
+     { }
 
   ngOnInit() {
+    this.getFavoriteSongAction();
   }
+
+
+/*----RECUPERATION DES SONGS MIS EN FAVORITES------*/
+  async getFavoriteSongAction(): Promise<void>{
+  this.authservice.getFavoriteSong(await this.authservice.getToken())
+  .pipe()
+  .subscribe(async (data: any) => {
+    this.favoriteData = data
+    console.log(this.favoriteData)
+  },
+  (error) =>{
+    this.toastMessage.presentToast(error.error.message, "danger")
+  })
+}
+
+
+
+
+
+
+
+/*----JOUER LES MUSIQUES MIS EN FAVORITES------*/
 
 //play song
 playSong(title: string, singer: string, img: string, song: any){

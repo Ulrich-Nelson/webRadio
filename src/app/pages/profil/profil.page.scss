@@ -80,6 +80,17 @@ ion-row.validate {
 }
 
 
+/*  ****************  TRAITEMENT POUR LE BOUTON DE CONFIRMATION DE DECONNEXION************************ */
+
+.alert-wrapper {
+    background: #e5e5e5;
+}
+
+.my-custom-class .alert-wrapper {
+    background: #e5e5e5;
+}
+
+
 /*  ****************  traitement pour l'affichage des informations sur le RGPD ************************ */
 
 ion-title,

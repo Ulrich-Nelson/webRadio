@@ -35,7 +35,6 @@ startPosition: any;
 
   ngOnInit() {
     this.initForm();
-    this.close();
   }
 
   
@@ -48,13 +47,15 @@ initForm(){
   })
 }
 
-loginAction(){
-  this.authservice.login(this.loginForm.value)
-  .pipe()
-  .subscribe((data:Customer) => {
-    this.storageServive.store(AuthConstants.AUTH, data)
-    console.log(data)
+  async loginAction(){
+  (await this.authservice.login(this.loginForm.value))
+  .subscribe(async (data:any) => {
+    this.storageServive.store(AuthConstants.AUTH, data.user)
+    this.storageServive.store(AuthConstants.TOKEN, data.user.token)
+    this.storageServive.store(AuthConstants.SUBSCRIPTION, data.user.subscription)    
     this.router.navigateByUrl('tabs/profil')
+    console.log(await this.storageServive.get(AuthConstants.AUTH))
+
     this.toastMessage.presentToast("Utilisateur connecté.", "success")
   },
   (error) =>{
@@ -62,6 +63,14 @@ loginAction(){
   }
   )
 }
+
+
+
+
+
+
+
+
 
 
 /*--------------TRAITEMENT DES DONNEES RGPD----------*/

@@ -1,6 +1,5 @@
 export interface BillCustomer {
-
-     id: number;
+     id: string;
      customerId: string;
      idStripe: string;
      datePayment: Date | string;

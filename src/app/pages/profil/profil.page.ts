@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AuthConstants } from 'src/app/config/auth-constants';
+import { BillCustomer } from 'src/app/interfaces.ts/Bills';
+import { Customer } from 'src/app/interfaces.ts/Custumer';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
@@ -14,20 +17,25 @@ import Swal from 'sweetalert2';
 })
 export class ProfilPage implements OnInit {
 
-  // tableau des factures
-  factures: Array<any> = []
   currentPosition: any;
   height: any;
   minimumThreshold: any;
   startPosition: any; 
 
  //Variable pour la mise à jour du profil des customers.
+ customerData: any;
+ editProfilForm: FormGroup;
+ profilData: Customer;
+
+ //Récupération des factures du customer
+ bills: BillCustomer
+
+ //Information de l'utilisateur connecté
  firstname:string;
  lastname: string;
  email: string;
  dateOfBirth: string;
-
- editnForm: FormGroup;
+ avatar : string;
 
   
   constructor( public alertController : AlertController, 
@@ -39,108 +47,107 @@ export class ProfilPage implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.close();
+    this.getBillsAction();
+    this.getProfilAction();
   }
-  
 
 
-  /*----MISE A JOUR DES DONNEES DU CUSTOMER------*/
 
-initForm(){
-  this.editnForm = this.formBuilder.group({
-    firstname: [ Validators.required],
-    lastname: [Validators.required],
-    email: [[Validators.required, Validators.email]],
-    dateOfBirth: [Validators.required],
-    password: [Validators.required],
-    confPassword: [ Validators.required],
-
-  })
+/*----RECUPERE LES INFORMATION DU CUSTOMER CONNECTE------*/
+async getProfilAction(): Promise<void>{
+  this.authservice.getProfil(await this.authservice.getToken())
+  .pipe()
+  .subscribe(async (data: any) => {
+    this.firstname = data.user.firstname;
+    this.lastname = data.user.lastname;
+    this.email = data.user.email;
+    this.dateOfBirth = data.user.dateOfBirth;
+    this.avatar = data.user.avatar;
+  },
+  (error) =>{
+    this.toastMessage.presentToast(error.error.message, "danger")
+  }
+  )
 }
 
 
+/*----MISE A JOUR DES DONNEES DU CUSTOMER------*/
+initForm(): void{
+  this.editProfilForm = this.formBuilder.group({
+    firstname: [this.firstname, Validators.required],
+    lastname: [this.lastname, Validators.required],
+    email: [this.email, [Validators.required, Validators.email]],
+    dateOfBirth: [this.dateOfBirth, Validators.required],
+  });
+}
+
+  async editProfilAction(){
+    const customer = this.editProfilForm.value
+    console.log(customer)
+    this.authservice.editProfil(await this.authservice.getToken(), customer)
+    .pipe()
+    .subscribe(async (data: any) => {
+    console.log(data)
+    this.toastMessage.presentToast("Profile mis à jour", "success")
+  },
+  (error) =>{
+    this.toastMessage.presentToast(error.error.message, "danger")
+  }
+  )
+}
 
 
+/*----RECUPERATION DES FACTURES DU CUSTOMER------*/
+  async getBillsAction(): Promise<void>{
+  this.authservice.getBills(await this.authservice.getToken())
+  .pipe()
+  .subscribe(async (data: any) => {
+    this.bills = data.bills
+    console.log(this.bills)
+  },
+  (error) =>{
+    this.toastMessage.presentToast(error.error.message, "danger")
+  }
+  )
+}
 
- /*--------------DECONNEXION DU CUSTOMER----------*/
-  confirmLogout() {
-    this.alertController.create({
-      header: 'Are you sure you want to logout ?',
+
+/*--------------DECONNEXION DU CUSTOMER----------*/
+  async confirmLogout() {
+    const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
+      header: 'Are you sure you want to logout ?',
+      message: '',
       buttons: [
         {
           text: 'Cancel',
-        },
-        {
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            this.toastMessage.presentToast("Bonne resolution.", "primary")
+          }
+        }, {
           text: 'Yes',
+          handler: async () => {
+            this.authservice.logout(await this.authservice.getToken())
+            .pipe()
+            .subscribe(() =>{
+              this.storageServive.removeStorageItem(AuthConstants.TOKEN)
+              this.storageServive.removeStorageItem(AuthConstants.AUTH)
+              this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
+              this.toastMessage.presentToast("Utilisateur déconnecté", "success")
+              this.router.navigateByUrl('login')
+            },
+            (error) => {
+              this.toastMessage.presentToast("error.error.message", "danger")
+            }
+            );
+          }
         }
       ]
-    }).then(res => {
-      res.present();
     });
+
+    await alert.present();
   }
-
-
- /*--------------TRAITEMENT DES DONNEES RGPD----------*/
- open(){
-  (<HTMLStyleElement>document.querySelector(".bottomSheet")).style.bottom = "0px";
-  (<HTMLStyleElement>document.querySelector(".bg")).style.display = "block";
-}
-
-close(){
-  this.currentPosition = 0;
-  this.startPosition = 0;
-  (<HTMLStyleElement>document.querySelector(".bottomSheet")).style.bottom = "-1000px";
-  (<HTMLStyleElement>document.querySelector(".bottomSheet")).style.transform = "translate3d(0,0,0)";
-  (<HTMLStyleElement>document.querySelector(".bg")).style.display = "none";
-
-}
-
-touchMove(evt: TouchEvent){
-  if (this.startPosition == 0) {
-    this.startPosition = evt.touches[0].clientY;
-  }
-  this.height = document.querySelector(".bottomSheet").clientHeight;
-  var y = evt.touches[0].clientY;
-  this.currentPosition = y - this.startPosition;
-  if (this.currentPosition > 0 && this.startPosition > 0) {
-    (<HTMLStyleElement>document.querySelector(".bottomSheet")).style.transform = "translate3d(0px," + this.currentPosition + "px,0px)";
-  }
-}
-
-touchEnd(){
-  this.minimumThreshold = this.height - 130;
-  if (this.currentPosition < this.minimumThreshold) {
-    (<HTMLStyleElement>document.querySelector(".bottomSheet")).style.transform = "translate3d(0px,0px,0px)";
-  } else {
-    this.close();
-  }
-}
-
-
-  // openmodal(){
-  //   Swal.fire({
-  //     title: 'Are you sure?',
-  //     text: 'This process is irreversible.',
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonText: 'Yes',
-  //     cancelButtonText: 'No'
-  //   }).then((result) => {
-  //     if (result.value) {
-  //       Swal.fire(
-  //         'Removed!',
-  //         'Product removed successfully.',
-  //         'success'
-  //       )
-  //     } else if (result.dismiss === Swal.DismissReason.cancel) {
-  //       Swal.fire(
-  //         'Cancelled',
-  //         'Product still in our database.)',
-  //         'error'
-  //       )
-  //     }
-  //   })
-  // }   
 
 }

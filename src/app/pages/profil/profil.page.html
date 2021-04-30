@@ -1,15 +1,19 @@
 <ion-content>
     <div class="padding">
         <div class="logo">
-            <img src="/assets/icon/profil.jpg">
+            <!-- <img src="/assets/icon/profil.jpg"> -->
+            <img src="{{avatar}}">
         </div>
         <div class="name">
-            <p>MELINA THOSE</p>
+            <p>{{firstname}} {{lastname}}</p>
         </div>
+        <ion-button class="Button" type="submit" shape="round" style="font-size: 15px;" size="small" (click)="getBillsAction()">
+            Buills
+        </ion-button>
         <div class="button">
             <ion-row>
                 <ion-col size="2">
-                    <ion-button class="Button" shape="round" style="font-size: 15px;" size="small" routerLink="/registration">
+                    <ion-button class="Button" type="submit" shape="round" style="font-size: 15px;" size="small" (click)="getBillsAction()">
                         Buills
                     </ion-button>
                 </ion-col>
@@ -23,31 +27,31 @@
             </ion-row>
         </div>
         <ion-card>
-            <form id="container">
+            <form id="container" [formGroup]="editProfilForm" (ngSubmit)="editProfilAction()">
                 <ion-list>
                     <ion-item lines="none">
-                        <ion-input color="light" type="text" placeholder="Melina.|"></ion-input>
+                        <ion-input color="light" type="text" class="form-control" [(ngModel)]="firstname" id="firstname" formControlName="firstname"></ion-input>
                     </ion-item>
                     <ion-item lines="none">
-                        <ion-input color="light" type="text" placeholder="THOSE"></ion-input>
+                        <ion-input color="light" type="text" class="form-control" [(ngModel)]="lastname" id="lastname" formControlName="lastname"></ion-input>
                     </ion-item>
                     <ion-item lines="none">
-                        <ion-input color="light" type="email" placeholder="melinathose@yahoo.com"></ion-input>
+                        <ion-input color="light" type="email" class="form-control" [(ngModel)]="email" id="email" formControlName="email"></ion-input>
                     </ion-item>
                     <ion-item lines="none">
-                        <ion-input color="light" type="email" placeholder="18-10-1993"></ion-input>
+                        <ion-input color="light" type="date" class="form-control" [(ngModel)]="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth"></ion-input>
                     </ion-item>
                 </ion-list>
                 <ion-row class="validate">
                     <ion-col size="2">
-                        <ion-button size="small" class="Cancel" color="light" routerLink="/tabs/favorite">
+                        <ion-button size="small" class="Cancel" type="button" color="light" routerLink="/tabs/favorite">
                             Cancel
                         </ion-button>
                     </ion-col>
                     <!-- <ion-col size="2">
                     </ion-col> -->
                     <ion-col size="2">
-                        <ion-button size="small" color="success" routerLink="/registration">
+                        <ion-button size="small" color="success" type="submit">
                             validate
                         </ion-button>
                     </ion-col>
@@ -55,30 +59,4 @@
             </form>
         </ion-card>
     </div>
-    <!-- afficher ou masquer le RGPD-->
-    <!-- <div>
-        <ion-button fill="clear" size="small" (click)="open()" class="privacy">Terms of Service and Privacy Policy</ion-button>
-    </div>
-
-    <!--Background overlay-->
-    <div class="bg" (click)="close()"></div>
-
-    <!--Bottom Sheet-->
-    <div class="bottomSheet" (touchmove)="touchMove($event)" (touchend)="touchEnd()">
-
-        <!--Short Line at tp of the Bottom Sheet-->
-        <div class="swipe-handler"></div>
-
-        <!-- Bottom Sheet Content-->
-        <div class="content">
-            <h5>Terms of Service and Privacy Policy</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quos aspernatur molestiae deleniti facilis eum repellat similique, perferendis minus? Ea provident impedit facere earum exercitationem totam repellat. Quo,
-                <br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsam obcaecati, distinctio eaque
-            </p>
-            <p class="RDPG">RGPD</p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsam obcaecati, distinctio eaque iste consectetur ratione dolor unde optio consequatur eum veniam natus itaque molestiae quam. Quasi aperiam
-                <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsam obcaecati, distinctio eaque iste consectetur ratione dolor unde optio consequatur eum veniam natus itaque molestiae quam. Quasi aperiam vel unde.
-            </p>
-        </div>
-    </div> -->
 </ion-content>

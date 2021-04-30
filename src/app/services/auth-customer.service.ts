@@ -27,56 +27,75 @@ export class AuthCustomerService {
     });
     }
 
-    // Connexion des customers
-    login(customer: Customer): Observable<object> {
-      return this.httpClient.post('https://api-radio-world.herokuapp.com/customer/login', {
-        "email": customer.email,
-        "password": customer.password
-      });
-      }    
-      
+    //Rétourner le token du customer connecté
+    getToken(){
+      return this.storageService.get(AuthConstants.TOKEN)
+    }
+
+    
       //Inscription des customers
       register(customer: Customer): Observable<object> {
-      return this.httpClient.post('https://api-radio-world.herokuapp.com/customer/register', {
+      return this.httpClient.post('http://localhost:3000/customer/register', {
         "firstname": customer.dateOfBirth ,
         "lastname": customer.lastname ,
         "email": customer.email,
         "dateOfBirth": customer.dateOfBirth ,
         "password": customer.password,
-
       });
+      }
+
+      // Connexion des customers
+      login(customer: Customer): Observable<object> {
+        return this.httpClient.post('http://localhost:3000/customer/login', {
+          "email": customer.email,
+          "password": customer.password
+        });
+        }
+
+      //Récupérer les informations de l'utilisateur connecté
+      getProfil(token: string): Observable<object> {
+        const headers = {'Authorization':  token };
+        return this.httpClient.get('http://localhost:3000/customer/getProfil', { headers });
       }
 
       //Mise à jour du profil des customers
-      editProfil(customer: Customer): Observable<object> {
-        return this.httpClient.put('https://api-radio-world.herokuapp.com/customer/edit_profil', {
-          "firstname": customer.dateOfBirth ,
-          "lastname": customer.lastname ,
-          "email": customer.email,
-          "dateOfBirth": customer.dateOfBirth ,
-  
-        });
+      editProfil(token: string, customer: Customer): Observable<any>  {
+        const headers = {'Authorization':  token };
+        return this.httpClient.put('http://localhost:3000/customer/edit_profil', customer, { headers });
         }
+
+        //Récupération des factures du customer
+        getBills(token: string): Observable<object> {
+          const headers = {'Authorization':  token };
+          return this.httpClient.get('http://localhost:3000/customer/bills', {headers});  
+          }
+        
+        //Récupérer les songs du logiciel
+        getSongRadio(token: string){
+          const headers = {'Authorization':  token };
+          return this.httpClient.get('http://localhost:3000/customer/getSongs', {headers});  
+        }
+
+         //Récupérer les songs mis en favorite
+         getFavoriteSong(token: string){
+          const headers = {'Authorization':  token };
+          return this.httpClient.get('http://localhost:3000/customer/getFavorite', {headers});  
+        }
+
 
       //Envoie d'email pour la rénitialisation du mot de passe des customers
       forgotPassword(customer: Customer): Observable<object> {
-        return this.httpClient.post('https://api-radio-world.herokuapp.com/customer/forgot', {
+        return this.httpClient.post('http://localhost:3000/customer/forgot', {
           "email": customer.email,
         });
         }
 
-
       //Déconnexion des customers
       logout(token: string): Observable<object> {
-          const headers = { 'Authorization': token };
-          return this.httpClient.delete('https://api-radio-world.herokuapp.com/customer/forgot', { headers });
+          const headers = {'Authorization':  token };
+          return this.httpClient.delete('http://localhost:3000/customer/logout', { headers });
         }
-      
-      logoutt() {
-        this.storageService.removeStorageItem(AuthConstants.AUTH).then(res => {
-        this.userData$.next('');
-        this.router.navigate(['login']);
-      });
-      }
+
+
 
 }
