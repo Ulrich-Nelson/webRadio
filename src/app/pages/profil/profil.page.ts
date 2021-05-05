@@ -63,12 +63,31 @@ async getProfilAction(): Promise<void>{
     this.email = data.user.email;
     this.dateOfBirth = data.user.dateOfBirth;
     this.avatar = data.user.avatar;
+    console.log(data)
   },
   (error) =>{
     this.toastMessage.presentToast(error.error.message, "danger")
   }
   )
 }
+
+/*----ANNULER LA MISE A JOUR DU PROFILE------*/
+
+
+/*----RECUPERATION DES FACTURES DU CUSTOMER------*/
+  async getBillsAction(): Promise<void>{
+  this.authservice.getBills(await this.authservice.getToken())
+  .pipe()
+  .subscribe(async (data: any) => {
+    this.bills = data.bills
+    console.log(this.bills)
+  },
+  (error) =>{
+    this.toastMessage.presentToast(error.error.message, "danger")
+  }
+  )
+}
+
 
 
 /*----MISE A JOUR DES DONNEES DU CUSTOMER------*/
@@ -89,21 +108,6 @@ initForm(): void{
     .subscribe(async (data: any) => {
     console.log(data)
     this.toastMessage.presentToast("Profile mis à jour", "success")
-  },
-  (error) =>{
-    this.toastMessage.presentToast(error.error.message, "danger")
-  }
-  )
-}
-
-
-/*----RECUPERATION DES FACTURES DU CUSTOMER------*/
-  async getBillsAction(): Promise<void>{
-  this.authservice.getBills(await this.authservice.getToken())
-  .pipe()
-  .subscribe(async (data: any) => {
-    this.bills = data.bills
-    console.log(this.bills)
   },
   (error) =>{
     this.toastMessage.presentToast(error.error.message, "danger")

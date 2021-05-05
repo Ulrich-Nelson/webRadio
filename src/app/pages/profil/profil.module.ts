@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ProfilPageRoutingModule } from './profil-routing.module';
 
+
 import { ProfilPage } from './profil.page';
 
 @NgModule({

@@ -14,12 +14,14 @@ import { StorageCutomerService } from './storage-cutomer.service';
 // Authentification des customers à l'application
 export class AuthCustomerService {
 
+  
   userData$ = new BehaviorSubject<any>([]);
   
   constructor( private httpService: HttpCustomerService, private storageService: StorageCutomerService, 
   private router: Router, private httpClient: HttpClient) { }
 
 
+  
   //Accéder au information de l'utilisateur
   getUserData() {
     this.storageService.get(AuthConstants.AUTH).then(res => {
