@@ -28,6 +28,11 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
+  {
+    path: 'bills',
+    loadChildren: () => import('./modals/bills/bills.module').then( m => m.BillsPageModule)
+  },
+
 
 ];
 

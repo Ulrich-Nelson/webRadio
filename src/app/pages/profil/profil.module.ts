@@ -8,6 +8,7 @@ import { ProfilPageRoutingModule } from './profil-routing.module';
 
 
 import { ProfilPage } from './profil.page';
+import { BillsPage } from 'src/app/modals/bills/bills.page';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { ProfilPage } from './profil.page';
     ProfilPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [ProfilPage]
+  declarations: [ProfilPage, BillsPage], //Utiliser Bills comme page modal dans la page de profil
+  entryComponents: [BillsPage]
 })
 export class ProfilPageModule {}

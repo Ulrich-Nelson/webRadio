@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController} from '@ionic/angular';
+import { AuthConstants } from 'src/app/config/auth-constants';
+import { AuthCustomerService } from 'src/app/services/auth-customer.service';
+import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
+import { ToastMessageService } from 'src/app/services/toast-message.service';
 
 @Component({
   selector: 'app-subscribe',
@@ -12,13 +17,58 @@ export class SubscribePage implements OnInit {
  height: any;
  minimumThreshold: any;
  startPosition: any; 
-  constructor(public alertController : AlertController) { }
+
+
+  constructor( public alertController : AlertController, 
+    private router: Router, private authservice: AuthCustomerService,
+    private storageServive: StorageCutomerService,
+    private toastMessage: ToastMessageService) { }
 
   ngOnInit() {
   }
 
 
 
+
+
+
+/*--------------DECONNEXION DU CUSTOMER----------*/
+async confirmLogout() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'Are you sure you want to logout ?',
+    message: ' Finaliser votre abonnement afin de beneficier de l\'application',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          this.toastMessage.presentToast("Bonne resolution.", "primary")
+        }
+      }, {
+        text: 'Yes',
+        handler: async () => {
+          this.authservice.logout(await this.authservice.getToken())
+          .pipe()
+          .subscribe(() =>{
+            this.storageServive.removeStorageItem(AuthConstants.TOKEN)
+            this.storageServive.removeStorageItem(AuthConstants.AUTH)
+            this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
+            this.toastMessage.presentToast("Utilisateur déconnecté", "success")
+            this.router.navigateByUrl('login')
+          },
+          (error) => {
+            this.toastMessage.presentToast("error.error.message", "danger")
+          }
+          );
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
 
 
 

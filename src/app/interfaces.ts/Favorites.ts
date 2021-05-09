@@ -6,5 +6,6 @@ export interface Favorites {
     artist: string,
     url: string,
     genre: string,
+    cover: string,
     time: string,
 }

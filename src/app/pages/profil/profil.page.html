@@ -1,27 +1,29 @@
-<ion-content fullscreen >
-         <div class="header">
-      <h2>{{firstname}} {{lastname}}</h2>
+<ion-content fullscreen>
+    <div class="header">
+        <h2>{{firstname}} {{lastname}}</h2>
 
-      <div class="space-between">
-        <div class="followings">
-          <ion-badge color="primary" mode="ios">42</ion-badge>
-          <p>Favoris</p>
+        <div class="space-between">
+            <div class="followings">
+                <ion-badge color="primary" mode="ios">42</ion-badge>
+                <p>Favoris</p>
+            </div>
+            <ion-button class="Button" type="submit" shape="round" style="font-size: 15px;" size="small" (click)="openModal()">
+                Buills
+            </ion-button>
+            <div class="followings">
+                <ion-badge color="primary" mode="ios">102</ion-badge>
+                <p>Abonnements</p>
+            </div>
         </div>
-
-        <div class="followings">
-          <ion-badge color="primary" mode="ios">102</ion-badge>
-          <p>Abonnements</p>
-        </div>
-      </div>
     </div>
     <div class="flex">
-      <div class="border-blue">
-        <div class="border-white">
-          <div class="img-box">
-            <img src="{{avatar}}">
-          </div>
+        <div class="border-blue">
+            <div class="border-white">
+                <div class="img-box">
+                    <img src="{{avatar}}">
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <!--FIN HEADER-->
     <div class="padding">
@@ -42,14 +44,14 @@
                     </ion-item>
                 </ion-list>
                 <ion-row class="validate">
-                    <ion-col size="2">
+                    <ion-col size="3">
                         <ion-button size="small" class="Cancel" type="button" (click)="reset()" color="light">
                             Cancel
                         </ion-button>
                     </ion-col>
-                    <!-- <ion-col size="2">
+                    <!-- <ion-col size="1">
                     </ion-col> -->
-                    <ion-col size="2">
+                    <ion-col size="3">
                         <ion-button size="small" color="success" type="submit">
                             validate
                         </ion-button>
@@ -59,5 +61,3 @@
         </ion-card>
     </div>
 </ion-content>
-
-

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { AuthConstants } from 'src/app/config/auth-constants';
 import { BillCustomer } from 'src/app/interfaces.ts/Bills';
 import { Customer } from 'src/app/interfaces.ts/Custumer';
+import { BillsPage } from 'src/app/modals/bills/bills.page';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
@@ -27,9 +28,6 @@ export class ProfilPage implements OnInit {
  editProfilForm: FormGroup;
  profilData: Customer;
 
- //Récupération des factures du customer
- bills: BillCustomer
-
  //Information de l'utilisateur connecté
  firstname:string;
  lastname: string;
@@ -42,12 +40,13 @@ export class ProfilPage implements OnInit {
     private router: Router, private authservice: AuthCustomerService,
     private storageServive: StorageCutomerService,
     private formBuilder: FormBuilder,
-    private toastMessage: ToastMessageService) { }
+    private toastMessage: ToastMessageService,
+    private modalController: ModalController,
+    private routerOutlet: IonRouterOutlet) { }
 
 
   ngOnInit() {
     this.initForm();
-    this.getBillsAction();
     this.getProfilAction();
   }
 
@@ -63,6 +62,7 @@ async getProfilAction(): Promise<void>{
     this.email = data.user.email;
     this.dateOfBirth = data.user.dateOfBirth;
     this.avatar = data.user.avatar;
+    this.profilData = data.user
     console.log(data)
   },
   (error) =>{
@@ -74,21 +74,18 @@ async getProfilAction(): Promise<void>{
 /*----ANNULER LA MISE A JOUR DU PROFILE------*/
 
 
-/*----RECUPERATION DES FACTURES DU CUSTOMER------*/
-  async getBillsAction(): Promise<void>{
-  this.authservice.getBills(await this.authservice.getToken())
-  .pipe()
-  .subscribe(async (data: any) => {
-    this.bills = data.bills
-    console.log(this.bills)
-  },
-  (error) =>{
-    this.toastMessage.presentToast(error.error.message, "danger")
-  }
-  )
+
+/*----AFFICHER LA PAGE MODALE POUR LES FACTURES DU CUSTOMER------*/
+async openModal(): Promise<any>{
+  const modal = await this.modalController.create({
+    component:BillsPage,
+    swipeToClose: true,
+    cssClass:'my-custom-class',
+    presentingElement: await this.modalController.getTop()
+
+  });
+  return await modal.present();
 }
-
-
 
 /*----MISE A JOUR DES DONNEES DU CUSTOMER------*/
 initForm(): void{
@@ -114,6 +111,13 @@ initForm(): void{
   }
   )
 }
+
+
+/*********************** RESET PROFIL ****************************/
+reset(){
+this.getProfilAction();
+}
+
 
 
 /*--------------DECONNEXION DU CUSTOMER----------*/
@@ -153,5 +157,9 @@ initForm(): void{
 
     await alert.present();
   }
+
+
+
+
 
 }
