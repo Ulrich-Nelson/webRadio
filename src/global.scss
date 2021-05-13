@@ -28,15 +28,35 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
-/* Styliser mon fichier */
-
-.my-custom-class {
-    padding-left: 10px;
-    padding-right: 10px;
+//Styliser ma page modale des FACTURES
+.my-billsModal-class {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    margin-left: 5px;
+    margin-right: 5px;
+    position: absolute;
+    border-radius: 20px;
+    color: white;
 }
 
-ion-content,
-ion-header {
-    --ion-background-color: linear-gradient(90deg, rgba(165, 255, 192, 1) 1%, rgba(0, 212, 255, 1) 100%);
+//Styliser ma page modale des FACTURES
+.my-privacyModal-class {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    position: absolute;
+    border-radius: 20px;
+    color: white;
+}
+
+//Styliser ma page modale de la carte bancaire
+.my-cardModal-class {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    position: absolute;
+    border-radius: 20px;
+    color: white;
 }

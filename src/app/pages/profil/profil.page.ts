@@ -3,13 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { AuthConstants } from 'src/app/config/auth-constants';
-import { BillCustomer } from 'src/app/interfaces.ts/Bills';
 import { Customer } from 'src/app/interfaces.ts/Custumer';
 import { BillsPage } from 'src/app/modals/bills/bills.page';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profil',
@@ -34,7 +32,11 @@ export class ProfilPage implements OnInit {
  email: string;
  dateOfBirth: string;
  avatar : string;
+//Récupération des songs en favorites
+public favoriteData: any[] = [];
 
+//Récupération des factures du customer
+ bills: any[] = [];
   
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
@@ -48,7 +50,38 @@ export class ProfilPage implements OnInit {
   ngOnInit() {
     this.initForm();
     this.getProfilAction();
+    this.getFavoriteSongAction();
+    this.getBillsAction();
   }
+
+
+
+  /*----RECUPERATION DES SONGS MIS EN FAVORITES------*/
+  async getFavoriteSongAction(): Promise<void>{
+    this.authservice.getFavoriteSong(await this.authservice.getToken())
+    .pipe()
+    .subscribe(async (data: any) => {
+      this.favoriteData = data.favorites
+    },
+    (error) =>{
+      this.toastMessage.presentToast(error.error.message, "danger")
+    })
+  }
+  
+
+  /*----RECUPERATION DES FACTURES DU CUSTOMER------*/
+async getBillsAction(): Promise<void>{
+  this.authservice.getBills(await this.authservice.getToken())
+  .pipe()
+  .subscribe(async (data: any) => {
+    this.bills = data.bills
+  },
+  (error) =>{
+    this.toastMessage.presentToast(error.error.message, "danger")
+  }
+  )
+}
+
 
 
 
@@ -63,7 +96,6 @@ async getProfilAction(): Promise<void>{
     this.dateOfBirth = data.user.dateOfBirth;
     this.avatar = data.user.avatar;
     this.profilData = data.user
-    console.log(data)
   },
   (error) =>{
     this.toastMessage.presentToast(error.error.message, "danger")
@@ -71,7 +103,12 @@ async getProfilAction(): Promise<void>{
   )
 }
 
-/*----ANNULER LA MISE A JOUR DU PROFILE------*/
+
+
+/*********************** RESET PROFIL ****************************/
+reset(){
+  this.getProfilAction();
+  }
 
 
 
@@ -80,12 +117,15 @@ async openModal(): Promise<any>{
   const modal = await this.modalController.create({
     component:BillsPage,
     swipeToClose: true,
-    cssClass:'my-custom-class',
-    presentingElement: await this.modalController.getTop()
+    cssClass:'my-billsModal-class',
+    //presentingElement: await this.modalController.getTop()
 
   });
   return await modal.present();
 }
+
+
+
 
 /*----MISE A JOUR DES DONNEES DU CUSTOMER------*/
 initForm(): void{
@@ -99,11 +139,10 @@ initForm(): void{
 
   async editProfilAction(){
     const customer = this.editProfilForm.value
-    console.log(customer)
     this.authservice.editProfil(await this.authservice.getToken(), customer)
     .pipe()
     .subscribe(async (data: any) => {
-    console.log(data)
+      console.log(data.customer);
     this.toastMessage.presentToast("Profile mis à jour", "success")
   },
   (error) =>{
@@ -113,10 +152,7 @@ initForm(): void{
 }
 
 
-/*********************** RESET PROFIL ****************************/
-reset(){
-this.getProfilAction();
-}
+
 
 
 
@@ -132,7 +168,7 @@ this.getProfilAction();
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            this.toastMessage.presentToast("Bonne resolution.", "primary")
+            this.toastMessage.presentToast("Bonne resolution.", "light")
           }
         }, {
           text: 'Yes',
@@ -147,7 +183,7 @@ this.getProfilAction();
               this.router.navigateByUrl('login')
             },
             (error) => {
-              this.toastMessage.presentToast("error.error.message", "danger")
+              this.toastMessage.presentToast(error.error.message, "danger")
             }
             );
           }

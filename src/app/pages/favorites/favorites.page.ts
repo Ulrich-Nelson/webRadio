@@ -1,10 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AlertController, IonRange } from '@ionic/angular';
-import { Favorites } from 'src/app/interfaces.ts/Favorites';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
-import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 
 @Component({
@@ -83,11 +79,11 @@ upNextSubtitle:string;
 
 
 //Récupération des songs en favorites
-favoriteData: Favorites
+public favoriteData: any
 
 
   constructor( public alertController : AlertController, private authservice: AuthCustomerService,
-    private storageServive: StorageCutomerService, private formBuilder: FormBuilder, private toastMessage: ToastMessageService)
+ private toastMessage: ToastMessageService)
      { }
 
   ngOnInit() {
@@ -100,7 +96,7 @@ favoriteData: Favorites
   this.authservice.getFavoriteSong(await this.authservice.getToken())
   .pipe()
   .subscribe(async (data: any) => {
-    this.favoriteData = data
+    this.favoriteData = data.favorites
     console.log(this.favoriteData)
   },
   (error) =>{
@@ -138,18 +134,18 @@ playSong(title: string, singer: string, img: string, song: any){
     this.maxRangeValue = Number(this.currSong.duration.toFixed(2).toString().substring(0, 5));
     //set upnext song
     //get current song index
-    var index = this.songs.findIndex(x => x.title == this.currTitle);
+    var index = this.favoriteData.findIndex((x: { title: string; }) => x.title == this.currTitle);
     //if current song is the last one then set first song info for upnext song
-    if ((index + 1) == this.songs.length) {
-      this.upNextImg = this.songs[0].img;
-      this.upNextTitle = this.songs[0].title;
-      this.upNextSubtitle = this.songs[0].singer;
+    if ((index + 1) == this.favoriteData.length) {
+      this.upNextImg = this.favoriteData[0].cover;
+      this.upNextTitle = this.favoriteData[0].title;
+      this.upNextSubtitle = this.favoriteData[0].artist;
     }
     //else set next song info for upnext song
     else {
-      this.upNextImg = this.songs[index + 1].img;
-      this.upNextTitle = this.songs[index + 1].title;
-      this.upNextSubtitle = this.songs[index + 1].singer;
+      this.upNextImg = this.favoriteData[index + 1].cover;
+      this.upNextTitle = this.favoriteData[index + 1].title;
+      this.upNextSubtitle = this.favoriteData[index + 1].artist;
     }
     this.isPlaying = true;
   })
@@ -187,13 +183,13 @@ padZero(v: any) {
 
 
 playNext() {
-  var index = this.songs.findIndex(x => x.title == this.currTitle);
-  if ((index + 1) == this.songs.length) {
-    this.playSong(this.songs[0].title, this.songs[0].singer, this.songs[0].img, this.songs[0].path);
+  var index = this.favoriteData.findIndex((x: { title: string; }) => x.title == this.currTitle);
+  if ((index + 1) == this.favoriteData.length) {
+    this.playSong(this.favoriteData[0].title, this.favoriteData[0].artist, this.favoriteData[0].cover, this.favoriteData[0].url);
   }
   else {
     var nextIndex:number = index + 1;
-    this.playSong(this.songs[nextIndex].title, this.songs[nextIndex].singer, this.songs[nextIndex].img, this.songs[nextIndex].path);
+    this.playSong(this.favoriteData[nextIndex].title, this.favoriteData[nextIndex].artist, this.favoriteData[nextIndex].cover, this.favoriteData[nextIndex].url);
   }
 
 }
@@ -251,17 +247,20 @@ touchEnd() {
 }
 
 playPrev() {
-  var index = this.songs.findIndex(x => x.title == this.currTitle);
+  var index = this.favoriteData.findIndex((x: { title: string; }) => x.title == this.currTitle);
   if (index == 0) {
-    var lastIndex = this.songs.length - 1;
-    this.playSong(this.songs[lastIndex].title, this.songs[lastIndex].singer, this.songs[lastIndex].img, this.songs[lastIndex].path);
+    var lastIndex = this.favoriteData.length - 1;
+    this.playSong(this.favoriteData[lastIndex].title, this.favoriteData[lastIndex].artist, this.favoriteData[lastIndex].cover, this.favoriteData[lastIndex].url);
   }
   else {
     var prevIndex = index - 1;
-    this.playSong(this.songs[prevIndex].title, this.songs[prevIndex].singer, this.songs[prevIndex].img, this.songs[prevIndex].path);
+    this.playSong(this.favoriteData[prevIndex].title, this.favoriteData[prevIndex].artist, this.favoriteData[prevIndex].cover, this.favoriteData[prevIndex].url);
   }
 }
 
 
 
 }
+
+
+

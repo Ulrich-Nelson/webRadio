@@ -6,13 +6,13 @@
 
 <ion-content>
 
-    <ion-item lines="none" *ngFor="let  song of songs" (click)=" playSong(song.title, song.singer, song.img, song.path) ">
+    <ion-item *ngFor="let  song of favoriteData" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">
         <ion-thumbnail slot="start">
-            <img src="{{song.img}}" alt="song image">
+            <img src="{{song.cover}}" alt="song image">
         </ion-thumbnail>
         <ion-label>
             <h2>{{song.title}}</h2>
-            <p>{{song.singer}}</p>
+            <p>{{song.artist}}</p>
         </ion-label>
     </ion-item>
 </ion-content>
@@ -73,7 +73,6 @@
     <ion-button fill="clear" mode="md" (click)="playNext()">
         <ion-icon name="play-skip-forward-outline" style="font-size: 30px;"></ion-icon>
     </ion-button>
-
 
     <ion-list-header>
         Up Next

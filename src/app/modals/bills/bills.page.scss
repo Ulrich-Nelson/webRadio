@@ -1,6 +1,20 @@
-.body {
-    height: 120px;
+ion-header {
+    --ion-background-color: black;
+    text-align: center;
 }
 
-// .header {
-// }
+.followings p {
+    color: white;
+    margin: 8px 0px 0px 0px;
+}
+
+.img-box {
+    display: flex;
+    justify-content: center;
+}
+
+.img-box img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}

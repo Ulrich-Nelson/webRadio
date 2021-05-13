@@ -32,6 +32,13 @@ const routes: Routes = [
     path: 'bills',
     loadChildren: () => import('./modals/bills/bills.module').then( m => m.BillsPageModule)
   },
+  {
+    path: 'privacy',
+    loadChildren: () => import('./modals/privacy/privacy.module').then( m => m.PrivacyPageModule)
+  },  {
+    path: 'card',
+    loadChildren: () => import('./modals/card/card.module').then( m => m.CardPageModule)
+  }
 
 
 ];

@@ -24,7 +24,7 @@
             </ion-list>
             <ion-button color="light" expand="block" shape="round" type="submit" style="font-size: 20px;" fill="outline">Sign up</ion-button>
         </form>
-        <ion-button fill="clear" size="small" class="privacy" style="color: red">Terms of Service and Privacy Policy</ion-button>
+        <ion-button fill="clear" size="small" class="privacy" style="color: red" (click)="openModalPrivacy()">Terms of Service and Privacy Policy</ion-button>
         <ion-footer class="ion-no-border">
             <ion-toolbar>
                 <p>You have an account? <span routerLink="/login"> Sign in</span></p>

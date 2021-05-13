@@ -1,18 +1,15 @@
 <ion-content fullscreen>
     <div class="header">
-        <h2>{{firstname}} {{lastname}}</h2>
+        <h2>{{lastname}}</h2>
 
         <div class="space-between">
             <div class="followings">
-                <ion-badge color="primary" mode="ios">42</ion-badge>
+                <ion-badge color="primary" mode="ios">{{favoriteData.length}}</ion-badge>
                 <p>Favoris</p>
             </div>
-            <ion-button class="Button" type="submit" shape="round" style="font-size: 15px;" size="small" (click)="openModal()">
-                Buills
-            </ion-button>
             <div class="followings">
-                <ion-badge color="primary" mode="ios">102</ion-badge>
-                <p>Abonnements</p>
+                <ion-badge color="primary" mode="ios">{{bills.length}}</ion-badge>
+                <p>Bills</p>
             </div>
         </div>
     </div>
@@ -31,16 +28,16 @@
             <form id="container" [formGroup]="editProfilForm" (ngSubmit)="editProfilAction()">
                 <ion-list>
                     <ion-item lines="none">
-                        <ion-input color="light" type="text" required class="form-control" [(ngModel)]="firstname" id="firstname" formControlName="firstname"></ion-input>
+                        <ion-input color="light" type="text" required [(ngModel)]="firstname" id="firstname" formControlName="firstname"></ion-input>
                     </ion-item>
                     <ion-item lines="none">
-                        <ion-input color="light" type="text" required class="form-control" [(ngModel)]="lastname" id="lastname" formControlName="lastname"></ion-input>
+                        <ion-input color="light" type="text" required [(ngModel)]="lastname" id="lastname" formControlName="lastname"></ion-input>
                     </ion-item>
                     <ion-item lines="none">
-                        <ion-input color="light" type="email" required class="form-control" [(ngModel)]="email" id="email" formControlName="email"></ion-input>
+                        <ion-input color="light" type="email" required [(ngModel)]="email" id="email" formControlName="email"></ion-input>
                     </ion-item>
                     <ion-item lines="none">
-                        <ion-input color="light" type="date" required class="form-control" [(ngModel)]="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth"></ion-input>
+                        <ion-input color="light" type="date" required [(ngModel)]="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth"></ion-input>
                     </ion-item>
                 </ion-list>
                 <ion-row class="validate">
@@ -59,5 +56,23 @@
                 </ion-row>
             </form>
         </ion-card>
+
+        <ion-fab horizontal="start" slot="fixed">
+            <ion-fab-button color="secondary">
+                <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-list side="end">
+                <ion-fab-button (click)="openModal()">
+                    <ion-icon name="documents-outline" style="color: green"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button>
+                    <ion-icon name="power-sharp" style="color: red" (click)="confirmLogout()"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button>
+                    <ion-icon name="card-sharp" style="color: green"></ion-icon>
+                </ion-fab-button>
+            </ion-fab-list>
+        </ion-fab>
     </div>
+
 </ion-content>

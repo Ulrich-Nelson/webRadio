@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController} from '@ionic/angular';
+import { AlertController, ModalController} from '@ionic/angular';
 import { AuthConstants } from 'src/app/config/auth-constants';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
+import { CardPage } from 'src/app/modals/card/card.page';
+
 
 @Component({
   selector: 'app-subscribe',
@@ -22,13 +24,23 @@ export class SubscribePage implements OnInit {
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
     private storageServive: StorageCutomerService,
-    private toastMessage: ToastMessageService) { }
+    private toastMessage: ToastMessageService,
+    private modalController: ModalController) { }
 
   ngOnInit() {
   }
 
 
+/*----AFFICHER LA PAGE MODALE POUR LES TERMES PRIVEES DE LA CARTE------*/
+async openModalCard(): Promise<any>{
+  const modal = await this.modalController.create({
+    component:CardPage,
+    swipeToClose: true,
+    cssClass:'my-cardModal-class',
 
+  });
+  return await modal.present();
+}
 
 
 
@@ -44,7 +56,7 @@ async confirmLogout() {
         role: 'cancel',
         cssClass: 'secondary',
         handler: () => {
-          this.toastMessage.presentToast("Bonne resolution.", "primary")
+          this.toastMessage.presentToast("Finaliser votre souscription", "warning")
         }
       }, {
         text: 'Yes',
@@ -59,7 +71,7 @@ async confirmLogout() {
             this.router.navigateByUrl('login')
           },
           (error) => {
-            this.toastMessage.presentToast("error.error.message", "danger")
+            this.toastMessage.presentToast(error.error.message, "danger")
           }
           );
         }

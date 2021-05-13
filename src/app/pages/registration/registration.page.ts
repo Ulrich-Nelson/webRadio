@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { AuthConstants } from 'src/app/config/auth-constants';
-import { Customer } from 'src/app/interfaces.ts/Custumer';
+import { AlertController, ModalController } from '@ionic/angular';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
+import { PrivacyPage } from 'src/app/modals/privacy/privacy.page';
+
 
 @Component({
   selector: 'app-registration',
@@ -35,7 +35,7 @@ export class RegistrationPage implements OnInit {
 
  constructor( public alertController : AlertController, 
   private router: Router, private authservice: AuthCustomerService,
-  private storageServive: StorageCutomerService,
+  private modalController: ModalController,
   private formBuilder: FormBuilder,
   private toastMessage: ToastMessageService) { }
 
@@ -71,7 +71,7 @@ registerAction(){
     this.authservice.register(this.registerForm.value)
     .pipe()
     .subscribe(() => {
-      this.router.navigateByUrl('forgot-password')
+      this.router.navigateByUrl('login')
       this.toastMessage.presentToast("Utilisateur enregister", "success")
     },
     (error) =>{
@@ -79,7 +79,18 @@ registerAction(){
     })
   }
   
+}
 
+
+/*----AFFICHER LA PAGE MODALE POUR LES FACTURES DU CUSTOMER------*/
+async openModalPrivacy(): Promise<any>{
+  const modal = await this.modalController.create({
+    component:PrivacyPage,
+    swipeToClose: true,
+    cssClass:'my-privacyModal-class',
+
+  });
+  return await modal.present();
 }
 
 

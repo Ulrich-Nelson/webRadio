@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { AuthConstants } from 'src/app/config/auth-constants';
-import { Customer } from 'src/app/interfaces.ts/Custumer';
+import { PrivacyPage } from 'src/app/modals/privacy/privacy.page';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
@@ -26,11 +26,13 @@ startPosition: any;
  email: ""
  password: ""
  loginForm: FormGroup;
+ acceptTerms: boolean = false;
 
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
     private storageServive: StorageCutomerService,
     private formBuilder: FormBuilder,
+    private modalController: ModalController,
     private toastMessage: ToastMessageService) { }
 
   ngOnInit() {
@@ -48,7 +50,7 @@ initForm(){
 }
 
   async loginAction(){
-  (await this.authservice.login(this.loginForm.value))
+  (this.authservice.login(this.loginForm.value))
   .subscribe(async (data:any) => {
     this.storageServive.store(AuthConstants.AUTH, data.user)
     this.storageServive.store(AuthConstants.TOKEN, data.user.token)
@@ -64,6 +66,17 @@ initForm(){
   )
 }
 
+
+/*----AFFICHER LA PAGE MODALE POUR LES FACTURES DU CUSTOMER------*/
+async openModalPrivacy(): Promise<any>{
+  const modal = await this.modalController.create({
+    component:PrivacyPage,
+    swipeToClose: true,
+    cssClass:'my-privacyModal-class',
+
+  });
+  return await modal.present();
+}
 
 
 

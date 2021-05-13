@@ -34,39 +34,15 @@
             Google
         </ion-button>
     </div>
-    <!-- </ion-card> -->
 
     <ion-item lines="none" class="ion-text-center privacy" size="small">
-        <ion-button fill="clear" style="color: red">Terms of Service and Privacy Policy</ion-button>
+        <ion-checkbox color="secondary"></ion-checkbox>
+        <ion-button fill="clear" style="color: red" (click)="openModalPrivacy()">Terms of Service and Privacy Policy</ion-button>
     </ion-item>
     <ion-footer class="ion-no-border">
         <ion-toolbar>
             <p>New here? <span routerLink="/registration"> Sign up</span></p>
         </ion-toolbar>
     </ion-footer>
-
-
-    <!-- afficher ou masquer le RGPD-->
-    <!--Background overlay-->
-    <!-- <div class="bg" (click)="close()"></div> -->
-
-    <!--Bottom Sheet-->
-    <!-- <div class="bottomSheet" (touchmove)="touchMove($event)" (touchend)="touchEnd()"> -->
-
-    <!--Short Line at tp of the Bottom Sheet-->
-    <!-- <div class="swipe-handler"></div> -->
-
-    <!-- Bottom Sheet Content-->
-    <!-- <div class="content">
-            <h5>Terms of Service and Privacy Policy</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quos aspernatur molestiae deleniti facilis eum repellat similique, perferendis minus? Ea provident impedit facere earum exercitationem totam repellat. Quo,
-                <br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsam obcaecati, distinctio eaque iste.
-            </p>
-            <p class="RDPG">RGPD</p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsam obcaecati, distinctio eaque iste consectetur ratione dolor unde optio consequatur eum veniam natus itaque molestiae quam. Quasi aperiam
-                <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsam obcaecati, distinctio eaque iste consectetur ratione dolor unde optio consequatur eum veniam natus itaque molestiae quam. Quasi aperiam vel unde.
-            </p>
-        </div>
-    </div> -->
 
 </ion-content>
