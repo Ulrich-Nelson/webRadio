@@ -31,6 +31,7 @@
         "@ionic/lab": "^3.2.10",
         "@ionic/storage": "^3.0.4",
         "@ng-bootstrap/ng-bootstrap": "^9.1.1",
+        "@rdlabo/capacitor-facebook-login": "^2.0.3",
         "@swimlane/ngx-datatable": "^19.0.0",
         "boostrap": "^2.0.0",
         "cordova-sqlite-storage": "^6.0.0",

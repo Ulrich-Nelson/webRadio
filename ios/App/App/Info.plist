@@ -20,14 +20,21 @@
 	<string>1.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>com.getcapacitor.capacitor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>capacitor</string>
-			</array>
-		</dict>
+	<dict>
+		<key>CFBundleURLSchemes</key>
+		<array>
+		<string>fb111252357701747</string>
+		</array>
+	</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>111252357701747</string>
+	<key>FacebookDisplayName</key>
+	<string>IMIE-WebradioApplication</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>fbapi</string>
+	<string>fbauth2</string>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

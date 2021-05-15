@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, IonRouterOutlet, ModalController } from '@ionic/angular';
@@ -14,7 +14,7 @@ import { ToastMessageService } from 'src/app/services/toast-message.service';
   templateUrl: './profil.page.html',
   styleUrls: ['./profil.page.scss'],
 })
-export class ProfilPage implements OnInit {
+export class ProfilPage implements OnInit{
 
   currentPosition: any;
   height: any;
@@ -193,9 +193,6 @@ initForm(): void{
 
     await alert.present();
   }
-
-
-
 
 
 }

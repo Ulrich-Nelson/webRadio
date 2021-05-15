@@ -46,14 +46,23 @@ export class AuthCustomerService {
       });
       }
 
-      // Connexion des customers
+      // Connexion classique des customers
       login(customer: Customer): Observable<object> {
         return this.httpClient.post('http://localhost:3000/customer/login', {
           "email": customer.email,
           "password": customer.password
         });
         }
-
+      
+      //Connexion des customers avec le compte Facebook
+      facebookLogin(accessToken: string, userID: string): Observable<object> {
+          return this.httpClient.post('http://localhost:3000/customer/facebook_login', {
+            "accessToken": accessToken,
+            "userID": userID
+          });
+          }
+      
+        
       //Récupérer les informations de l'utilisateur connecté
       getProfil(token: string): Observable<object> {
         const headers = {'Authorization':  token };

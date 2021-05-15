@@ -7,6 +7,12 @@ import { PrivacyPage } from 'src/app/modals/privacy/privacy.page';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
+import { FacebookLoginPlugin } from '@capacitor-community/facebook-login';
+import { Plugins, registerWebPlugin } from '@capacitor/core';
+import { isPlatform } from '@ionic/angular';
+import { FacebookLogin } from '@capacitor-community/facebook-login';
+registerWebPlugin(FacebookLogin);
+
 
 @Component({
   selector: 'app-login',
@@ -22,11 +28,17 @@ minimumThreshold: any;
 startPosition: any;
  
 
- //Variable pour la connion des customers
+ //Variable pour la connexion classique des customers
  email: ""
  password: ""
  loginForm: FormGroup;
  acceptTerms: boolean = false;
+
+ //Variable pour la connexion Facebook des customers
+ token:any;
+ accessToken: any;
+ userID: any;
+ fbLogin: FacebookLoginPlugin;
 
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
@@ -37,11 +49,12 @@ startPosition: any;
 
   ngOnInit() {
     this.initForm();
+    this.setupFbLogin();
   }
 
   
 
-/*-------------TRAITEMENT DES DONNEES POUR LA CONNEXION----------*/
+/*-------------TRAITEMENT DES DONNEES POUR LA CONNEXION CLASSIQUE----------*/
 initForm(){
   this.loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -65,6 +78,52 @@ initForm(){
   }
   )
 }
+
+
+/*-------------TRAITEMENT DES DONNEES POUR LA CONNEXION FACEBOOK----------*/
+async setupFbLogin() {
+  if (isPlatform('desktop')) {
+    this.fbLogin = FacebookLogin;
+  } else {
+    // Use the native implementation inside a real app!
+    const { FacebookLogin } = Plugins;
+    this.fbLogin = FacebookLogin;
+  } 
+}
+
+async facebookLoginAction(){
+  const FACEBOOK_PERMISSIONS = ['email', 'user_birthday'];
+  await this.fbLogin.login({ permissions: FACEBOOK_PERMISSIONS });
+  //Récupère le token et le userId
+  const response: any = await this.fbLogin.getCurrentAccessToken();
+  this.accessToken = response.accessToken.token;
+  this.userID = response.accessToken.userId;
+
+  console.log(this.accessToken);
+  console.log(this.userID)
+
+  if(!this.accessToken || !this.userID){
+    this.toastMessage.presentToast("Problème de connexion Facebook.", "danger")
+  }else{
+    (this.authservice.facebookLogin(this.accessToken, this.userID))
+    .subscribe(async (data:any) => {
+      this.storageServive.store(AuthConstants.AUTH, data.user)
+      this.storageServive.store(AuthConstants.TOKEN, data.user.token)
+      this.storageServive.store(AuthConstants.SUBSCRIPTION, data.user.subscription)    
+      this.router.navigateByUrl('tabs/profil')
+      console.log( await this.storageServive.get(AuthConstants.AUTH))
+  
+      this.toastMessage.presentToast("Utilisateur connecté avec Facebook", "success")
+    },
+    (error) =>{
+      this.toastMessage.presentToast(error.error.message, "danger")
+    }
+    )
+  }
+
+
+}
+
 
 
 /*----AFFICHER LA PAGE MODALE POUR LES FACTURES DU CUSTOMER------*/
