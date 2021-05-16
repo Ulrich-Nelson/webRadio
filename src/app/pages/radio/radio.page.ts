@@ -45,7 +45,7 @@ upNextSubtitle:string;
 
   ngOnInit() {
     this.getSongRadioAction();
-    this.initRadio()
+    this.initRadio();
   }
 
 

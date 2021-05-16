@@ -134,6 +134,7 @@ async openModalPrivacy(): Promise<any>{
     cssClass:'my-privacyModal-class',
 
   });
+  
   return await modal.present();
 }
 

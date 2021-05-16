@@ -81,13 +81,19 @@ export class AuthCustomerService {
           return this.httpClient.get('http://localhost:3000/customer/bills', {headers});  
           }
         
-        //Récupérer les songs du logiciel
+        //Ecouter les songs de la radio
         getSongRadio(token: string){
           const headers = {'Authorization':  token };
           return this.httpClient.get('http://localhost:3000/customer/getSongs', {headers});  
         }
 
-         //Récupérer les songs mis en favorite
+        //Supprimer un song en favorite  ${userID}
+        deleteOneFavoriteSong(token: string, idSong: string){
+          const headers = {'Authorization':  token };
+          return this.httpClient.delete(`http://localhost:3000/customer/deletefavoris/${idSong}`, {headers});  
+        }
+
+         //Récupérer les songs mis en favorite lors de l'écoute de l radio
          getFavoriteSong(token: string){
           const headers = {'Authorization':  token };
           return this.httpClient.get('http://localhost:3000/customer/getFavorite', {headers});  

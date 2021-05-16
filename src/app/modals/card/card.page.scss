@@ -1,0 +1,64 @@
+.content {
+    .title {
+        color: red;
+        padding-top: 30px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 50px;
+        text-decoration: underline red;
+    }
+}
+
+.groupe1,
+.groupe2,
+.groupe3,
+.groupe4 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.title2,
+.title3,
+.title4,
+.title5,
+.title6 {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-top: 50px;
+    text-decoration: underline;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.text2 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.soustitle1,
+.soustitle2,
+.soustitle3,
+.soustitle4,
+.soustitle5,
+.soustitle6 {
+    font-weight: bold;
+    color: green;
+    text-decoration: underline;
+}
+
+.closeModal {
+    text-align: center;
+}
+
+.listeordonne {
+    color: green;
+    font-weight: bold;
+}
+
+.deleteAccount {
+    color: red;
+    font-weight: bold;
+}

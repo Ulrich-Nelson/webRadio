@@ -19,7 +19,13 @@ ion-header {
     font-weight: bold;
 }
 
+.space-between {
+    display: flex;
+}
+
 ion-item {
+    margin-top: 10px;
+    border-radius: 10px;
     ion-thumbnail {
         img {
             border-radius: 10px;
@@ -38,6 +44,11 @@ ion-item {
             font-size: 12px;
         }
     }
+}
+
+.deleteFavoris {
+    margin-right: 20px;
+    color: red;
 }
 
 #miniPlayer {

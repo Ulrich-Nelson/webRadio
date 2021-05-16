@@ -80,6 +80,7 @@ upNextSubtitle:string;
 
 //Récupération des songs en favorites
 public favoriteData: any
+  idSong: any;
 
 
   constructor( public alertController : AlertController, private authservice: AuthCustomerService,
@@ -105,6 +106,41 @@ public favoriteData: any
 }
 
 
+/*--------------COFIRMATION DE SUPPRESSION D'UNE MUSIQUE EN FAVORIS----------*/
+async confirmdeleteSong(idSong: string) {
+  this.idSong = this.idSong
+  const alert = await this.alertController.create({
+    cssClass: 'my-customdeleteSong-class',
+    header: 'êtes vous de vouloir supprimer la musique',
+    message: '',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          this.toastMessage.presentToast("Bonne resolution.", "light")
+        }
+      }, {
+        text: 'Yes',
+           handler: async () => {
+          this.authservice.deleteOneFavoriteSong(await this.authservice.getToken(), idSong)
+          .pipe()
+          .subscribe(() =>{
+          console.log(idSong)
+            this.toastMessage.presentToast("Le song à été supprimé avec succès", "success")
+          },
+          (error) => {
+            this.toastMessage.presentToast(error.error.message, "danger")
+          }
+          );
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
 
 
 
@@ -257,6 +293,9 @@ playPrev() {
     this.playSong(this.favoriteData[prevIndex].title, this.favoriteData[prevIndex].artist, this.favoriteData[prevIndex].cover, this.favoriteData[prevIndex].url);
   }
 }
+
+
+
 
 
 
