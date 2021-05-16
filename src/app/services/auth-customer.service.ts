@@ -61,7 +61,12 @@ export class AuthCustomerService {
             "userID": userID
           });
           }
-      
+        
+      //Souscription à l'abonnement mensuelle.
+      subscription(token: string, cardData: any): Observable<object> {
+        const headers = {'Authorization':  token };
+        return this.httpClient.post('http://localhost:3000/customer/subscription',cardData,  {headers});
+       }
         
       //Récupérer les informations de l'utilisateur connecté
       getProfil(token: string): Observable<object> {

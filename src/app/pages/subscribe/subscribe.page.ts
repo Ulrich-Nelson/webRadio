@@ -6,6 +6,8 @@ import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import { CardPage } from 'src/app/modals/card/card.page';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+declare var Stripe: any;
 
 
 @Component({
@@ -20,14 +22,26 @@ export class SubscribePage implements OnInit {
  minimumThreshold: any;
  startPosition: any; 
 
+ //Propriété pour la souscription Stripe
+ stripe = Stripe('pk_test_51IhuU7JzhlG35tDNoTobfk18Qwi8lnFYcTSnrWu4eg0cVdVH8ALB1WSOteHrthgjIWLNNzFks3GSpJdJg0oItZbo00HXtllYoM');
+ addCardForm: FormGroup;
+ cartNumber: number;
+ month: number;
+ expirationDate: number;
+ CVC: number;
+ nameOnCard: string;
+ 
+
 
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
     private storageServive: StorageCutomerService,
     private toastMessage: ToastMessageService,
+    private formBuilder: FormBuilder,
     private modalController: ModalController) { }
 
   ngOnInit() {
+    this.initForm();
   }
 
 
@@ -42,6 +56,32 @@ async openModalCard(): Promise<any>{
   return await modal.present();
 }
 
+
+/*******************SOUSCRIPTION A L'ABONNEMENT STRIPE*************** */
+initForm(){
+  this.addCardForm = this.formBuilder.group({
+    cartNumber: ['', Validators.required],
+    month: ['', Validators.required],
+    expirationDate: ['', Validators.required],
+    CVC: ['', Validators.required],
+    nameOnCard: ['', Validators.required],
+
+  })
+}
+
+async subscriptionAction(){
+  console.log(this.addCardForm.value)
+  this.authservice.subscription(await this.authservice.getToken(), this.addCardForm.value)
+  .subscribe(async (data:any) =>{
+    console.log(data)
+    this.router.navigateByUrl('tabs/profil')
+    this.toastMessage.presentToast("Votre abonnement a bien été pris en compte", "success")
+  },
+  (error) =>{
+    this.toastMessage.presentToast(error.error.message, "danger")
+  }
+  )
+}
 
 
 /*--------------DECONNEXION DU CUSTOMER----------*/

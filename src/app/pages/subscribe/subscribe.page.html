@@ -3,47 +3,51 @@
         <ion-icon name="power-outline"></ion-icon>
         Log out
     </ion-button>
-    <h3>Subscribe</h3>
+    <!-- <h3>Subscribe💳</h3>
     <h5>this subscription will allow you</h5>
     <ol>
         <li>Listen to music without ads</li>
         <li> Enjoy the music chosen just for you</li>
         <li> Add music to your favorites</li>
-    </ol>
+    </ol> -->
     <p>get premium from <span>4€/mois</span></p>
     <ion-button fill="clear" size="small" (click)="openModalCard()" class="privacy" style="color: red; padding-left: 50px;">Terms of Service and Privacy Policy</ion-button>
-    <form id="container">
-        <ion-list>
-            <ion-label position="stacked" color="light">Card Number</ion-label>
-            <ion-item lines="none">
-                <ion-input color="light" type="text" placeholder="1179 9088 5241 7041"></ion-input>
-            </ion-item>
-            <ion-row>
-                <ion-col class="flex" size="5">
-                    <ion-label position="stacked" color="light">Expiration Date</ion-label>
+    <ion-card class="welcome-card">
+        <ion-img src="../../../assets/images/stripe.png"></ion-img>
+        <ion-card-content>
+            <form id="container" [formGroup]="addCardForm" (ngSubmit)="subscriptionAction()">
+                <ion-list>
+                    <ion-label position="stacked" color="light">Card Number</ion-label>
                     <ion-item lines="none">
-                        <ion-input color="light" type="text" placeholder="04/23"></ion-input>
+                        <ion-input color="light" type="text" id="cartNumber" formControlName="cartNumber" placeholder="1179 9088 5241 7041"></ion-input>
                     </ion-item>
-                </ion-col>
-                <ion-col size="2">
-                </ion-col>
-                <ion-col size="5">
+                    <ion-row>
+                        <ion-col class="flex" size="5">
+                            <ion-label position="stacked" color="light">Exp Month</ion-label>
+                            <ion-item lines="none">
+                                <ion-input color="light" type="text" id="month" formControlName="month" placeholder="04"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2">
+                        </ion-col>
+                        <ion-col size="5">
+                            <ion-label position="stacked" color="light">Exp Date</ion-label>
+                            <ion-item lines="none">
+                                <ion-input color="light" type="text" id="expirationDate" formControlName="expirationDate" placeholder="28"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
                     <ion-label position="stacked" color="light">CVV</ion-label>
                     <ion-item lines="none">
-                        <ion-input color="light" type="text" placeholder="500"></ion-input>
+                        <ion-input color="light" type="text" id="CVC" formControlName="CVC" placeholder="123"></ion-input>
                     </ion-item>
-                </ion-col>
-            </ion-row>
-            <ion-label position="stacked" color="light">Card Name</ion-label>
-            <ion-item lines="none">
-                <ion-input color="light" type="text" placeholder="MELINA THOSE"></ion-input>
-            </ion-item>
-        </ion-list>
-        <div class="AddCar">
-            <ion-button shape="round" size="default" routerLink="/tabs/profil">Add Card</ion-button>
-        </div>
-    </form>
-
-
-
+                    <ion-label position="stacked" color="light">Card Name</ion-label>
+                    <ion-item lines="none">
+                        <ion-input color="light" type="text" id="nameOnCard" formControlName="nameOnCard" placeholder="MELINA THOSE"></ion-input>
+                    </ion-item>
+                </ion-list>
+                <ion-button type="submit" color="success" shape="round" expand="full">Make Payment</ion-button>
+            </form>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
