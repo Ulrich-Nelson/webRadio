@@ -3,6 +3,10 @@
         <ion-icon name="power-outline"></ion-icon>
         Log out
     </ion-button>
+    <ion-button class="logoutButton" color="danger" shape="round" size="small" (click)="openModalStripe()">
+        <ion-icon name="power-outline"></ion-icon>
+        Stripe
+    </ion-button>
     <!-- <h3>Subscribe💳</h3>
     <h5>this subscription will allow you</h5>
     <ol>
@@ -10,6 +14,7 @@
         <li> Enjoy the music chosen just for you</li>
         <li> Add music to your favorites</li>
     </ol> -->
+
     <p>get premium from <span>4€/mois</span></p>
     <ion-button fill="clear" size="small" (click)="openModalCard()" class="privacy" style="color: red; padding-left: 50px;">Terms of Service and Privacy Policy</ion-button>
     <ion-card class="welcome-card">

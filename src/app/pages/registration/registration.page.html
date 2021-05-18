@@ -16,10 +16,12 @@
                     <ion-input color="light" type="date" id="dateOfBirth" formControlName="dateOfBirth" placeholder="Date of birth"></ion-input>
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-input color="light" type="password" id="password" formControlName="password" placeholder="Password"></ion-input>
+                    <ion-input color="light" [type]="showPassword ? 'text': 'password' " id="password" formControlName="password" placeholder="Password"></ion-input>
+                    <ion-icon slot="end" [color]="showPassword ? 'success': 'danger' " [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-input color="light" type="password" id="confPassword" formControlName="confPassword" placeholder=" Confirm password"></ion-input>
+                    <ion-input color="light" [type]="showPassword2 ? 'text': 'password' " id="confPassword" formControlName="confPassword" placeholder=" Confirm password"></ion-input>
+                    <ion-icon slot="end" [color]="showPassword2 ? 'success': 'danger' " [name]="passwordToggleIcon2" (click)="togglePassword2()"></ion-icon>
                 </ion-item>
             </ion-list>
             <ion-button color="light" expand="block" shape="round" type="submit" style="font-size: 20px;" fill="outline">Sign up</ion-button>

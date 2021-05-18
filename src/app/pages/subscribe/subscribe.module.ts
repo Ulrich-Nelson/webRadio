@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { SubscribePageRoutingModule } from './subscribe-routing.module';
 import { SubscribePage } from './subscribe.page';
 import { CardPage } from 'src/app/modals/card/card.page';
+import { StripePage } from 'src/app/modals/stripe/stripe.page';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { CardPage } from 'src/app/modals/card/card.page';
     IonicModule,
     SubscribePageRoutingModule
   ],
-  declarations: [SubscribePage, CardPage],
-  entryComponents: [CardPage]
+  declarations: [SubscribePage, CardPage, StripePage],
+  entryComponents: [CardPage, StripePage]
 })
 export class SubscribePageModule {}

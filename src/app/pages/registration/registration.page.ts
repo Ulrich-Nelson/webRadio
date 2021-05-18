@@ -17,21 +17,25 @@ export class RegistrationPage implements OnInit {
 
 
 //Les informations sur le RGPD
- currentPosition: any;
- height: any;
- minimumThreshold: any;
- startPosition: any; 
+ public currentPosition: any;
+ public height: any;
+ public minimumThreshold: any;
+ public startPosition: any; 
 
 
  //Variable pour la connion des customers
- firstname:string = "";
- lastname:string  = "";
- email:string = "";
- dateOfBirth:string = "";
- password:string = "";
- confPassword:string = "";
+ public firstname:string = "";
+ public lastname:string  = "";
+ public email:string = "";
+ public dateOfBirth:string = "";
+ public password:string = "";
+ public confPassword:string = "";
+ public registerForm: FormGroup;
+ public showPassword: boolean = false;
+ public showPassword2: boolean = false;
+ public passwordToggleIcon: string = 'eye-off';
+ public passwordToggleIcon2: string = 'eye-off';
 
- registerForm: FormGroup;
 
  constructor( public alertController : AlertController, 
   private router: Router, private authservice: AuthCustomerService,
@@ -49,7 +53,7 @@ export class RegistrationPage implements OnInit {
 
 
 /*----TRAITEMENT DES DONNEES POUR LA INSCRIPTION-------*/
-initForm(){
+initForm(): void{
   this.registerForm = this.formBuilder.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
@@ -61,7 +65,29 @@ initForm(){
   })
 }
 
-registerAction(){
+
+//Afficher ou masquer le mot de passe
+togglePassword(): void{
+  this.showPassword = !this.showPassword;
+  if(this.passwordToggleIcon == 'eye-off'){
+    this.passwordToggleIcon = 'eye';
+  }else{
+    this.passwordToggleIcon = 'eye-off'
+  }
+}
+
+
+togglePassword2(): void{
+  this.showPassword2 = !this.showPassword2;
+  if(this.passwordToggleIcon2 == 'eye-off'){
+    this.passwordToggleIcon2 = 'eye';
+  }else{
+    this.passwordToggleIcon2 = 'eye-off'
+  }
+}
+
+
+registerAction():void{
   let password: string = this.registerForm.value.password;
   let confPassword: string = this.registerForm.value.confPassword;
   console.log(this.registerForm.value)

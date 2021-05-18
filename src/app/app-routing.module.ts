@@ -35,10 +35,15 @@ const routes: Routes = [
   {
     path: 'privacy',
     loadChildren: () => import('./modals/privacy/privacy.module').then( m => m.PrivacyPageModule)
-  },  {
+  },
+  {
     path: 'card',
     loadChildren: () => import('./modals/card/card.module').then( m => m.CardPageModule)
-  }
+  },  {
+    path: 'stripe',
+    loadChildren: () => import('./modals/stripe/stripe.module').then( m => m.StripePageModule)
+  },
+
 
 
 ];

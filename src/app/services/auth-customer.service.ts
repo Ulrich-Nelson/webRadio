@@ -37,8 +37,8 @@ export class AuthCustomerService {
     
       //Inscription des customers
       register(customer: Customer): Observable<object> {
-      return this.httpClient.post('http://localhost:3000/customer/register', {
-        "firstname": customer.dateOfBirth ,
+      return this.httpClient.post('http://192.168.43.12:3000/customer/register', {
+        "firstname": customer.firstname ,
         "lastname": customer.lastname ,
         "email": customer.email,
         "dateOfBirth": customer.dateOfBirth ,
@@ -48,7 +48,7 @@ export class AuthCustomerService {
 
       // Connexion classique des customers
       login(customer: Customer): Observable<object> {
-        return this.httpClient.post('http://localhost:3000/customer/login', {
+        return this.httpClient.post('http://192.168.43.12:3000/customer/login', {
           "email": customer.email,
           "password": customer.password
         });
@@ -56,7 +56,7 @@ export class AuthCustomerService {
       
       //Connexion des customers avec le compte Facebook
       facebookLogin(accessToken: string, userID: string): Observable<object> {
-          return this.httpClient.post('http://localhost:3000/customer/facebook_login', {
+          return this.httpClient.post('http://192.168.43.12:3000/customer/facebook_login', {
             "accessToken": accessToken,
             "userID": userID
           });
@@ -65,49 +65,49 @@ export class AuthCustomerService {
       //Souscription à l'abonnement mensuelle.
       subscription(token: string, cardData: any): Observable<object> {
         const headers = {'Authorization':  token };
-        return this.httpClient.post('http://localhost:3000/customer/subscription',cardData,  {headers});
+        return this.httpClient.post('http://192.168.43.12:3000/customer/subscription',cardData,  {headers});
        }
         
       //Récupérer les informations de l'utilisateur connecté
       getProfil(token: string): Observable<object> {
         const headers = {'Authorization':  token };
-        return this.httpClient.get('http://localhost:3000/customer/getProfil', { headers });
+        return this.httpClient.get('http://192.168.43.12:3000/customer/getProfil', { headers });
       }
 
       //Mise à jour du profil des customers
       editProfil(token: string, customer: Customer): Observable<any>  {
         const headers = {'Authorization':  token };
-        return this.httpClient.put('http://localhost:3000/customer/edit_profil', customer, { headers });
+        return this.httpClient.put('http://192.168.43.12:3000/customer/edit_profil', customer, { headers });
         }
 
         //Récupération des factures du customer
         getBills(token: string): Observable<object> {
           const headers = {'Authorization':  token };
-          return this.httpClient.get('http://localhost:3000/customer/bills', {headers});  
+          return this.httpClient.get('http://192.168.43.12:3000/customer/bills', {headers});  
           }
         
         //Ecouter les songs de la radio
         getSongRadio(token: string){
           const headers = {'Authorization':  token };
-          return this.httpClient.get('http://localhost:3000/customer/getSongs', {headers});  
+          return this.httpClient.get('http://192.168.43.12:3000/customer/getSongs', {headers});  
         }
 
         //Supprimer un song en favorite  ${userID}
         deleteOneFavoriteSong(token: string, idSong: string){
           const headers = {'Authorization':  token };
-          return this.httpClient.delete(`http://localhost:3000/customer/deletefavoris/${idSong}`, {headers});  
+          return this.httpClient.delete(`http://192.168.43.12:3000/customer/deletefavoris/${idSong}`, {headers});  
         }
 
          //Récupérer les songs mis en favorite lors de l'écoute de l radio
          getFavoriteSong(token: string){
           const headers = {'Authorization':  token };
-          return this.httpClient.get('http://localhost:3000/customer/getFavorite', {headers});  
+          return this.httpClient.get('http://192.168.43.12:3000/customer/getFavorite', {headers});  
         }
 
 
       //Envoie d'email pour la rénitialisation du mot de passe des customers
       forgotPassword(customer: Customer): Observable<object> {
-        return this.httpClient.post('http://localhost:3000/customer/forgot', {
+        return this.httpClient.post('http://192.168.43.12:3000/customer/forgot', {
           "email": customer.email,
         });
         }
@@ -115,7 +115,7 @@ export class AuthCustomerService {
       //Déconnexion des customers
       logout(token: string): Observable<object> {
           const headers = {'Authorization':  token };
-          return this.httpClient.delete('http://localhost:3000/customer/logout', { headers });
+          return this.httpClient.delete('http://192.168.43.12:3000/customer/logout', { headers });
         }
 
 

@@ -16,27 +16,27 @@ import { ToastMessageService } from 'src/app/services/toast-message.service';
 })
 export class ProfilPage implements OnInit{
 
-  currentPosition: any;
-  height: any;
-  minimumThreshold: any;
-  startPosition: any; 
+  public currentPosition: any;
+  public height: any;
+  public minimumThreshold: any;
+  public startPosition: any; 
 
  //Variable pour la mise à jour du profil des customers.
- customerData: any;
- editProfilForm: FormGroup;
- profilData: Customer;
+ public customerData: any;
+ public editProfilForm: FormGroup;
+ public profilData: Customer;
 
  //Information de l'utilisateur connecté
- firstname:string;
- lastname: string;
- email: string;
- dateOfBirth: string;
- avatar : string;
+ public firstname:string;
+ public lastname: string;
+ public email: string;
+ public dateOfBirth: string;
+ public avatar : string;
 //Récupération des songs en favorites
 public favoriteData: any[] = [];
 
 //Récupération des factures du customer
- bills: any[] = [];
+ public bills: any[] = [];
   
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
@@ -179,6 +179,7 @@ initForm(): void{
               this.storageServive.removeStorageItem(AuthConstants.TOKEN)
               this.storageServive.removeStorageItem(AuthConstants.AUTH)
               this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
+              this.storageServive.clear();   
               this.toastMessage.presentToast("Utilisateur déconnecté", "success")
               this.router.navigateByUrl('login')
             },

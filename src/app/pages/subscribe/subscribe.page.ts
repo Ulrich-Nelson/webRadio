@@ -7,7 +7,8 @@ import { StorageCutomerService } from 'src/app/services/storage-cutomer.service'
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import { CardPage } from 'src/app/modals/card/card.page';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-declare var Stripe: any;
+import { LoadpageService } from 'src/app/services/loadpage.service';
+import { StripePage } from 'src/app/modals/stripe/stripe.page';
 
 
 @Component({
@@ -17,19 +18,18 @@ declare var Stripe: any;
 })
 export class SubscribePage implements OnInit {
 
- currentPosition: any;
- height: any;
- minimumThreshold: any;
- startPosition: any; 
+ public currentPosition: any;
+ public height: any;
+ public minimumThreshold: any;
+ public startPosition: any; 
 
  //Propriété pour la souscription Stripe
- stripe = Stripe('pk_test_51IhuU7JzhlG35tDNoTobfk18Qwi8lnFYcTSnrWu4eg0cVdVH8ALB1WSOteHrthgjIWLNNzFks3GSpJdJg0oItZbo00HXtllYoM');
- addCardForm: FormGroup;
- cartNumber: number;
- month: number;
- expirationDate: number;
- CVC: number;
- nameOnCard: string;
+public addCardForm: FormGroup;
+public cartNumber: number;
+public month: number;
+public expirationDate: number;
+public CVC: number;
+public nameOnCard: string;
  
 
 
@@ -38,10 +38,12 @@ export class SubscribePage implements OnInit {
     private storageServive: StorageCutomerService,
     private toastMessage: ToastMessageService,
     private formBuilder: FormBuilder,
-    private modalController: ModalController) { }
+    private modalController: ModalController,
+    private presentSpinner: LoadpageService) { }
 
   ngOnInit() {
     this.initForm();
+    this.openModalStripe();
   }
 
 
@@ -55,6 +57,20 @@ async openModalCard(): Promise<any>{
   });
   return await modal.present();
 }
+
+
+
+/*----AFFICHER LA PAGE MODALE POUR LES TERMES PRIVEES DE LA CARTE------*/
+async openModalStripe(): Promise<any>{
+  const modal = await this.modalController.create({
+    component:StripePage,
+    swipeToClose: true,
+    cssClass:'my-StripeModal-class',
+
+  });
+  return await modal.present();
+}
+
 
 
 /*******************SOUSCRIPTION A L'ABONNEMENT STRIPE*************** */
@@ -71,6 +87,7 @@ initForm(){
 
 async subscriptionAction(){
   console.log(this.addCardForm.value)
+  this.presentSpinner.Spinner();
   this.authservice.subscription(await this.authservice.getToken(), this.addCardForm.value)
   .subscribe(async (data:any) =>{
     console.log(data)
@@ -107,6 +124,7 @@ async confirmLogout() {
             this.storageServive.removeStorageItem(AuthConstants.TOKEN)
             this.storageServive.removeStorageItem(AuthConstants.AUTH)
             this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
+            this.storageServive.clear();   
             this.toastMessage.presentToast("Utilisateur déconnecté", "success")
             this.router.navigateByUrl('login')
           },

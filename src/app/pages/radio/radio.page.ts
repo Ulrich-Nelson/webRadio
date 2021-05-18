@@ -14,29 +14,29 @@ export class RadioPage implements OnInit {
   @ViewChild("range", {static: false}) range: IonRange;
 
 //détails sur le song courant
-currTitle: string;
-currSinger: string;
-currImage: string;
+public currTitle: string;
+public currSinger: string;
+public currImage: string;
 //barre de progression
-progress : any = 0;
+public progress : any = 0;
 // Mettre la musique en pause ou pas
-isTouched : boolean = false;
-isPlaying : boolean = false;
+public isTouched : boolean = false;
+public isPlaying : boolean = false;
 // temps d'écoute de la musique
-currSecsText: any;
-durationText: any;
+public currSecsText: any;
+public durationText: any;
 //ion Current value
-currRangeTime: any;
-maxRangeValue: any;
+public currRangeTime: any;
+public maxRangeValue: any;
 //current song
-currSong : HTMLAudioElement;
+public currSong : HTMLAudioElement;
 //Upnext song details
-upNextImg:string;
-upNextTitle:string;
-upNextSubtitle:string;
+public upNextImg:string;
+public upNextTitle:string;
+public upNextSubtitle:string;
 
 //récupérer les songs du logiciel
-  songsData: any[] = [];
+public songsData: any[] = [];
 
   constructor(
     public alertController : AlertController,  private authservice: AuthCustomerService,

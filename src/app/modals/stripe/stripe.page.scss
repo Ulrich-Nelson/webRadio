@@ -1,0 +1,63 @@
+ion-header {
+    text-align: center;
+}
+
+//url("../../../assets/images/diapo11.jpg") no-repeat center center / center;
+ion-content {
+    --background: linear-gradient(180deg, rgba(0, 0, 0, 0.92), rgba(54, 54, 54, 0.5) 98.24%, rgba(28, 28, 28, .1)), url("../../../assets/images/diapo1.jpg") center center / cover no-repeat;
+    .diaporama {
+        width: 500px;
+        overflow: hidden;
+        // margin: 50px auto;
+        .diapo {
+            position: relative;
+            width: 5000px;
+            float: left;
+            animation: webradioAnimation 50s infinite;
+        }
+    }
+}
+
+@keyframes webradioAnimation {
+    0% {
+        left: 0px;
+    }
+    10% {
+        left: -350px;
+    }
+    20% {
+        left: -500px;
+    }
+    30% {
+        left: -700px;
+    }
+    40% {
+        left: -1050px;
+    }
+    50% {
+        left: -1400px;
+    }
+    60% {
+        left: -1750px;
+    }
+    70% {
+        left: -2100px;
+    }
+    80% {
+        left: -2450px;
+    }
+    90% {
+        left: -2800px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+
+ion-content {
+    .premium {}
+}
+
+p {
+    text-align: center;
+}

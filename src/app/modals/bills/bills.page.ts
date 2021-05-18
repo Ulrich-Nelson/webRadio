@@ -12,7 +12,7 @@ export class BillsPage implements OnInit {
 
   
  //Récupération des factures du customer
- bills: any[] = [];
+ public bills: any[] = [];
  
 
   constructor( public alertController : AlertController, 

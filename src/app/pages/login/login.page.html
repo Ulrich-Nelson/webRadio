@@ -7,7 +7,8 @@
                 <ion-input color="light" type="email" id="email" formControlName="email" placeholder="Email"></ion-input>
             </ion-item>
             <ion-item lines="none" class="ion-item">
-                <ion-input color="light" type="password" id="password" formControlName="password" placeholder="Password"></ion-input>
+                <ion-input color="light" [type]="showPassword ? 'text': 'password' " id="password" formControlName="password" placeholder="Password"></ion-input>
+                <ion-icon slot="end" [color]="showPassword ? 'success': 'danger' " [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
             </ion-item>
             <ion-item lines="none">
                 <ion-button fill="clear" color="light" type="button" slot="end" style="font-size: 15px;" routerLink="/forgot-password">Forgot Password?</ion-button>
@@ -36,7 +37,7 @@
     </div>
 
     <ion-item lines="none" class="ion-text-center privacy" size="small">
-        <ion-checkbox color="secondary"></ion-checkbox>
+        <ion-checkbox color="secondary" id="acceptTerms" value="false"></ion-checkbox>
         <ion-button fill="clear" style="color: red" (click)="openModalPrivacy()">Terms of Service and Privacy Policy</ion-button>
     </ion-item>
     <ion-footer class="ion-no-border">

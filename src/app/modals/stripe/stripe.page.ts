@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.page.html',
-  styleUrls: ['./card.page.scss'],
+  selector: 'app-stripe',
+  templateUrl: './stripe.page.html',
+  styleUrls: ['./stripe.page.scss'],
 })
-export class CardPage implements OnInit {
+export class StripePage implements OnInit {
 
   constructor( private modalController: ModalController) { }
 
@@ -14,10 +14,8 @@ export class CardPage implements OnInit {
   }
 
 
-
-
-/*----FERMER LA FENETRE MODALE DANS LA PAGE DE SOUSCRIPTION------*/
-async closeModalCard(){
+  /*----FERMER LA FENETRE MODALE DANS LA PAGE DE SOUSCRIPTION------*/
+async closeModalStripe(){
   await this.modalController.dismiss()
 }
 

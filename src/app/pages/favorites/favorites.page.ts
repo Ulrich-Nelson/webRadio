@@ -56,27 +56,26 @@ export class FavoritesPage implements OnInit {
 
 
 //détails sur le song courant
-currTitle: string;
-currSinger: string;
-currImage: string;
+public currTitle: string;
+public currSinger: string;
+public currImage: string;
 //barre de progression
-progress : any = 0;
-// Mettre la musique en pause ou pas
-isTouched : boolean = false;
-isPlaying : boolean = false;
-// temps d'écoute de la musique
-currSecsText: any;
-durationText: any;
-//ion Current value
-currRangeTime: any;
-maxRangeValue: any;
-//current song
-currSong : HTMLAudioElement;
-//Upnext song details
-upNextImg:string;
-upNextTitle:string;
-upNextSubtitle:string;
-
+public progress : any = 0;
+ // Mettre la musique en pause ou pas
+public isTouched : boolean = false;
+public isPlaying : boolean = false;
+ // temps d'écoute de la musique
+public currSecsText: any;
+public durationText: any;
+ //ion Current value
+public currRangeTime: any;
+public maxRangeValue: any;
+ //current song
+public currSong : HTMLAudioElement;
+ //Upnext song details
+public upNextImg:string;
+public upNextTitle:string;
+public upNextSubtitle:string;
 
 //Récupération des songs en favorites
 public favoriteData: any

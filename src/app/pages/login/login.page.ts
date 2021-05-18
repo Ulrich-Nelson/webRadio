@@ -11,6 +11,7 @@ import { FacebookLoginPlugin } from '@capacitor-community/facebook-login';
 import { Plugins, registerWebPlugin } from '@capacitor/core';
 import { isPlatform } from '@ionic/angular';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
+import { LoadpageService } from 'src/app/services/loadpage.service';
 registerWebPlugin(FacebookLogin);
 
 
@@ -22,30 +23,34 @@ registerWebPlugin(FacebookLogin);
 export class LoginPage implements OnInit {
 
  // variage pour l'affichage du RGPD
-currentPosition: any;
-height: any;
-minimumThreshold: any;
-startPosition: any;
+public currentPosition: any;
+public height: any;
+public minimumThreshold: any;
+public startPosition: any;
  
 
  //Variable pour la connexion classique des customers
- email: ""
- password: ""
- loginForm: FormGroup;
- acceptTerms: boolean = false;
+ public email: ""
+ public password: ""
+ public loginForm: FormGroup;
+ public acceptTerms: boolean = false;
+ public showPassword: boolean = false;
+ public passwordToggleIcon: string = 'eye-off';
 
  //Variable pour la connexion Facebook des customers
- token:any;
- accessToken: any;
- userID: any;
- fbLogin: FacebookLoginPlugin;
+ public token:any;
+ public accessToken: any;
+ public userID: any;
+ public fbLogin: FacebookLoginPlugin;
+
 
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
     private storageServive: StorageCutomerService,
     private formBuilder: FormBuilder,
     private modalController: ModalController,
-    private toastMessage: ToastMessageService) { }
+    private toastMessage: ToastMessageService, 
+    private presentSpinner: LoadpageService) { }
 
   ngOnInit() {
     this.initForm();
@@ -62,12 +67,24 @@ initForm(){
   })
 }
 
+//Afficher ou masquer le mot de passe
+togglePassword(): void{
+  this.showPassword = !this.showPassword;
+  if(this.passwordToggleIcon == 'eye-off'){
+    this.passwordToggleIcon = 'eye';
+  }else{
+    this.passwordToggleIcon = 'eye-off'
+  }
+}
+
+
+
   async loginAction(){
   (this.authservice.login(this.loginForm.value))
   .subscribe(async (data:any) => {
     this.storageServive.store(AuthConstants.AUTH, data.user)
     this.storageServive.store(AuthConstants.TOKEN, data.user.token)
-    this.storageServive.store(AuthConstants.SUBSCRIPTION, data.user.subscription)    
+    this.storageServive.store(AuthConstants.SUBSCRIPTION, data.user.subscription)  
     this.router.navigateByUrl('tabs/profil')
     console.log(await this.storageServive.get(AuthConstants.AUTH))
 
@@ -92,16 +109,13 @@ async setupFbLogin() {
 }
 
 async facebookLoginAction(){
+  this.presentSpinner.Spinner();
   const FACEBOOK_PERMISSIONS = ['email', 'user_birthday'];
   await this.fbLogin.login({ permissions: FACEBOOK_PERMISSIONS });
   //Récupère le token et le userId
   const response: any = await this.fbLogin.getCurrentAccessToken();
   this.accessToken = response.accessToken.token;
   this.userID = response.accessToken.userId;
-
-  console.log(this.accessToken);
-  console.log(this.userID)
-
   if(!this.accessToken || !this.userID){
     this.toastMessage.presentToast("Problème de connexion Facebook.", "danger")
   }else{
@@ -109,7 +123,7 @@ async facebookLoginAction(){
     .subscribe(async (data:any) => {
       this.storageServive.store(AuthConstants.AUTH, data.user)
       this.storageServive.store(AuthConstants.TOKEN, data.user.token)
-      this.storageServive.store(AuthConstants.SUBSCRIPTION, data.user.subscription)    
+      this.storageServive.store(AuthConstants.SUBSCRIPTION, data.user.subscription)
       this.router.navigateByUrl('tabs/profil')
       console.log( await this.storageServive.get(AuthConstants.AUTH))
   
@@ -137,11 +151,6 @@ async openModalPrivacy(): Promise<any>{
   
   return await modal.present();
 }
-
-
-
-
-
 
 
 
