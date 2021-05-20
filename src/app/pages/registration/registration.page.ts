@@ -86,7 +86,6 @@ togglePassword2(): void{
   }
 }
 
-
 registerAction():void{
   let password: string = this.registerForm.value.password;
   let confPassword: string = this.registerForm.value.confPassword;

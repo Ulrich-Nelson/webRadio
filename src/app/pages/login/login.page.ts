@@ -12,6 +12,9 @@ import { Plugins, registerWebPlugin } from '@capacitor/core';
 import { isPlatform } from '@ionic/angular';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { LoadpageService } from 'src/app/services/loadpage.service';
+
+// import '@codetrix-studio/capacitor-google-auth';
+
 registerWebPlugin(FacebookLogin);
 
 
@@ -43,6 +46,9 @@ public startPosition: any;
  public userID: any;
  public fbLogin: FacebookLoginPlugin;
 
+ //Variable pour le connexion avec Google 
+ public userGoogle = null;
+
 
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
@@ -57,7 +63,14 @@ public startPosition: any;
     this.setupFbLogin();
   }
 
-  
+//
+/*-------------CONNEXION DES CUSTOMERS AVEC LE COMPTE GOOGLE----------*/
+async googleSignupAction() {
+  const googleUser = await Plugins.GoogleAuth.signIn(null) as any;
+  console.log('my user: ', googleUser);
+  this.userGoogle = googleUser;
+  console.log(this.userGoogle)
+}
 
 /*-------------TRAITEMENT DES DONNEES POUR LA CONNEXION CLASSIQUE----------*/
 initForm(){

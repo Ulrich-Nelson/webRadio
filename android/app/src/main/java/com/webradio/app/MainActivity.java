@@ -5,6 +5,9 @@ import android.os.Bundle;
 import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.Plugin;
 
+//Connexion avec Google
+// import com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth;
+
 import java.util.ArrayList;
 
 public class MainActivity extends BridgeActivity {
@@ -18,6 +21,7 @@ public class MainActivity extends BridgeActivity {
       // Ex: add(TotallyAwesomePlugin.class);
       // add(GoogleAuth.class);
       add(com.getcapacitor.community.facebooklogin.FacebookLogin.class);
+      // add(GoogleAuth.class);
     }});
   }
 }
