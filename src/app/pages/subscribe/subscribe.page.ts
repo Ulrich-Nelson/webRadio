@@ -106,7 +106,7 @@ async confirmLogout() {
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
     header: 'Are you sure you want to logout ?',
-    message: ' Finalize your subscription in order to benefit from all the services of the application',
+    message: 'Finalize your subscription in order to benefit from all the services of the application',
     buttons: [
       {
         text: 'Cancel',
@@ -142,8 +142,6 @@ async confirmLogout() {
 
 
 
-
-  
 /*--------------TRAITEMENT DES DONNEES RGPD----------*/
 open(){
   (<HTMLStyleElement>document.querySelector(".bottomSheet")).style.bottom = "0px";
