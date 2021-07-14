@@ -110,7 +110,7 @@ async confirmdeleteSong(idSong: string) {
   this.idSong = this.idSong
   const alert = await this.alertController.create({
     cssClass: 'my-customdeleteSong-class',
-    header: 'êtes vous de vouloir supprimer la musique',
+    header: 'are you sure you want to remove this music from your favorites?',
     message: '',
     buttons: [
       {
@@ -118,7 +118,7 @@ async confirmdeleteSong(idSong: string) {
         role: 'cancel',
         cssClass: 'secondary',
         handler: () => {
-          this.toastMessage.presentToast("Bonne resolution.", "light")
+          this.toastMessage.presentToast("Deletion canceled", "light")
         }
       }, {
         text: 'Yes',
@@ -127,10 +127,10 @@ async confirmdeleteSong(idSong: string) {
           .pipe()
           .subscribe(() =>{
           console.log(idSong)
-            this.toastMessage.presentToast("Le song à été supprimé avec succès", "success")
+            this.toastMessage.presentToast("This music has been successfully deleted", "success")
           },
           (error) => {
-            this.toastMessage.presentToast(error.error.message, "danger")
+            this.toastMessage.presentToast(error.error.message, "warning")
           }
           );
         }

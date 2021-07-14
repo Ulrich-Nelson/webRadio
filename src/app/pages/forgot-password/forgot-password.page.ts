@@ -44,10 +44,10 @@ forgotAction(){
   .subscribe((data: Customer) => {
     console.log(data)
     this.router.navigateByUrl('login')
-    this.toastMessage.presentToast("Vérifier votre boite email", "success")
+    this.toastMessage.presentToast("The instructions have been sent to your mailbox.", "success")
   },
   (error) => {
-    this.toastMessage.presentToast(error.error.message, "danger")
+    this.toastMessage.presentToast(error.error.message, "warning")
   })
   
 }

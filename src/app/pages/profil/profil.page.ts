@@ -64,7 +64,7 @@ public favoriteData: any[] = [];
       this.favoriteData = data.favorites
     },
     (error) =>{
-      this.toastMessage.presentToast(error.error.message, "danger")
+      this.toastMessage.presentToast(error.error.message, "warning")
     })
   }
   
@@ -77,7 +77,7 @@ async getBillsAction(): Promise<void>{
     this.bills = data.bills
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "danger")
+    this.toastMessage.presentToast(error.error.message, "warning")
   }
   )
 }
@@ -98,7 +98,7 @@ async getProfilAction(): Promise<void>{
     this.profilData = data.user
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "danger")
+    this.toastMessage.presentToast(error.error.message, "warning")
   }
   )
 }
@@ -143,10 +143,10 @@ initForm(): void{
     .pipe()
     .subscribe(async (data: any) => {
       console.log(data.customer);
-    this.toastMessage.presentToast("Profile mis à jour", "success")
+    this.toastMessage.presentToast("your profile has been updated", "success")
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "danger")
+    this.toastMessage.presentToast(error.error.message, "warning")
   }
   )
 }
@@ -168,7 +168,7 @@ initForm(): void{
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            this.toastMessage.presentToast("Bonne resolution.", "light")
+            this.toastMessage.presentToast("The disconnection has been canceled", "light")
           }
         }, {
           text: 'Yes',
@@ -180,7 +180,7 @@ initForm(): void{
               this.storageServive.removeStorageItem(AuthConstants.AUTH)
               this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
               this.storageServive.clear();   
-              this.toastMessage.presentToast("Utilisateur déconnecté", "success")
+              this.toastMessage.presentToast("You have been disconnected", "success")
               this.router.navigateByUrl('login')
             },
             (error) => {

@@ -7,6 +7,7 @@ export const environment = {
   
   //url en local
   url: "http://localhost:3000"
+  //https\://services.gradle.org/distributions/gradle-5.6.4-all.zip
 
 };
 

@@ -60,7 +60,7 @@ async getSongRadioAction(): Promise<void>{
     console.log(this.songsData)
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "danger")
+    this.toastMessage.presentToast(error.error.message, "warning")
   })
 }
 

@@ -101,10 +101,10 @@ togglePassword(): void{
     this.router.navigateByUrl('tabs/profil')
     console.log(await this.storageServive.get(AuthConstants.AUTH))
 
-    this.toastMessage.presentToast("Utilisateur connecté.", "success")
+    this.toastMessage.presentToast("You are logged in", "success")
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "danger")
+    this.toastMessage.presentToast(error.error.message, "warning")
   }
   )
 }
@@ -130,7 +130,7 @@ async facebookLoginAction(){
   this.accessToken = response.accessToken.token;
   this.userID = response.accessToken.userId;
   if(!this.accessToken || !this.userID){
-    this.toastMessage.presentToast("Problème de connexion Facebook.", "danger")
+    this.toastMessage.presentToast("Facebook connection problem", "danger")
   }else{
     (this.authservice.facebookLogin(this.accessToken, this.userID))
     .subscribe(async (data:any) => {
@@ -140,7 +140,7 @@ async facebookLoginAction(){
       this.router.navigateByUrl('tabs/profil')
       console.log( await this.storageServive.get(AuthConstants.AUTH))
   
-      this.toastMessage.presentToast("Utilisateur connecté avec Facebook", "success")
+      this.toastMessage.presentToast("You are logged in with the Facebook account", "success")
     },
     (error) =>{
       this.toastMessage.presentToast(error.error.message, "danger")

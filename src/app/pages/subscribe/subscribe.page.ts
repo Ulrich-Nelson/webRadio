@@ -92,10 +92,10 @@ async subscriptionAction(){
   .subscribe(async (data:any) =>{
     console.log(data)
     this.router.navigateByUrl('tabs/profil')
-    this.toastMessage.presentToast("Votre abonnement a bien été pris en compte", "success")
+    this.toastMessage.presentToast("Your subscription has been taken into account", "success")
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "danger")
+    this.toastMessage.presentToast(error.error.message, "warning")
   }
   )
 }
@@ -106,14 +106,14 @@ async confirmLogout() {
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
     header: 'Are you sure you want to logout ?',
-    message: ' Finaliser votre abonnement afin de beneficier de l\'application',
+    message: ' Finalize your subscription in order to benefit from all the services of the application',
     buttons: [
       {
         text: 'Cancel',
         role: 'cancel',
         cssClass: 'secondary',
         handler: () => {
-          this.toastMessage.presentToast("Finaliser votre souscription", "warning")
+          this.toastMessage.presentToast("Finalize your subscription", "warning")
         }
       }, {
         text: 'Yes',
@@ -125,11 +125,11 @@ async confirmLogout() {
             this.storageServive.removeStorageItem(AuthConstants.AUTH)
             this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
             this.storageServive.clear();   
-            this.toastMessage.presentToast("Utilisateur déconnecté", "success")
+            this.toastMessage.presentToast("You have been disconnected", "success")
             this.router.navigateByUrl('login')
           },
           (error) => {
-            this.toastMessage.presentToast(error.error.message, "danger")
+            this.toastMessage.presentToast(error.error.message, "warning")
           }
           );
         }

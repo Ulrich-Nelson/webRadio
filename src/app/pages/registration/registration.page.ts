@@ -91,16 +91,16 @@ registerAction():void{
   let confPassword: string = this.registerForm.value.confPassword;
   console.log(this.registerForm.value)
   if (password != confPassword) {
-    this.toastMessage.presentToast("Les mots de passe ne sont pas indentiques", "danger")
+    this.toastMessage.presentToast("Passwords are different", "danger")
   } else {
     this.authservice.register(this.registerForm.value)
     .pipe()
     .subscribe(() => {
       this.router.navigateByUrl('login')
-      this.toastMessage.presentToast("Utilisateur enregister", "success")
+      this.toastMessage.presentToast("Your account has been successfully created", "success")
     },
     (error) =>{
-      this.toastMessage.presentToast(error.error.message, "danger")
+      this.toastMessage.presentToast(error.error.message, "warning")
     })
   }
   
