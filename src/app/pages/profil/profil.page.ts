@@ -146,7 +146,7 @@ initForm(): void{
     this.toastMessage.presentToast("your profile has been updated", "success")
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "warning")
+    this.toastMessage.presentToast(error.error.message, "danger")
   }
   )
 }

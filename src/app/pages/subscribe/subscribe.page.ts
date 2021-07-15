@@ -95,9 +95,10 @@ async subscriptionAction(){
     this.toastMessage.presentToast("Your subscription has been taken into account", "success")
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "warning")
+    this.toastMessage.presentToast(error.error.message, "danger")
   }
   )
+  
 }
 
 
@@ -129,7 +130,7 @@ async confirmLogout() {
             this.router.navigateByUrl('login')
           },
           (error) => {
-            this.toastMessage.presentToast(error.error.message, "warning")
+            this.toastMessage.presentToast(error.error.message, "danger")
           }
           );
         }
@@ -139,6 +140,7 @@ async confirmLogout() {
 
   await alert.present();
 }
+
 
 
 

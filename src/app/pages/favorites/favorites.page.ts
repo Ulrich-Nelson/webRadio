@@ -130,7 +130,7 @@ async confirmdeleteSong(idSong: string) {
             this.toastMessage.presentToast("This music has been successfully deleted", "success")
           },
           (error) => {
-            this.toastMessage.presentToast(error.error.message, "warning")
+            this.toastMessage.presentToast(error.error.message, "danger")
           }
           );
         }

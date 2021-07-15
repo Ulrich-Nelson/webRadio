@@ -47,7 +47,7 @@ forgotAction(){
     this.toastMessage.presentToast("The instructions have been sent to your mailbox.", "success")
   },
   (error) => {
-    this.toastMessage.presentToast(error.error.message, "warning")
+    this.toastMessage.presentToast(error.error.message, "danger")
   })
   
 }

@@ -100,7 +100,7 @@ registerAction():void{
       this.toastMessage.presentToast("Your account has been successfully created", "success")
     },
     (error) =>{
-      this.toastMessage.presentToast(error.error.message, "warning")
+      this.toastMessage.presentToast(error.error.message, "danger")
     })
   }
   
