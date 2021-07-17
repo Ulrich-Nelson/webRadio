@@ -104,7 +104,7 @@ togglePassword(): void{
     this.toastMessage.presentToast("You are logged in", "success")
   },
   (error) =>{
-    this.toastMessage.presentToast(error.error.message, "warning")
+    this.toastMessage.presentToast(error.error.message, "danger")
   }
   )
 }

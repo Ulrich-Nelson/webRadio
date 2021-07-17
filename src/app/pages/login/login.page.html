@@ -1,50 +1,53 @@
-<ion-content fullscreen="true">
-    <!-- <ion-card> -->
-    <h3>Login</h3>
-    <form id="container" [formGroup]="loginForm" (ngSubmit)="loginAction()">
-        <ion-list>
-            <ion-item lines="none" class="ion-item">
-                <ion-input color="light" type="email" id="email" formControlName="email" placeholder="Email"></ion-input>
-            </ion-item>
-            <ion-item lines="none" class="ion-item">
-                <ion-input color="light" [type]="showPassword ? 'text': 'password' " id="password" formControlName="password" placeholder="Password"></ion-input>
-                <ion-icon slot="end" [color]="showPassword ? 'success': 'danger' " [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-button fill="clear" color="light" type="button" slot="end" style="font-size: 15px;" routerLink="/forgot-password">Forgot Password?</ion-button>
-            </ion-item>
-        </ion-list>
-        <ion-button color="light" expand="block" shape="round" type="submit" style="font-size: 20px;" fill="outline">Sign in</ion-button>
-    </form>
-    <ion-row>
-        <ion-col class="line" size="4">
-        </ion-col>
-        <ion-col size="4" class="ion-text-center">
-            <ion-button shape="round" size="small">OR</ion-button>
-        </ion-col>
-        <ion-col class="line" size="4">
-        </ion-col>
-    </ion-row>
-    <div class="flex">
-        <ion-button color="facebook" size="small" shape="round" (click)="facebookLoginAction()">
-            <ion-icon slot="start" name="logo-facebook"></ion-icon>
-            Facebook
-        </ion-button>
-        <ion-button color="google" size="small" shape="round">
-            <ion-icon slot="start" name="logo-google"></ion-icon>
-            Google
-        </ion-button>
-    </div>
-    <!-- (click)="googleSignupAction()" -->
+<ion-header class="ion-no-border" mode="ios">
+    <ion-toolbar class="ion-padding">
+        <ion-title></ion-title>
+    </ion-toolbar>
+</ion-header>
 
-    <ion-item lines="none" class="ion-text-center privacy" size="small">
-        <ion-checkbox color="secondary" id="acceptTerms" value="false"></ion-checkbox>
-        <ion-button fill="clear" style="color: red" (click)="openModalPrivacy()">Terms of Service and Privacy Policy</ion-button>
-    </ion-item>
-    <ion-footer class="ion-no-border">
-        <ion-toolbar>
-            <p>New here? <span routerLink="/registration"> Sign up</span></p>
-        </ion-toolbar>
-    </ion-footer>
+<ion-content>
+    <div class="container-login ion-padding">
+        <div class="heading">
+            <h1>Welcome Webradio</h1>
+            <p>Please login to continue using our app.</p>
+        </div>
+        <!-- <div class="image">
+            <img src="../../../assets/images/default.PNG" alt="Welcome">
+        </div> -->
+        <div class="social-login">
+            <p>Enter via social network</p>
+            <div class="links">
+                <ion-button color="google" class="google">
+                    <ion-icon name="logo-google"></ion-icon>
+                </ion-button>
+                <ion-button color="facebook" class="facebook" (click)="facebookLoginAction()">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </ion-button>
+            </div>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="loginAction()">
+            <div class="email-login">
+                <p>Or login with email</p>
+                <div class="formfield">
+                    <input type="email" id="email" formControlName="email">
+                    <label for="email" placeholder="Email">Email</label>
+                </div>
+                <div class="formfield">
+                    <input type="password" id="password" formControlName="password">
+                    <label for="password" placeholder="Password">Password</label>
+                </div>
+                <div class="other-links">
+                    <div class="accept-term">
+                        <ion-checkbox></ion-checkbox>
+                        <p (click)="openModalPrivacy()">&nbsp;accept terms</p>
+                    </div>
+                    <p class="forgot" routerLink="/forgot-password">Forgot password?</p>
+                </div>
+            </div>
+            <div class="login-button">
+                <ion-button class="login" type="submit">Log in</ion-button>
+                <p>Don't have an account? <span routerLink="/registration">Sign up</span></p>
+            </div>
+        </form>
+    </div>
 
 </ion-content>
