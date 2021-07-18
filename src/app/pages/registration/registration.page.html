@@ -10,42 +10,44 @@
             <h1>Sign Up &nbsp;🎧</h1>
             <p>Please signup to enter to app.</p>
         </div>
-        <!-- <div class="image">
-            <img src="../../../assets/images/default.PNG" alt="Welcome">
-        </div> -->
-        <div class="registration">
-            <p>created your account</p>
-            <div class="formfield">
-                <input type="text" id="firstname" formControlName="firstname">
-                <label for="firstname" placeholder="First name">First name</label>
-            </div>
-            <div class="formfield">
-                <input type="text" id="lastname" formControlName="lastname">
-                <label for="lastname" placeholder="Last name">Last name</label>
-            </div>
-            <div class="formfield">
-                <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
-                <label for="dateOfBirth" placeholder="Date of birth<">Date of birth</label>
-            </div>
-            <div class="formfield">
-                <input type="password" id="Password" formControlName="Password">
-                <label for="Password" placeholder="Password">Password</label>
-            </div>
-            <div class="formfield">
-                <input type="password"  id="confPassword" formControlName="confPassword">
-                <label for="confPassword" placeholder="Confirm password">Confirm password</label>
-            </div>
-            <div class="other-links">
-                <div class="accept-term">
-                    <ion-checkbox></ion-checkbox>
-                    <p>&nbsp;I agree with privacy policy</p>
+        <form [formGroup]="registerForm" (ngSubmit)="registerAction()">
+            <div class="registration">
+                <div class="formfield2">
+                    <input type="text" id="firstname" formControlName="firstname">
+                    <label for="firstname" placeholder="First name">First name</label>
+                </div>
+                <div class="formfield2">
+                    <input type="text" id="lastname" formControlName="lastname">
+                    <label for="lastname" placeholder="Last name">Last name</label>
+                </div>
+                <div class="formfield2">
+                    <input type="email" id="email" formControlName="email">
+                    <label for="email" placeholder="email">Email</label>
+                </div>
+                <div class="formfield2">
+                    <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+                    <label for="dateOfBirth" placeholder="Date of birth<">Date of birth</label>
+                </div>
+                <div class="formfield2">
+                    <input type="password" id="Password" formControlName="password">
+                    <label for="Password" placeholder="Password">Password</label>
+                </div>
+                <div class="formfield2">
+                    <input type="password" id="confPassword" formControlName="confPassword">
+                    <label for="confPassword" placeholder="Confirm password">Confirm password</label>
+                </div>
+                <div class="other-links">
+                    <div class="accept-term">
+                        <ion-checkbox></ion-checkbox>
+                        <p>&nbsp;I agree with privacy policy</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="singn-button">
-            <ion-button class="singn">Singn Up</ion-button>
-            <p>Don't have an account? <span routerLink="/login">Sign in</span></p>
-        </div>
+            <div class="singn-button">
+                <ion-button class="singn" type="submit">Singn Up</ion-button>
+                <p>Don't have an account? <span routerLink="/login">Sign in</span></p>
+            </div>
+        </form>
     </div>
 
 </ion-content>
