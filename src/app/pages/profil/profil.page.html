@@ -1,78 +1,55 @@
-<ion-content fullscreen>
-    <div class="header">
-        <h2>{{lastname}}</h2>
-
-        <div class="space-between">
-            <div class="followings">
-                <ion-badge color="primary" mode="ios">{{favoriteData.length}}</ion-badge>
-                <p>Favoris</p>
-            </div>
-            <div class="followings">
-                <ion-badge color="primary" mode="ios">{{bills.length}}</ion-badge>
-                <p>Bills</p>
-            </div>
+<ion-content>
+    <div class="header ion-padding">
+        <div class="info">
+            <ion-icon routerLink="/login" name="chevron-back-outline"></ion-icon>
+            <ion-avatar>
+                <img src="https://i.pravatar.cc/253" alt="Mon profil">
+            </ion-avatar>
+            <span class="details">
+                <h1>Ulrich </h1>
+                <p>Premim</p>
+            </span>
+        </div>
+        <div class="calling">
+            <ion-icon name="videocam-outline"></ion-icon>
+            <ion-icon name="call-outline"></ion-icon>
         </div>
     </div>
-    <div class="flex">
-        <div class="border-blue">
-            <div class="border-white">
-                <div class="img-box">
-                    <img src="{{avatar}}" width="199.5" height="120">
-                </div>
+    <div class="container-profil ion-padding">
+        <div class="section-profil" id="chat">
+            <div class="Myprofil">
+                <h1>My profile</h1>
+                <p>At any time you can update your profile</p>
             </div>
-        </div>
-    </div>
-    <!--FIN HEADER-->
-    <div class="padding">
-        <ion-card>
-            <form id="container" [formGroup]="editProfilForm" (ngSubmit)="editProfilAction()">
-                <ion-list>
-                    <ion-item lines="none">
-                        <ion-input color="light" type="text" required [(ngModel)]="firstname" id="firstname" formControlName="firstname"></ion-input>
-                    </ion-item>
-                    <ion-item lines="none">
-                        <ion-input color="light" type="text" required [(ngModel)]="lastname" id="lastname" formControlName="lastname"></ion-input>
-                    </ion-item>
-                    <ion-item lines="none">
-                        <ion-input color="light" type="email" required [(ngModel)]="email" id="email" formControlName="email"></ion-input>
-                    </ion-item>
-                    <ion-item lines="none">
-                        <ion-input color="light" type="date" required [(ngModel)]="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth"></ion-input>
-                    </ion-item>
-                </ion-list>
-                <ion-row class="validate">
-                    <ion-col size="3">
-                        <ion-button size="small" class="Cancel" type="button" (click)="reset()" color="light">
-                            Cancel
-                        </ion-button>
-                    </ion-col>
-                    <!-- <ion-col size="1">
-                    </ion-col> -->
-                    <ion-col size="3">
-                        <ion-button size="small" color="success" type="submit">
-                            validate
-                        </ion-button>
-                    </ion-col>
-                </ion-row>
-            </form>
-        </ion-card>
 
-        <ion-fab horizontal="start" slot="fixed">
-            <ion-fab-button color="secondary">
-                <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-list side="end">
-                <ion-fab-button (click)="openModal()">
-                    <ion-icon name="documents-outline" style="color: green"></ion-icon>
-                </ion-fab-button>
-                <ion-fab-button>
-                    <ion-icon name="power-sharp" style="color: red" (click)="confirmLogout()"></ion-icon>
-                </ion-fab-button>
-                <ion-fab-button>
-                    <ion-icon name="card-sharp" style="color: green"></ion-icon>
-                </ion-fab-button>
-            </ion-fab-list>
-        </ion-fab>
+            <ion-card>
+                <form>
+                    <div class="update-Profil">
+
+                        <div class="formfield">
+                            <input type="text" id="firstname">
+                            <label for="firstname" placeholder="First name">First name</label>
+                        </div>
+                        <div class="formfield">
+                            <input type="text" id="lastname">
+                            <label for="lastname" placeholder="Last name">Last name</label>
+                        </div>
+                        <div class="formfield">
+                            <input type="email" id="email">
+                            <label for="email" placeholder="email">Email</label>
+                        </div>
+                        <div class="formfield">
+                            <input type="date" id="dateOfBirth">
+                            <label for="dateOfBirth" placeholder="Date of birth">Date of birth</label>
+                        </div>
+                    </div>
+                    <div class="update-button">
+                        <ion-button class="cancel" type="submit">Cancel</ion-button>
+                        <ion-button class="confirm" type="submit">confirm</ion-button>
+                    </div>
+                </form>
+            </ion-card>
+        </div>
     </div>
 
 </ion-content>

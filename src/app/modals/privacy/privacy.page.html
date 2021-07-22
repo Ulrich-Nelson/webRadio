@@ -1,83 +1,89 @@
-<ion-header>
-    <ion-toolbar class="header">
-        <ion-title style="color:blue; text-align:center"> Privacy Policy </ion-title>
-        <ion-buttons slot="end">
-            <ion-button (click)="closeModalPrivacy()">
-                <ion-icon slot="icon-only" style="color: red; background: black;" name="close"></ion-icon>
+<ion-header class="ion-no-border" mode="ios">
+    <ion-toolbar class="ion-padding">
+        <ion-title style="color: #fff">Privacy Policy </ion-title>
+        <div class="closeModal">
+            <ion-button class="backbutton" fill="clear" (click)="closeModalPrivacy()">
+                <ion-icon style="color: red" name="close"></ion-icon>
             </ion-button>
-        </ion-buttons>
+        </div>
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="content">
-    <p class="title">Politique de Confidentialité :🔒 </p>
-    <p class="title2">COMMENT WEBRADIO COLLECTE VOS INFORMATIONS :👨 </p>
-    <div class="text2">
-        <p class="para1">
-            Dans le cadre de la présente Politique de Confidentialité, le terme « Informations Personnelles » désigne toutes les informations relatives à un individu identifié ou identifiable. Nous obtenons des Informations Personnelles vous concernant depuis diverses
-            sources, comme décrit ci-après.
-        </p>
-        <p class="para2">
-            Le cas échéant, nous indiquons si et de quelle manière vous devez nous fournir vos Informations Personnelles, ainsi que les conséquences si vous ne le faites pas. Si vous ne fournissez pas les Informations Personnelles lorsqu’elles sont demandées, il
-            est possible que vous ne puissiez pas bénéficier de notre Service si ces informations sont nécessaires pour vous fournir le Service ou si nous devons légalement les collecter.
-        </p>
-    </div>
-    <div class="groupe2">
-        <p class="title2">
-            A. Informations Personnelles Fournies Par Vos Soins
-        </p>
-        <p class="para3"><span class="soustitle1">Enregistrement de Compte et Création de Profil:</span> Si vous vous enregistrez pour utiliser le Service, vous devez nous indiquer votre nom, votre date de naissance, un mot de passe et une adresse e-mail afin de créer
-            un compte et un profil d’utilisateur. Vous pouvez également ajouter à votre profil, de façon facultative, certaines informations démographiques, comme votre pays, votre code postal et votre sexe, ainsi que votre photo. Si vous êtes un diffuseur
-            radio, lors de votre inscription à notre Service, nous vous demandons des informations sur votre station et vos émissions, y compris votre nom, votre adresse e-mail, votre numéro de téléphone, votre site Internet, l’URL de diffusion de contenu,
-            ainsi que des informations générales sur la station et les émissions.</p>
 
-        <p class="para4"><span class="soustitle2">Abonnements: 💳 </span> Si vous souscrivez à un Abonnement au Service, nous vous demanderons de fournir vos informations de paiement, comme votre numéro de carte de crédit, afin que nos prestataires de services puissent
-            procéder aux paiements liés au Service.</p>
+<ion-content>
+    <div class="container-private ion-padding">
+        <div class="heading">
+            <p class="title">Politique de Confidentialité :🔒 </p>
+            <p class="title2">COMMENT WEBRADIO COLLECTE VOS INFORMATIONS :👨 </p>
+            <div class="text2">
+                <p class="para1">
+                    Dans le cadre de la présente Politique de Confidentialité, le terme « Informations Personnelles » désigne toutes les informations relatives à un individu identifié ou identifiable. Nous obtenons des Informations Personnelles vous concernant depuis diverses
+                    sources, comme décrit ci-après.
+                </p>
+                <p class="para2">
+                    Le cas échéant, nous indiquons si et de quelle manière vous devez nous fournir vos Informations Personnelles, ainsi que les conséquences si vous ne le faites pas. Si vous ne fournissez pas les Informations Personnelles lorsqu’elles sont demandées, il
+                    est possible que vous ne puissiez pas bénéficier de notre Service si ces informations sont nécessaires pour vous fournir le Service ou si nous devons légalement les collecter.
+                </p>
+            </div>
+            <div class="groupe2">
+                <p class="title2">
+                    A. Informations Personnelles Fournies Par Vos Soins
+                </p>
+                <p class="para3"><span class="soustitle1">Enregistrement de Compte et Création de Profil:</span> Si vous vous enregistrez pour utiliser le Service, vous devez nous indiquer votre nom, votre date de naissance, un mot de passe et une adresse e-mail afin
+                    de créer un compte et un profil d’utilisateur. Vous pouvez également ajouter à votre profil, de façon facultative, certaines informations démographiques, comme votre pays, votre code postal et votre sexe, ainsi que votre photo. Si
+                    vous êtes un diffuseur radio, lors de votre inscription à notre Service, nous vous demandons des informations sur votre station et vos émissions, y compris votre nom, votre adresse e-mail, votre numéro de téléphone, votre site Internet,
+                    l’URL de diffusion de contenu, ainsi que des informations générales sur la station et les émissions.</p>
 
-        <p class="title3">
-            B. Informations Personnelles Obtenues Auprès de Tiers
-        </p>
-    </div>
+                <p class="para4"><span class="soustitle2">Abonnements: 💳 </span> Si vous souscrivez à un Abonnement au Service, nous vous demanderons de fournir vos informations de paiement, comme votre numéro de carte de crédit, afin que nos prestataires de services
+                    puissent procéder aux paiements liés au Service.</p>
 
-    <div class="group3">
-        <div class="para4"><span class="soustitle3">Identification Réseaux Sociaux. </span> Nous collectons des informations des services des réseaux sociaux lorsque vous utilisez vos identifiants pour ces services pour vous connecter au Service. Par exemple, lorsque vous
-            vous connectez avec vos identifiants Facebook, nous collectons les informations que Facebook peut partager suite à votre autorisation, comme:<br>
-            <ul class="listeordonne">
-                <li>votre nom 🧙‍♀️ </li>
-                <li>votre prenom :🦸 </li>
-                <li>votre adresse e-mail: 📧 </li>
-                <li>votre date de naissance :🎂 </li>
-                <li>votre photo de profil :👨‍🎤 </li>
-            </ul>. Nous pouvons également obtenir des informations non publiques avec votre permission.</div>
+                <p class="title3">
+                    B. Informations Personnelles Obtenues Auprès de Tiers
+                </p>
+            </div>
 
-        <p class="title4">
-            COMMENT WEBRADIO UTILISE VOS INFORMATIONS
-        </p>
+            <div class="group3">
+                <div class="para4"><span class="soustitle3">Identification Réseaux Sociaux. </span> Nous collectons des informations des services des réseaux sociaux lorsque vous utilisez vos identifiants pour ces services pour vous connecter au Service. Par exemple, lorsque
+                    vous vous connectez avec vos identifiants Facebook, nous collectons les informations que Facebook peut partager suite à votre autorisation, comme:<br>
+                    <ul class="listeordonne">
+                        <li>votre nom 🧙‍♀️ </li>
+                        <li>votre prenom :🦸 </li>
+                        <li>votre adresse e-mail: 📧 </li>
+                        <li>votre date de naissance :🎂 </li>
+                        <li>votre photo de profil :👨‍🎤 </li>
+                    </ul>. Nous pouvons également obtenir des informations non publiques avec votre permission.</div>
 
-        <p class="para4"><span class="soustitle4"> 🍪Cookies </span> Si vous avez un compte et que vous vous connectez sur le site, un cookie temporaire sera créé afin de persister votre état de connexion. Ce cookie sera automatiquement détruit lorsque vous vous déconnectez
-            du site.</p>
+                <p class="title4">
+                    COMMENT WEBRADIO UTILISE VOS INFORMATIONS
+                </p>
 
-    </div>
-    <div class="group4">
-        <p class="title5">
-            COMMENT WEBRADIO UTILISE VOS INFORMATIONS
-        </p>
+                <p class="para4"><span class="soustitle4"> 🍪Cookies </span> Si vous avez un compte et que vous vous connectez sur le site, un cookie temporaire sera créé afin de persister votre état de connexion. Ce cookie sera automatiquement détruit lorsque vous vous
+                    déconnectez du site.</p>
 
-        <p class="para5">
-            Pour les utilisateurs et utilisatrices qui s’enregistrent sur le site, nous stockons également les données personnelles indiquées dans leur profil. Tous les utilisateurs et utilisatrices peuvent voir, modifier ou supprimer leurs informations personnelles
-            à tout moment. Seul le gestionnaire du site peut aussi voir et modifier ces informations.
-        </p>
+            </div>
+            <div class="group4">
+                <p class="title5">
+                    COMMENT WEBRADIO UTILISE VOS INFORMATIONS
+                </p>
 
-    </div>
-    <div class="group5">
-        <p class="title6">
-            Les droits que vous avez sur vos données
-        </p>
-        <p class="para6">
-            <span class="deleteAccount">
-                Si vous avez un compte et que vous souhaitez supprimer vos informations vous pouvez le faire automatiquement depuis votre compte en cliquant sur le bouton supprimé.
-            </span> Si vous avez posté un commentaire sans être connecté vous pouvez me contacter pour demander la suppression de ce dernier.
-        </p>
+                <p class="para5">
+                    Pour les utilisateurs et utilisatrices qui s’enregistrent sur le site, nous stockons également les données personnelles indiquées dans leur profil. Tous les utilisateurs et utilisatrices peuvent voir, modifier ou supprimer leurs informations personnelles
+                    à tout moment. Seul le gestionnaire du site peut aussi voir et modifier ces informations.
+                </p>
+
+            </div>
+            <div class="group5">
+                <p class="title6">
+                    Les droits que vous avez sur vos données
+                </p>
+                <p class="para6">
+                    <span class="deleteAccount">
+                        Si vous avez un compte et que vous souhaitez supprimer vos informations vous pouvez le faire automatiquement depuis votre compte en cliquant sur le bouton supprimé.
+                    </span> Si vous avez posté un commentaire sans être connecté vous pouvez me contacter pour demander la suppression de ce dernier.
+                </p>
+            </div>
+        </div>
+
     </div>
 
 </ion-content>

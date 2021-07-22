@@ -39,13 +39,12 @@ const routes: Routes = [
   {
     path: 'card',
     loadChildren: () => import('./modals/card/card.module').then( m => m.CardPageModule)
-  },  {
+  },
+  {
     path: 'stripe',
     loadChildren: () => import('./modals/stripe/stripe.module').then( m => m.StripePageModule)
   },
-
-
-
+ 
 ];
 
 @NgModule({

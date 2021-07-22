@@ -39,6 +39,15 @@ const routes: Routes = [
           },
         ]
       },
+      {
+        path: 'premium',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../premium/premium.module').then(m => m.PremiumPageModule)
+          },
+        ]
+      },
       {// route par défaut 
         path: '',
         redirectTo: 'tabs/profil',

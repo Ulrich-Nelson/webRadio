@@ -1,0 +1,47 @@
+ion-header {
+    ion-toolbar {
+        --background: rgb(20, 35, 75);
+        font-family: "Satisfy", Cursive !important;
+        letter-spacing: 2px;
+        font-size: 2rem !important;
+        color: #fff;
+        ion-title {
+            margin-top: 5px;
+            font-size: 2rem !important;
+        }
+    }
+}
+
+ion-content {
+    --background: rgb(20, 35, 75);
+    .tabs {
+        margin-top: 20px;
+        font-family: "Nato Sans HK", sans-serif;
+        ion-segment {
+            --background: none;
+            ion-segment-button {
+                font-size: 1rem;
+                --border-width: 0;
+                --padding-start: 8px !important;
+                --padding-button: 3px !important;
+                --padding-top: 3px !important;
+                --background-checked: green !important; //changer la couleur
+                --indicator-color: transparent !important;
+                --color: #d1d1d1;
+                --color-checked: #fff;
+                font-weight: bold;
+                border-radius: 22px;
+                text-transform: none;
+            }
+        }
+    }
+    //Pour afficher les factures
+    .chat-list {
+        height: 90vh;
+        max-width: 500px;
+        background: #fff;
+        margin-top: 5px;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+    }
+}

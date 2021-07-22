@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border" mode="ios">
+
+    <ion-toolbar class="ion-padding">
+        <ion-icon routerLink="/login" name="menu-outline" slot="start"></ion-icon>
+        <ion-title>Premium</ion-title>
+        <ion-icon name="camera-outline" slot="end"></ion-icon>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="tabs ion-padding">
+        <ion-segment value="chats" (ionChange)="segmentChange($event)">
+            <ion-segment-button value="chats">
+                <ion-label>Chats</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="status">
+                <ion-label>Status</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="calls">
+                <ion-label>Calls</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div class="chat-list" *ngIf="activeTab === 'chats'">
+        <div class="recent-chats ion-padding">
+            <h1>Recent Chats</h1>
+        </div>
+    </div>
+
+    <div class="chat-list" *ngIf="activeTab === 'status'">
+        <div class="recent-chats ion-padding">
+            <h1>Recent status</h1>
+        </div>
+    </div>
+    <div class="chat-list" *ngIf="activeTab === 'calls'">
+        <div class="recent-chats ion-padding">
+            <h1>Recent calls</h1>
+        </div>
+    </div>
+</ion-content>
