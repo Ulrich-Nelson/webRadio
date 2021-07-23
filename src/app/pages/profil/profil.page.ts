@@ -37,6 +37,7 @@ public favoriteData: any[] = [];
 
 //Récupération des factures du customer
  public bills: any[] = [];
+
   
   constructor( public alertController : AlertController, 
     private router: Router, private authservice: AuthCustomerService,
