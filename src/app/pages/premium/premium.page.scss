@@ -45,3 +45,20 @@ ion-content {
         border-top-right-radius: 60px;
     }
 }
+
+// Customiser la présentation des factures
+.followings p {
+    color: white;
+    margin: 8px 0px 0px 0px;
+}
+
+.img-box {
+    display: flex;
+    justify-content: center;
+}
+
+.img-box img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}

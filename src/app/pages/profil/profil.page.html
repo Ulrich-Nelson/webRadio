@@ -1,12 +1,15 @@
 <ion-content>
     <div class="header ion-padding">
         <div class="info">
-            <ion-icon routerLink="/login" name="menu-outline"></ion-icon>
+            <ion-buttons slot="start">
+                <ion-menu-button color="white" menu="main-menu"></ion-menu-button>
+            </ion-buttons>
             <ion-avatar>
-                <img src="https://i.pravatar.cc/253" alt="Mon profil">
+                <!-- <img src="https://i.pravatar.cc/253" alt="Mon profil"> -->
+                <img src="{{avatar}}" width="199.5" height="120">
             </ion-avatar>
             <span class="details">
-                <h1>Ulrich </h1>
+                <h1>{{firstname}}</h1>
                 <p>Premim</p>
             </span>
         </div>
@@ -23,28 +26,28 @@
             </div>
 
             <ion-card>
-                <form>
+                <form [formGroup]="editProfilForm" (ngSubmit)="editProfilAction()">
                     <div class="update-Profil">
 
                         <div class="formfield">
-                            <input type="text" id="firstname">
+                            <input type="text" required [(ngModel)]="firstname" id="firstname" formControlName="firstname">
                             <label for="firstname" placeholder="First name">First name</label>
                         </div>
                         <div class="formfield">
-                            <input type="text" id="lastname">
+                            <input type="text" required [(ngModel)]="lastname" id="lastname" formControlName="lastname">
                             <label for="lastname" placeholder="Last name">Last name</label>
                         </div>
                         <div class="formfield">
-                            <input type="email" id="email">
+                            <input type="email" required [(ngModel)]="email" id="email" formControlName="email">
                             <label for="email" placeholder="email">Email</label>
                         </div>
                         <div class="formfield">
-                            <input type="date" id="dateOfBirth">
+                            <input type="date" required [(ngModel)]="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth">
                             <label for="dateOfBirth" placeholder="Date of birth">Date of birth</label>
                         </div>
                     </div>
                     <div class="update-button">
-                        <ion-button class="cancel" type="submit">Cancel</ion-button>
+                        <ion-button class="cancel" type="button" (click)="reset()">Cancel</ion-button>
                         <ion-button class="confirm" type="submit">confirm</ion-button>
                     </div>
                 </form>

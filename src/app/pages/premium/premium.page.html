@@ -12,8 +12,8 @@
 <ion-content>
     <div class="tabs ion-padding">
         <ion-segment value="chats" (ionChange)="segmentChange($event)">
-            <ion-segment-button value="chats">
-                <ion-label>Chats</ion-label>
+            <ion-segment-button value="Bills">
+                <ion-label>Bills</ion-label>
             </ion-segment-button>
             <ion-segment-button value="status">
                 <ion-label>Status</ion-label>
@@ -24,9 +24,32 @@
         </ion-segment>
     </div>
 
-    <div class="chat-list" *ngIf="activeTab === 'chats'">
-        <div class="recent-chats ion-padding">
-            <h1>Recent Chats</h1>
+    <div class="chat-list" *ngIf="activeTab === 'Bills'">
+        <div class="recent-chats">
+                <div class="img-box">
+        <img src="https://res.cloudinary.com/ulrich-nelson/image/upload/v1620601979/samples/LogoApplication_owo84t.png">
+    </div>
+    <div class="billsCss">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr style="text-align:center">
+                    <th scope="col">Source</th>
+                    <th scope="col">HT (€)</th>
+                    <th scope="col">TTC (€)</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center">
+                <tr *ngFor="let bill of bills; let i = index">
+                    <td>{{bill.source}}</td>
+                    <td>{{bill.montantHT}}</td>
+                    <td>{{bill.montantTTC}}</td>
+                    <td>{{bill.datePayment | date:"MM/dd/yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
         </div>
     </div>
 

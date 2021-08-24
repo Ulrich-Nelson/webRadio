@@ -25,7 +25,6 @@ export class BillsPage implements OnInit {
   }
   
 
-
 /*----FERMER LA FENETRE DANS LA PAGE DE PROFIL------*/
 async closeModal(){
   await this.modalController.dismiss()

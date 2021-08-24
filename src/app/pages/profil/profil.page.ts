@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AlertController, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { AuthConstants } from 'src/app/config/auth-constants';
@@ -45,7 +46,8 @@ public favoriteData: any[] = [];
     private formBuilder: FormBuilder,
     private toastMessage: ToastMessageService,
     private modalController: ModalController,
-    private routerOutlet: IonRouterOutlet) { }
+    private routerOutlet: IonRouterOutlet,
+    private menu: MenuController) { }
 
 
   ngOnInit() {
@@ -55,6 +57,12 @@ public favoriteData: any[] = [];
     this.getBillsAction();
   }
 
+
+  /* OUVRIR LE MENU*/ 
+    openFirst() {
+      this.menu.enable(true, 'first');
+      this.menu.open('first');
+    }
 
 
   /*----RECUPERATION DES SONGS MIS EN FAVORITES------*/
@@ -82,9 +90,6 @@ async getBillsAction(): Promise<void>{
   }
   )
 }
-
-
-
 
 /*----RECUPERE LES INFORMATION DU CUSTOMER CONNECTE------*/
 async getProfilAction(): Promise<void>{
@@ -151,10 +156,6 @@ initForm(): void{
   }
   )
 }
-
-
-
-
 
 
 /*--------------DECONNEXION DU CUSTOMER----------*/
