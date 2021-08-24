@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { AlertController, IonRouterOutlet, ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { AuthConstants } from 'src/app/config/auth-constants';
 import { Customer } from 'src/app/interfaces.ts/Custumer';
 import { BillsPage } from 'src/app/modals/bills/bills.page';
@@ -45,9 +44,7 @@ public favoriteData: any[] = [];
     private storageServive: StorageCutomerService,
     private formBuilder: FormBuilder,
     private toastMessage: ToastMessageService,
-    private modalController: ModalController,
-    private routerOutlet: IonRouterOutlet,
-    private menu: MenuController) { }
+    private modalController: ModalController) { }
 
 
   ngOnInit() {
@@ -57,12 +54,6 @@ public favoriteData: any[] = [];
     this.getBillsAction();
   }
 
-
-  /* OUVRIR LE MENU*/ 
-    openFirst() {
-      this.menu.enable(true, 'first');
-      this.menu.open('first');
-    }
 
 
   /*----RECUPERATION DES SONGS MIS EN FAVORITES------*/
