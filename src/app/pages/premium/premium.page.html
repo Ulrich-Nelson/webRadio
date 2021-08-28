@@ -2,7 +2,20 @@
 
     <ion-toolbar class="ion-padding">
         <ion-icon routerLink="/login" name="menu-outline" slot="start"></ion-icon>
-        <ion-title>Premium</ion-title>
+        <ion-title>
+            <div class="domaine">
+                <h1>
+                    <span>P</span>
+                    <span>r</span>
+                    <span>e</span>
+                    <span>m</span>
+                    <span>i</span>
+                    <span>u</span>
+                    <span>m</span>
+                </h1>
+            </div>
+        </ion-title>
+
         <ion-icon name="camera-outline" slot="end"></ion-icon>
     </ion-toolbar>
 
@@ -26,36 +39,52 @@
 
     <div class="chat-list" *ngIf="activeTab === 'Bills'">
         <div class="recent-chats">
-                <div class="img-box">
-        <img src="https://res.cloudinary.com/ulrich-nelson/image/upload/v1620601979/samples/LogoApplication_owo84t.png">
-    </div>
-    <div class="billsCss">
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr style="text-align:center">
-                    <th scope="col">Source</th>
-                    <th scope="col">HT (€)</th>
-                    <th scope="col">TTC (€)</th>
-                    <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody style="text-align:center">
-                <tr *ngFor="let bill of bills; let i = index">
-                    <td>{{bill.source}}</td>
-                    <td>{{bill.montantHT}}</td>
-                    <td>{{bill.montantTTC}}</td>
-                    <td>{{bill.datePayment | date:"MM/dd/yyyy"}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <div class="img-box">
+                <img src="https://res.cloudinary.com/ulrich-nelson/image/upload/v1620601979/samples/LogoApplication_owo84t.png">
+            </div>
+            <div class="billsCss">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr style="text-align:center">
+                            <th scope="col">Source</th>
+                            <th scope="col">HT (€)</th>
+                            <th scope="col">TTC (€)</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center">
+                        <tr *ngFor="let bill of bills; let i = index">
+                            <td>{{bill.source}}</td>
+                            <td>{{bill.montantHT}}</td>
+                            <td>{{bill.montantTTC}}</td>
+                            <td>{{bill.datePayment | date:"MM/dd/yyyy"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
 
     <div class="chat-list" *ngIf="activeTab === 'status'">
-        <div class="recent-chats ion-padding">
-            <h1>Recent status</h1>
+        <div class="recent-chats">
+            <div class="sub-text">
+                <p>listen to good nusics</p>
+            </div>
+            <div class="diaporama">
+                <div class="diapo">
+                    <img src="../../../assets/images/diapo1.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diapo2.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diapo3.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diapo4.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diapo5.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diapo6.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diapo7.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diapo8.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diopa9.jpg" width="350" height="200">
+                    <img src="../../../assets/images/diopo10.jpg" width="350" height="200">
+                </div>
+            </div>
         </div>
     </div>
     <div class="chat-list" *ngIf="activeTab === 'calls'">

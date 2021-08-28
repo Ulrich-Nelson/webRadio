@@ -8,7 +8,54 @@ ion-header {
         ion-title {
             margin-top: 5px;
             font-size: 2rem !important;
+            h1 {
+                margin-top: 5px;
+                font-size: 2rem !important;
+                font-weight: bold !important;
+            }
+            .domaine span {
+                display: table-cell;
+                margin: 0;
+                padding: 0;
+                animation: animate 2s linear infinite;
+            }
+            h1 span:nth-child(1) {
+                animation-delay: 0s;
+            }
+            h1 span:nth-child(2) {
+                animation-delay: 0.25s;
+            }
+            h1 span:nth-child(3) {
+                animation-delay: 0.50s;
+            }
+            h1 span:nth-child(4) {
+                animation-delay: 0.75s;
+            }
+            h1 span:nth-child(5) {
+                animation-delay: 1s;
+            }
+            h1 span:nth-child(6) {
+                animation-delay: 1.25s;
+            }
+            h1 span:nth-child(7) {
+                animation-delay: 1.50s;
+            }
         }
+    }
+}
+
+@keyframes animate {
+    0%,
+    100% {
+        color: #fff;
+        filter: blur(2px);
+        text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 30px #00b3ff, 0 0 50px #00b3ff, 0 0 70px #00b3ff, 0 0 110px #00b3ff, 0 0 10px #00b3ff, 0 0 15px #00b3ff, 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 25px #00b3ff, 0 0 30px #00b3ff, 0 0 360px #00b3ff, 0 0 400px #00b3ff, 0 0 410px #00b3ff, 0 0 440px #00b3ff, 0 0 490px #00b3ff;
+    }
+    5%,
+    95% {
+        color: #fff;
+        filter: blur(0px);
+        text-shadow: none;
     }
 }
 
@@ -61,4 +108,68 @@ ion-content {
     height: 80px;
     width: 80px;
     border-radius: 50%;
+}
+
+// Stylyser l'onget pour la présentation des options pour un compte premium
+.sub-text {
+    p {
+        text-align: center;
+        margin-top: 15px;
+        color: green;
+    }
+}
+
+.diaporama {
+    width: 500px;
+    overflow: hidden;
+    margin: 50px auto;
+    .diapo {
+        position: relative;
+        width: 5000px;
+        float: left;
+        animation: webradioAnimation 50s infinite;
+    }
+}
+
+@keyframes webradioAnimation {
+    0% {
+        left: 0px;
+    }
+    10% {
+        left: -350px;
+    }
+    20% {
+        left: -500px;
+    }
+    30% {
+        left: -700px;
+    }
+    40% {
+        left: -1050px;
+    }
+    50% {
+        left: -1400px;
+    }
+    60% {
+        left: -1750px;
+    }
+    70% {
+        left: -2100px;
+    }
+    80% {
+        left: -2450px;
+    }
+    90% {
+        left: -2800px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+
+// ion-content {
+//     .premium {}
+// }
+p {
+    text-align: center;
 }

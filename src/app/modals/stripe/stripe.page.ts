@@ -15,9 +15,9 @@ export class StripePage implements OnInit {
 
 
   /*----FERMER LA FENETRE MODALE DANS LA PAGE DE SOUSCRIPTION------*/
-async closeModalStripe(){
-  await this.modalController.dismiss()
-}
+// async closeModalStripe(){
+//   await this.modalController.dismiss()
+// }
 
 
 }

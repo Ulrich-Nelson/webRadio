@@ -1,22 +1,23 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title> 🎵 favorite </ion-title>
+<ion-header class="ion-no-border" mode="ios">
+    <ion-toolbar class="ion-padding">
+        <ion-title>🎵 favorite</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-    <div *ngFor="let  song of favoriteData let in= index">
-        <ion-item>
-            <ion-thumbnail slot="start" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">
-                <img src="{{song.cover}}" alt="song image">
-            </ion-thumbnail>
-            <ion-label>
-                <h2 color="blue" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">{{song.title}} </h2>
-                <p color="blue" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">{{song.artist}}</p>
-            </ion-label>
-            <ion-icon class="deleteFavoris" (click)="confirmdeleteSong(song.idSong)" name="trash-outline"></ion-icon>
-        </ion-item>
+    <div class="container-favorite">
+        <div *ngFor="let  song of favoriteData let in= index">
+            <ion-item>
+                <ion-thumbnail slot="start" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">
+                    <img src="{{song.cover}}" alt="song image">
+                </ion-thumbnail>
+                <ion-label>
+                    <h2 color="blue" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">{{song.title}} </h2>
+                    <p color="blue" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">{{song.artist}}</p>
+                </ion-label>
+                <ion-icon class="deleteFavoris" (click)="confirmdeleteSong(song.idSong)" name="trash-outline"></ion-icon>
+            </ion-item>
+        </div>
     </div>
 </ion-content>
 

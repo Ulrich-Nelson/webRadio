@@ -43,7 +43,7 @@ public nameOnCard: string;
 
   ngOnInit() {
     this.initForm();
-    this.openModalStripe();
+    //this.openModalStripe();
   }
 
 
@@ -61,15 +61,15 @@ async openModalCard(): Promise<any>{
 
 
 /*----AFFICHER LA PAGE MODALE POUR LES TERMES PRIVEES DE LA CARTE------*/
-async openModalStripe(): Promise<any>{
-  const modal = await this.modalController.create({
-    component:StripePage,
-    swipeToClose: true,
-    cssClass:'my-StripeModal-class',
+// async openModalStripe(): Promise<any>{
+//   const modal = await this.modalController.create({
+//     component:StripePage,
+//     swipeToClose: true,
+//     cssClass:'my-StripeModal-class',
 
-  });
-  return await modal.present();
-}
+//   });
+//   return await modal.present();
+// }
 
 
 

@@ -1,5 +1,48 @@
+ion-header {
+    ion-toolbar {
+        --background: rgb(20, 35, 75);
+    }
+    ion-title {
+        color: white;
+        margin-top: 5px;
+        font-size: 20px;
+    }
+}
+
 ion-content {
-    --ion-background-color: var(--ion-color-dark);
+    --background: rgb(20, 35, 75);
+}
+
+p {
+    span {
+        color: green;
+    }
+}
+
+.container-subscribe {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    .heading {
+        background: #fff;
+        text-align: center;
+        margin-top: 10vh;
+    }
+    h1 {
+        font-size: 1.6rem;
+        font-weight: bolder;
+    }
+    p {
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #7b7b7b;
+    }
 }
 
 .logoutButton {
@@ -72,4 +115,16 @@ ion-label {
 
 ion-card {
     margin-bottom: 50px;
+}
+
+.subscribeButton {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    .MakePayment {
+        text-transform: none;
+        width: 85%;
+        height: 50px;
+        font-size: 1.6rem;
+    }
 }

@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component,  OnDestroy,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
@@ -14,7 +14,7 @@ import { ToastMessageService } from 'src/app/services/toast-message.service';
   templateUrl: './profil.page.html',
   styleUrls: ['./profil.page.scss'],
 })
-export class ProfilPage implements OnInit{
+export class ProfilPage implements OnInit {
 
   public currentPosition: any;
   public height: any;
@@ -27,16 +27,17 @@ export class ProfilPage implements OnInit{
  public profilData: Customer;
 
  //Information de l'utilisateur connecté
- public firstname:string;
- public lastname: string;
- public email: string;
- public dateOfBirth: string;
- public avatar : string;
+ public firstname:string = "";
+ public lastname: string = "";
+ public email: string = "";
+ public dateOfBirth: string = "";
+ public avatar : string ="";
 //Récupération des songs en favorites
 public favoriteData: any[] = [];
 
 //Récupération des factures du customer
  public bills: any[] = [];
+
 
   
   constructor( public alertController : AlertController, 
@@ -99,9 +100,7 @@ async getProfilAction(): Promise<void>{
   }
   )
 }
-
-
-
+q
 /*********************** RESET PROFIL ****************************/
 reset(){
   this.getProfilAction();
@@ -118,10 +117,8 @@ async openModal(): Promise<any>{
     //presentingElement: await this.modalController.getTop()
 
   });
-  return await modal.present();
+  return await modal.present(); 
 }
-
-
 
 
 /*----MISE A JOUR DES DONNEES DU CUSTOMER------*/
@@ -174,6 +171,11 @@ initForm(): void{
               this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
               this.storageServive.clear();   
               this.toastMessage.presentToast("You have been disconnected", "success")
+              this.firstname = "";
+              this.lastname = "";
+              this.email = "";
+              this.dateOfBirth = "";
+              this.avatar = "";
               this.router.navigateByUrl('login')
             },
             (error) => {
