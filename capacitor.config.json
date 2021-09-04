@@ -1,5 +1,5 @@
 {
-    "appId": "com.webradio.com",
+    "appId": "com.webradio.app",
     "appName": "Webradio",
     "bundledWebRuntime": false,
     "npmClient": "npm",
