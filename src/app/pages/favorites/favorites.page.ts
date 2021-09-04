@@ -118,7 +118,7 @@ async confirmdeleteSong(idSong: string) {
         role: 'cancel',
         cssClass: 'secondary',
         handler: () => {
-          this.toastMessage.presentToast("Deletion canceled", "light")
+          this.toastMessage.presentToast("Deletion canceled", "warning")
         }
       }, {
         text: 'Yes',

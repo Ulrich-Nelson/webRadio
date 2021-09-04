@@ -42,6 +42,7 @@ export class AuthCustomerService {
     }
  
     
+    
       //Inscription des customers
       register(customer: Customer): Observable<object> {
       return this.httpClient.post(`${this.APIWebradio}/customer/register`, {
@@ -99,6 +100,13 @@ export class AuthCustomerService {
           return this.httpClient.get(`${this.APIWebradio}/customer/getSongs`, {headers});  
         }
 
+        //Ajouter un song en favorite  ${userID}
+        addOneFavoriteSong(token: string, idSong: string){
+          const headers = {'Authorization':  token };
+          return this.httpClient.delete(`${this.APIWebradio}/customer/addfavoris/${idSong}`, {headers});  
+        }
+
+
         //Supprimer un song en favorite  ${userID}
         deleteOneFavoriteSong(token: string, idSong: string){
           const headers = {'Authorization':  token };
@@ -110,6 +118,7 @@ export class AuthCustomerService {
           const headers = {'Authorization':  token };
           return this.httpClient.get(`${this.APIWebradio}/customer/getFavorite`, {headers});  
         }
+
 
 
       //Envoie d'email pour la rénitialisation du mot de passe des customers
