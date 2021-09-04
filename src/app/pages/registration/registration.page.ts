@@ -30,6 +30,7 @@ export class RegistrationPage implements OnInit {
  public dateOfBirth:string = "";
  public password:string = "";
  public confPassword:string = "";
+ public acceptTerms: boolean = false;
  public registerForm: FormGroup;
  public showPassword: boolean = false;
  public showPassword2: boolean = false;
@@ -51,7 +52,6 @@ export class RegistrationPage implements OnInit {
 
 
 
-
 /*----TRAITEMENT DES DONNEES POUR LA INSCRIPTION-------*/
 initForm(): void{
   this.registerForm = this.formBuilder.group({
@@ -61,6 +61,7 @@ initForm(): void{
     dateOfBirth: ['', Validators.required],
     password: ['', Validators.required],
     confPassword: ['', Validators.required],
+    acceptTerms: [false, [Validators.required]],
 
   })
 }
@@ -89,9 +90,12 @@ togglePassword2(): void{
 registerAction():void{
   let password: string = this.registerForm.value.password;
   let confPassword: string = this.registerForm.value.confPassword;
+  let termsValid: boolean = this.registerForm.value.acceptTerms
   console.log(this.registerForm.value)
   if (password != confPassword) {
     this.toastMessage.presentToast("Passwords are different", "danger")
+  } else if (termsValid == false){
+    this.toastMessage.presentToast("You must accept the privacy terms", "danger")
   } else {
     this.authservice.register(this.registerForm.value)
     .pipe()

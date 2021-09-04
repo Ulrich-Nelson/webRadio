@@ -76,6 +76,7 @@ async googleSignupAction() {
 initForm(){
   this.loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
+    acceptTerms: [false, [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(4)]]
   })
 }
@@ -90,23 +91,28 @@ togglePassword(): void{
   }
 }
 
+//console.log(this.loginForm.value.acceptTerms),
 
+  loginAction(): void{
+  if (this.loginForm.value.acceptTerms == false) {
+    console.log(this.loginForm.value.acceptTerms)
+    this.toastMessage.presentToast("You must accept the terms", "danger")
+  } else {
+    this.authservice.login(this.loginForm.value)
+    .subscribe(async (data:any) => {
+      this.storageServive.store(AuthConstants.AUTH, data.user)
+      this.storageServive.store(AuthConstants.TOKEN, data.user.token)
+      this.storageServive.store(AuthConstants.SUBSCRIPTION, data.user.subscription)  
+      this.router.navigateByUrl('tabs/profil')
+      console.log(await this.storageServive.get(AuthConstants.AUTH))
 
-  async loginAction(){
-  (this.authservice.login(this.loginForm.value))
-  .subscribe(async (data:any) => {
-    this.storageServive.store(AuthConstants.AUTH, data.user)
-    this.storageServive.store(AuthConstants.TOKEN, data.user.token)
-    this.storageServive.store(AuthConstants.SUBSCRIPTION, data.user.subscription)  
-    this.router.navigateByUrl('tabs/profil')
-    console.log(await this.storageServive.get(AuthConstants.AUTH))
-
-    this.toastMessage.presentToast("You are logged in", "success")
+      this.toastMessage.presentToast("You are logged in", "success")
   },
   (error) =>{
     this.toastMessage.presentToast(error.error.message, "danger")
   }
   )
+  }
 }
 
 
