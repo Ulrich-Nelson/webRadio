@@ -19,7 +19,6 @@
     </ol> -->
 
         <p routerLink="/login">get premium from <span>4€/mois</span></p>
-        <ion-button fill="clear" size="small" (click)="openModalCard()" class="privacy" style="color: red; padding-left: 50px;">Terms of Service and Privacy Policy</ion-button>
         <ion-card class="welcome-card">
             <ion-img src="../../../assets/images/stripe.png"></ion-img>
             <ion-card-content>
@@ -54,6 +53,11 @@
                             <ion-input color="black" type="text" id="nameOnCard" formControlName="nameOnCard" placeholder="MELINA THOSE"></ion-input>
                         </ion-item>
                     </ion-list>
+                    <div class="Terms">
+                        <ion-checkbox color="danger" checked slot="start" id="acceptTerms" formControlName="acceptTerms"></ion-checkbox>
+                        <p (click)="openModalCard()" class="privacy" style="color: red; padding-left: 50px;">Terms of Service and Privacy Policy</p>
+                    </div>
+
                     <div class="subscribeButton">
                         <ion-button class="MakePayment" type="submit">Make Payment</ion-button>
                     </div>

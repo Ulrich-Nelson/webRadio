@@ -30,6 +30,8 @@ public month: number;
 public expirationDate: number;
 public CVC: number;
 public nameOnCard: string;
+public acceptTerms: boolean = false;
+
  
 
 
@@ -81,7 +83,7 @@ initForm(){
     expirationDate: ['', Validators.required],
     CVC: ['', Validators.required],
     nameOnCard: ['', Validators.required],
-
+    acceptTerms: [false, [Validators.required]]
   })
 }
 

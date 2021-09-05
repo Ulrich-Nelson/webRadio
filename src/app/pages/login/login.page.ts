@@ -135,6 +135,8 @@ async facebookLoginAction(){
   const response: any = await this.fbLogin.getCurrentAccessToken();
   this.accessToken = response.accessToken.token;
   this.userID = response.accessToken.userId;
+  console.log( this.accessToken)
+  console.log(this.userID)
   if(!this.accessToken || !this.userID){
     this.toastMessage.presentToast("Facebook connection problem", "danger")
   }else{
@@ -156,7 +158,6 @@ async facebookLoginAction(){
 
 
 }
-
 
 
 /*----AFFICHER LA PAGE MODALE POUR LES FACTURES DU CUSTOMER------*/

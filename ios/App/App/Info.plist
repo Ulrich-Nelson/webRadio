@@ -23,12 +23,12 @@
 	<dict>
 		<key>CFBundleURLSchemes</key>
 		<array>
-		<string>fb111252357701747</string>
+		<string>fb193068379441355</string>
 		</array>
 	</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>111252357701747</string>
+	<string>193068379441355</string>
 	<key>FacebookDisplayName</key>
 	<string>IMIE-WebradioApplication</string>
 	<key>LSApplicationQueriesSchemes</key>
