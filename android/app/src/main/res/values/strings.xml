@@ -6,4 +6,6 @@
     <string name="custom_url_scheme">com.radioworld.app</string>
     <string name="facebook_app_id">913276132904955</string>
     <string name="fb_login_protocol_scheme">913276132904955</string>
+    <string name="server_client_id">758480877647-jpl6p205f7f6pfo236sjt7n165oijssk.apps.googleusercontent.com</string>
+    
 </resources>

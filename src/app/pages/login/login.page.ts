@@ -13,9 +13,10 @@ import { isPlatform } from '@ionic/angular';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { LoadpageService } from 'src/app/services/loadpage.service';
 
-//import '@codetrix-studio/capacitor-google-auth';
-//import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { GoogleAuth} from '@codetrix-studio/capacitor-google-auth';
+
 registerWebPlugin(FacebookLogin);
+
 
 
 @Component({
@@ -63,13 +64,17 @@ public startPosition: any;
     this.setupFbLogin();
   }
 
+  ionViewDidEnter() {
+  }
+
 //
 /*-------------CONNEXION DES CUSTOMERS AVEC LE COMPTE GOOGLE----------*/
+
 async googleSignupAction() {
-  const googleUser = await Plugins.GoogleAuth.signIn(null) as any;
-  console.log('my user: ', googleUser);
-  this.userGoogle = googleUser;
-  console.log(this.userGoogle)
+  this.presentSpinner.Spinner();
+  let googleUser = await Plugins.GoogleAuth.signIn();
+  console.log(googleUser)
+
 }
 
 
