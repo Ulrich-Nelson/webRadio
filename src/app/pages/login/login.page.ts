@@ -162,6 +162,8 @@ async facebookLoginAction(){
 }
 
 
+
+
 /*----AFFICHER LA PAGE MODALE POUR LES FACTURES DU CUSTOMER------*/
 async openModalPrivacy(): Promise<any>{
   const modal = await this.modalController.create({

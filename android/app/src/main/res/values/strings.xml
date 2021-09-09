@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">Webradio</string>
     <string name="title_activity_main">Webradio</string>
-    <string name="package_name">com.webradio.app</string>
-    <string name="custom_url_scheme">com.webradio.app</string>
+    <string name="package_name">com.radioworld.app</string>
+    <string name="custom_url_scheme">com.radioworld.app</string>
+    <string name="facebook_app_id">913276132904955</string>
+    <string name="fb_login_protocol_scheme">913276132904955</string>
 </resources>
