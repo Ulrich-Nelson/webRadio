@@ -13,8 +13,8 @@ import { isPlatform } from '@ionic/angular';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { LoadpageService } from 'src/app/services/loadpage.service';
 
-// import '@codetrix-studio/capacitor-google-auth';
-
+//import '@codetrix-studio/capacitor-google-auth';
+//import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 registerWebPlugin(FacebookLogin);
 
 
@@ -71,6 +71,8 @@ async googleSignupAction() {
   this.userGoogle = googleUser;
   console.log(this.userGoogle)
 }
+
+
 
 /*-------------TRAITEMENT DES DONNEES POUR LA CONNEXION CLASSIQUE----------*/
 initForm(){

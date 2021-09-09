@@ -4,7 +4,4 @@
     <string name="title_activity_main">Webradio</string>
     <string name="package_name">com.webradio.app</string>
     <string name="custom_url_scheme">com.webradio.app</string>
-    <string name="facebook_app_id">193068379441355</string>
-    <string name="fb_login_protocol_scheme">193068379441355</string>
-    <string name="server_client_id">758480877647-jpl6p205f7f6pfo236sjt7n165oijssk.apps.googleusercontent.com</string>
 </resources>

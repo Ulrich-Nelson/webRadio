@@ -1,8 +1,5 @@
 import UIKit
 import Capacitor
-import FacebookCore
-import FBSDKCoreKit
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,7 +8,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOpt: launchOptions)
     // Override point for customization after application launch.
     return true
   }
@@ -45,13 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-     if CAPBridge.handleOpenUrl(url, options) {
-        return FBSDKCoreKit.ApplicationDelegate.shared.application(app, open: url, options: options)
-      }
-      else{
-       return false
-      }
-  }
+    // Called when the app was launched with an activity, including Universal Links.
+    // Feel free to add additional processing here, but if you want the App API to support
+    // tracking app url opens, make sure to keep this call
+    return CAPBridge.handleContinueActivity(userActivity, restorationHandler)
   }
 
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

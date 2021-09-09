@@ -15,7 +15,7 @@ export class LoadpageService {
           duration: 2000,
           cssClass:'ion-loading-class',
           backdropDismiss: true,
-          message: ' WEBRADIO-APPLICATION  Loading...👨 ',
+          message: 'Radio world  Loading...👨 ',
       }).then((res) => {
           res.present();
       });
