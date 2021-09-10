@@ -1,7 +1,9 @@
 <ion-header class="ion-no-border" mode="ios">
     <ion-toolbar class="ion-padding">
-            
-        <ion-title>Become premium <ion-icon name="trophy"></ion-icon> </ion-title>
+
+        <ion-title>Become premium
+            <ion-icon name="trophy"></ion-icon>
+        </ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -22,11 +24,18 @@
     </div>
 
     <div class="premium">
-
+        <p>Become premium on radio world; It's:</p>
+        <ul>
+            <li>Listen to good music in advertising</li>
+            <li> Enjoy the music chosen just for you</li>
+            <li> Add music to your favorites</li>
+            <li> Benefit from new future features</li>
+        </ul>
+        <div class="text-center">
+            <ion-button class="subscribeButton" color="success" shape="round" size="small" (click)="closeModalStripe()">
+                <ion-icon name="send"></ion-icon> &nbsp; Subscribe
+            </ion-button>
+        </div>
     </div>
-    <p>Coucou les amis.</p>
-    <ion-button class="logoutButton" color="success" shape="round" size="small" (click)="closeModalStripe()">
-        <ion-icon name="send"></ion-icon> &nbsp;
-        Subscribe
-    </ion-button>
+
 </ion-content>
