@@ -97,7 +97,6 @@ togglePassword(): void{
 
   loginAction(): void{
   if (this.loginForm.value.acceptTerms == false) {
-    console.log(this.loginForm.value.acceptTerms)
     this.toastMessage.presentToast("You must accept the terms", "danger")
   } else {
     this.authservice.login(this.loginForm.value)

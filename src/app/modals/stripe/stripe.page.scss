@@ -1,10 +1,16 @@
 ion-header {
-    text-align: center;
+    ion-toolbar {
+        --background: rgb(20, 35, 75);
+    }
+    ion-title {
+        color: white;
+        margin-top: 5px;
+        font-size: 15px;
+    }
 }
 
 //url("../../../assets/images/diapo11.jpg") no-repeat center center / center;
 ion-content {
-    --background: linear-gradient(180deg, rgba(0, 0, 0, 0.92), rgba(54, 54, 54, 0.5) 98.24%, rgba(28, 28, 28, .1)), url("../../../assets/images/diapo1.jpg") center center / cover no-repeat;
     .diaporama {
         width: 500px;
         overflow: hidden;

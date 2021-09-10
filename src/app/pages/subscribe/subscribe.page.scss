@@ -7,6 +7,11 @@ ion-header {
         margin-top: 5px;
         font-size: 20px;
     }
+    ion-icon {
+        color: white;
+        margin-top: 5px;
+        font-size: 20px;
+    }
 }
 
 ion-content {
@@ -117,14 +122,25 @@ ion-card {
     margin-bottom: 50px;
 }
 
-// .other-links {
-//     margin-left: 2%;
-//     display: flex;
-//     .accept-term {
-//         display: flex;
-//         align-items: center;
-//     }
-// }
+.other-links {
+    margin-top: 5px;
+    margin-left: 7%;
+    display: flex;
+    justify-content: space-between;
+    .accept-term {
+        display: flex;
+        align-items: center;
+        ion-checkbox {
+            margin-top: 15px;
+        }
+        p {
+            margin-left: 10px ip !important;
+            color: red;
+            font-size: 12px;
+        }
+    }
+}
+
 .subscribeButton {
     text-align: center;
     margin-top: 25px;

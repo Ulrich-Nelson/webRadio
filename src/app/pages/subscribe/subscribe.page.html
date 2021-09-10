@@ -1,6 +1,7 @@
 <ion-header class="ion-no-border" mode="ios">
     <ion-toolbar class="ion-padding">
         <ion-title>Subscription</ion-title>
+            <ion-icon name="book" (click)="openModalStripe()"></ion-icon>
     </ion-toolbar>
 </ion-header>
 
@@ -53,10 +54,12 @@
                             <ion-input color="black" type="text" id="nameOnCard" formControlName="nameOnCard" placeholder="MELINA THOSE"></ion-input>
                         </ion-item>
                     </ion-list>
-                    <div class="Terms">
-                        <ion-checkbox color="danger" checked slot="start" id="acceptTerms" formControlName="acceptTerms"></ion-checkbox>
-                        <p (click)="openModalCard()" class="privacy" style="color: red; padding-left: 50px;">Terms of Service and Privacy Policy</p>
+                    <div class="other-links">
+                    <div class="accept-term">
+                        <ion-checkbox id="acceptTerms" formControlName="acceptTerms"></ion-checkbox>
+                        <p>&nbsp; &nbsp;I agree with privacy policy</p>
                     </div>
+                </div>
 
                     <div class="subscribeButton">
                         <ion-button class="MakePayment" type="submit">Make Payment</ion-button>

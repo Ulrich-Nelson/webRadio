@@ -45,7 +45,7 @@ public acceptTerms: boolean = false;
 
   ngOnInit() {
     this.initForm();
-    //this.openModalStripe();
+    // this.openModalStripe();
   }
 
 
@@ -63,15 +63,15 @@ async openModalCard(): Promise<any>{
 
 
 /*----AFFICHER LA PAGE MODALE POUR LES TERMES PRIVEES DE LA CARTE------*/
-// async openModalStripe(): Promise<any>{
-//   const modal = await this.modalController.create({
-//     component:StripePage,
-//     swipeToClose: true,
-//     cssClass:'my-StripeModal-class',
+async openModalStripe(): Promise<any>{
+  const modal = await this.modalController.create({
+    component:StripePage,
+    swipeToClose: true,
+    cssClass:'my-StripeModal-class',
 
-//   });
-//   return await modal.present();
-// }
+  });
+  return await modal.present();
+}
 
 
 
@@ -88,7 +88,10 @@ initForm(){
 }
 
 async subscriptionAction(){
-  console.log(this.addCardForm.value)
+  if (this.addCardForm.value.acceptTerms == false) {
+    this.toastMessage.presentToast("You must accept the privacy terms", "danger")
+  } else {
+    console.log(this.addCardForm.value)
   this.presentSpinner.Spinner();
   this.authservice.subscription(await this.authservice.getToken(), this.addCardForm.value)
   .subscribe(async (data:any) =>{
@@ -98,8 +101,9 @@ async subscriptionAction(){
   },
   (error) =>{
     this.toastMessage.presentToast(error.error.message, "danger")
+  } )
+    
   }
-  )
   
 }
 

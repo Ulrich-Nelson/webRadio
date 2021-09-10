@@ -1,6 +1,9 @@
 <ion-header class="ion-no-border" mode="ios">
     <ion-toolbar class="ion-padding">
-        <ion-title>🎵 favorite</ion-title>
+
+        <ion-title>🎵 favorite
+            <ion-badge color="primary" mode="ios">{{favoriteData.length}}</ion-badge>
+        </ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -12,7 +15,7 @@
                     <img src="{{song.cover}}" alt="song image">
                 </ion-thumbnail>
                 <ion-label>
-                    <h2 color="blue" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">{{song.title}} </h2>
+                    <h4 color="blue" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">{{song.title}} </h4>
                     <p color="blue" (click)=" playSong(song.title, song.artist, song.cover, song.url) ">{{song.artist}}</p>
                 </ion-label>
                 <ion-icon class="deleteFavoris" (click)="confirmdeleteSong(song.idSong)" name="trash-outline"></ion-icon>
@@ -23,6 +26,7 @@
 
 <!--Full Player view-->
 <div class="ion-text-center" id="fullPlayer">
+    <marquee direction="scroll">🎵 The whole <em>radio world </em> team wishes you a good listening 🎵</marquee>
     <!--Minimize Player view-->
     <ion-toolbar>
         <ion-buttons slot="end">
@@ -35,7 +39,7 @@
         </ion-buttons>
     </ion-toolbar>
     <img src="{{currImage}}" alt="song image" id="currImg">
-    <h2>{{currTitle}}</h2>
+    <h4>{{currTitle}}</h4>
     <p>{{currSinger}}</p>
 
     <ion-item lines="none">
@@ -86,9 +90,9 @@
             <img src="{{upNextImg}}" />
         </ion-thumbnail>
         <ion-label>
-            <h2>
+            <h4>
                 {{upNextTitle}}
-            </h2>
+            </h4>
             <p>
                 {{upNextSubtitle}}
             </p>
@@ -103,7 +107,7 @@
             <img src="{{currImage}}" alt="song image">
         </ion-thumbnail>
         <ion-label (click)="maximize()">
-            <h2>{{currTitle}}</h2>
+            <h4>{{currTitle}}</h4>
             <p>{{currSinger}}</p>
         </ion-label>
 
