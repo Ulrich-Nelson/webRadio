@@ -260,12 +260,14 @@ ion-content {
 //     margin-left: 35px;
 // }
 // /*****************TRAITEMENT POUR LE BOUTON DE CONFIRMATION DE DECONNEXION************************ */
-// .alert-wrapper {
-//     background: #e5e5e5;
-// }
-// .my-custom-class .alert-wrapper {
-//     background: #e5e5e5;
-// }
+.alert-wrapper {
+    background: #e5e5e5;
+}
+
+.my-custom-class {
+    background: yellow;
+}
+
 // /*  ****************  TRAITEMENT POUR LE BOUTON POUR AFFICHER LES FACTURES, DECONNEXION .....************************ */
 // ion-fab {
 //     margin-top: 15px;

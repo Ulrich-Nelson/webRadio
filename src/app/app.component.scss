@@ -4,13 +4,24 @@ ion-title {
 
 .menu-items {
     margin: 0px;
+    margin-top: 20px;
     ion-icon {
         margin-right: 20px;
         color: #86979f;
+        font-size: 25px;
+    }
+    .logout ion-icon {
+        color: red;
+    }
+    .account ion-icon {
+        color: red;
+    }
+    .unsub ion-icon {
+        color: red;
     }
     ion-item {
         padding-left: 20px;
-        margin-bottom: 10px;
+        margin-top: 10px;
         font-size: 15px;
         font-weight: bold;
     }

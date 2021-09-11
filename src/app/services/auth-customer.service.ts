@@ -83,7 +83,7 @@ export class AuthCustomerService {
        }
 
 
-       unSubscription(token: string, cardData: any): Observable<object> {
+       unSubscription(token: string): Observable<object> {
         const headers = {'Authorization':  token };
         return this.httpClient.delete(`${this.APIWebradio}/customer/unSubscription`,  {headers});
        }
