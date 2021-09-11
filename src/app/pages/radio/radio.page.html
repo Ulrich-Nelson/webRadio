@@ -5,20 +5,84 @@
     </div>
     <div id="padding">
         <div id="container">
-            <h2>Sia - Never give up </h2>
+            <div class="ion-text-center" id="fullPlayer">
+                <img src="{{currImage}}" alt="song image" id="currImg">
+                <h4>{{currTitle}}</h4>
+                <p>{{currSinger}}</p>
+
+                <ion-item lines="none">
+                    <ion-range #range (touchmove)="touchMove()" (touchend)="touchEnd()" (touchstart)="touchStart()" max="{{maxRangeValue}}" [(ngModel)]="currRangeTime">
+                        <ion-label slot="start">
+                            <ion-text>
+                                <b>
+                                    {{currSecsText}}
+                                </b>
+                            </ion-text>
+                        </ion-label>
+                        <ion-label slot="end">
+                            <ion-text>
+                                <b>
+                                    {{durationText}}
+                                </b>
+                            </ion-text>
+                        </ion-label>
+                    </ion-range>
+                </ion-item>
+
+                <!-- Play Previous Button -->
+                <ion-button fill="clear" mode="md" (click)="playPrev()">
+                    <ion-icon name="play-skip-back-outline" style="font-size: 30px;"></ion-icon>
+                </ion-button>
+
+                <!-- Play Button -->
+                <ion-button fill="clear" mode="md" *ngIf="!isPlaying" (click)="play()">
+                    <ion-icon name="play" style="font-size: 40px;"></ion-icon>
+                </ion-button>
+
+                <!-- Pause Button -->
+                <ion-button fill="clear" mode="md" *ngIf="isPlaying" (click)="pause()">
+                    <ion-icon name="pause" style="font-size: 40px;  color: green;"></ion-icon>
+                </ion-button>
+
+                <!-- Play Next Button -->
+                <ion-button fill="clear" mode="md" (click)="playNext()">
+                    <ion-icon name="play-skip-forward-outline" style="font-size: 30px;"></ion-icon>
+                </ion-button>
+
+                <ion-list-header>
+                    Up Next
+                </ion-list-header>
+                <!-- Up Next Song -->
+                <ion-item>
+                    <ion-thumbnail slot="start">
+                        <img src="{{upNextImg}}" />
+                    </ion-thumbnail>
+                    <ion-label>
+                        <h4>
+                            {{upNextTitle}}
+                        </h4>
+                        <p>
+                            {{upNextSubtitle}}
+                        </p>
+                    </ion-label>
+                </ion-item>
+            </div>
+            <h2 (click)="initRadio()">Sia - Never give up </h2>
         </div>
         <ion-button mode="md" fill="clear">
             <ion-icon slot="icon-only" name="heart"></ion-icon>
         </ion-button>
         <div class="flex_box">
             <!-- Play Button -->
-            <ion-button mode="md" fill="clear" *ngIf="!isPlaying" (click)="play()">
-                <ion-icon slot="icon-only" name="play" style="font-size: 40px;"></ion-icon>
+            <ion-button fill="clear" mode="md" *ngIf="!isPlaying" (click)="play()">
+                <ion-icon name="play" style="font-size: 40px;"></ion-icon>
             </ion-button>
+
             <!-- Pause Button -->
-            <ion-button mode="md" fill="clear" *ngIf="isPlaying" (click)="pause()">
-                <ion-icon slot="icon-only" name="pause" style="font-size: 40px;   color: whitesmoke;"></ion-icon>
+            <ion-button fill="clear" mode="md" *ngIf="isPlaying" (click)="pause()">
+                <ion-icon name="pause" style="font-size: 40px;  color: green;"></ion-icon>
             </ion-button>
+
         </div>
     </div>
 

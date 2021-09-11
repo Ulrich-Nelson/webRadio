@@ -69,7 +69,8 @@ async getSongRadioAction(): Promise<void>{
 
 initRadio(){
   for (let song of this.songsData) {
-    this.playSong(song.title, song.artist, song.cover, song.url)
+    console.log(song._id)
+    // this.playSong(song.title, song.artist, song.cover, song.url)
     
   }
 }
@@ -80,7 +81,7 @@ playSong(title: string, singer: string, img: string, song: any){
     this.currSong.pause();
   }
   //open full player view
-  document.getElementById("fullPlayer").style.bottom = "0px";
+  //document.getElementById("fullPlayer").style.bottom = "0px";
   //set current song details
   this.currTitle = title;
   this.currSinger = singer;

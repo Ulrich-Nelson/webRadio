@@ -78,7 +78,7 @@ public upNextTitle:string;
 public upNextSubtitle:string;
 
 //Récupération des songs en favorites
-public favoriteData: any
+public favoriteData: any[] = [];
   idSong: any;
 
 
