@@ -1,13 +1,15 @@
 import { Component,  OnDestroy,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, Platform } from '@ionic/angular';
 import { AuthConstants } from 'src/app/config/auth-constants';
 import { Customer } from 'src/app/interfaces.ts/Custumer';
 import { BillsPage } from 'src/app/modals/bills/bills.page';
 import { AuthCustomerService } from 'src/app/services/auth-customer.service';
 import { StorageCutomerService } from 'src/app/services/storage-cutomer.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
+import { MenuController } from '@ionic/angular';
+import { SplashScreen } from '@capacitor/core';
 
 @Component({
   selector: 'app-profil',
@@ -45,7 +47,7 @@ public favoriteData: any[] = [];
     private storageServive: StorageCutomerService,
     private formBuilder: FormBuilder,
     private toastMessage: ToastMessageService,
-    private modalController: ModalController) { }
+    private modalController: ModalController,) { }
 
 
   ngOnInit() {
@@ -56,6 +58,8 @@ public favoriteData: any[] = [];
   }
 
 
+
+  /****************INITIALISER LA BARRE DE MENU************************ */
 
   /*----RECUPERATION DES SONGS MIS EN FAVORITES------*/
   async getFavoriteSongAction(): Promise<void>{
@@ -146,8 +150,24 @@ initForm(): void{
 }
 
 
+// openFirst() {
+//   this.menu.enable(true, 'main-menu');
+//   this.menu.open('main-menu');
+// }
+
+
+
+// ionWillClose(event: any){
+//   this.menu.isOpen().then(() => {
+//     console.log(event)
+
+//   })
+// }
+
+
 /*--------------DECONNEXION DU CUSTOMER----------*/
   async confirmLogout() {
+    // this.ionWillClose('close');
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Are you sure you want to logout ?',
@@ -158,7 +178,7 @@ initForm(): void{
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            this.toastMessage.presentToast("The disconnection has been canceled", "light")
+            this.toastMessage.presentToast("The disconnection has been canceled", "warning")
           }
         }, {
           text: 'Yes',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, MenuController, ModalController, Platform } from '@ionic/angular';
 import { AuthConstants } from './config/auth-constants';
 import { AuthCustomerService } from './services/auth-customer.service';
 import { StorageCutomerService } from './services/storage-cutomer.service';
@@ -20,13 +20,21 @@ export class AppComponent {
     private storageServive: StorageCutomerService,
     private formBuilder: FormBuilder,
     private toastMessage: ToastMessageService,
-    private modalController: ModalController) {}
+    private modalController: ModalController,
+    private menu: MenuController, private plateform: Platform) {}
 
 
 
 
   /*--------------DECONNEXION DU CUSTOMER----------*/
+  ionDidClose(){
+    // this.menu.enable(false, 'main-menu');
+    this.menu.close('main-menu')
+  
+  }
+
   async confirmLogout() {
+    this.ionDidClose()
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Are you sure you want to logout ?',
@@ -37,7 +45,7 @@ export class AppComponent {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            this.toastMessage.presentToast("The disconnection has been canceled", "light")
+            this.toastMessage.presentToast("The disconnection has been canceled", "warning")
           }
         }, {
           text: 'Yes',

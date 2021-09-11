@@ -61,6 +61,12 @@ export class AuthCustomerService {
           "password": customer.password
         });
         }
+
+        //Supprimer le compte d'un utilisateur
+        deleteAccount(token: string): Observable<object> {
+          const headers = {'Authorization':  token };
+          return this.httpClient.delete(`${this.APIWebradio}/customer/deleteAccount`, { headers });
+        }
       
       //Connexion des customers avec le compte Facebook
       facebookLogin(accessToken: string, userID: string): Observable<object> {
@@ -75,6 +81,13 @@ export class AuthCustomerService {
         const headers = {'Authorization':  token };
         return this.httpClient.post(`${this.APIWebradio}/customer/subscription`,cardData,  {headers});
        }
+
+
+       unSubscription(token: string, cardData: any): Observable<object> {
+        const headers = {'Authorization':  token };
+        return this.httpClient.delete(`${this.APIWebradio}/customer/unSubscription`,  {headers});
+       }
+        
         
       //Récupérer les informations de l'utilisateur connecté
       getProfil(token: string): Observable<object> {
