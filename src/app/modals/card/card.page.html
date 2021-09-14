@@ -1,16 +1,19 @@
-<ion-header>
-    <ion-toolbar class="header">
-        <ion-title>💁 Information Bancaire</ion-title>
-        <ion-buttons slot="end">
-            <ion-button (click)="closeModalCard()">
-                <ion-icon slot="icon-only" style="color: red" name="close"></ion-icon>
+<ion-header class="ion-no-border" mode="ios">
+    <ion-toolbar>
+        <ion-title style="color: #fff">Privacy Policy &nbsp; 💳</ion-title>
+        <div class="closeModal">
+            <ion-button class="backbutton" fill="clear" (click)="closeModalCard()">
+                <ion-icon  name="arrow-round-back"></ion-icon>
+                <ion-icon  style="color: white"  name="arrow-back"></ion-icon>
             </ion-button>
-        </ion-buttons>
+        </div>
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="content">
-    <p class="title">Politique de Confidentialité :🔒 </p>
+
+<ion-content>
+    <div class="container-private ion-padding">
+        <p class="title">Politique de Confidentialité :🔒 </p>
     <p class="title2">COMMENT WEBRADIO COLLECTE VOS INFORMATIONS :👨 </p>
     <div class="text2">
         <p class="para1">
@@ -78,6 +81,7 @@
                 Si vous avez un compte et que vous souhaitez supprimer vos informations vous pouvez le faire automatiquement depuis votre compte en cliquant sur le bouton supprimé.
             </span> Si vous avez posté un commentaire sans être connecté vous pouvez me contacter pour demander la suppression de ce dernier.
         </p>
+    </div>
     </div>
 
 </ion-content>

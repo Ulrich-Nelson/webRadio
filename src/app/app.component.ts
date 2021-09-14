@@ -58,7 +58,7 @@ export class AppComponent {
               this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
               this.storageServive.clear();   
               this.toastMessage.presentToast("You have been disconnected", "success")
-              this.router.navigateByUrl('login')
+              this.router.navigateByUrl('home')
             },
             (error) => {
               this.toastMessage.presentToast(error.error.message, "danger")

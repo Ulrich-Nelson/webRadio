@@ -45,7 +45,7 @@ public acceptTerms: boolean = false;
 
   ngOnInit() {
     this.initForm();
-    // this.openModalStripe();
+    this.openModalStripe();
   }
 
 
@@ -60,18 +60,6 @@ async openModalCard(): Promise<any>{
   return await modal.present();
 }
 
-
-
-/*----AFFICHER LA PAGE MODALE POUR LES TERMES PRIVEES DE LA CARTE------*/
-async openModalStripe(): Promise<any>{
-  const modal = await this.modalController.create({
-    component:StripePage,
-    swipeToClose: true,
-    cssClass:'my-StripeModal-class',
-
-  });
-  return await modal.present();
-}
 
 
 
@@ -147,6 +135,20 @@ async confirmLogout() {
   await alert.present();
 }
 
+
+
+
+
+/*----AFFICHER LA PAGE MODALE POUR LES TERMES PRIVEES DE LA CARTE------*/
+async openModalStripe(): Promise<any>{
+  const modal = await this.modalController.create({
+    component:StripePage,
+    swipeToClose: true,
+    cssClass:'my-StripeModal-class',
+
+  });
+  return await modal.present();
+}
 
 
 
