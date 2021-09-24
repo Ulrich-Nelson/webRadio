@@ -23,11 +23,11 @@
             <ion-segment-button value="Bills">
                 <ion-label>Bills</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="status">
-                <ion-label>Status</ion-label>
+            <ion-segment-button value="Coming soon">
+                <ion-label>Coming soon</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="calls">
-                <ion-label>Calls</ion-label>
+            <ion-segment-button value="Contact Us">
+                <ion-label>Contact Us</ion-label>
             </ion-segment-button>
         </ion-segment>
     </div>
@@ -61,10 +61,10 @@
         </div>
     </div>
 
-    <div class="chat-list" *ngIf="activeTab === 'status'">
+    <div class="chat-list" *ngIf="activeTab === 'Coming soon'">
         <div class="recent-chats">
             <div class="sub-text">
-                <p>listen to good nusics</p>
+                <p class="title">the future features that will be brought.</p>
             </div>
             <div class="diaporama">
                 <div class="diapo">
@@ -81,10 +81,38 @@
                 </div>
             </div>
         </div>
+        <div class="avantage">
+            <p>Very soon you will have:</p>
+            <ul>
+                <li>A messaging system between users of the application.</li>
+                <li> The ability to share your favorite music with other users</li>
+            </ul>
+        </div>
     </div>
-    <div class="chat-list" *ngIf="activeTab === 'calls'">
+    <div class="chat-list" *ngIf="activeTab === 'Contact Us'">
         <div class="recent-chats ion-padding">
-            <h1>several features are being developed to accompany you in moments of relaxation</h1>
+            <div class="container-sendMail">
+                <div class="information">
+                    Being first, you have the possibility to leave us a message or proposals to bring you more content.
+                </div>
+                <form (ngSubmit)="onSubmit(monFormulaire)" #monFormulaire="ngForm">
+                    <div class="formfield form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" class="form-control" ngModel>
+                        <!-- <label for="email" placeholder="Email">Email</label> -->
+                    </div>
+                    <div class="formfield form-group">
+                        <input type="text" id="object" name="object" placeholder="Message subject" class="form-control" ngModel>
+                        <!-- <label placeholder="Message subject">Object</label> -->
+                    </div>
+                    <div class="formfield form-group">
+                        <input type="textarea" id="message" name="message" placeholder="Message ..." class="form-control" ngModel>
+                        <!-- <label for="message" placeholder="Message ...">Message</label> -->
+                    </div>
+                    <div class="login-button">
+                        <ion-button class="login" type="submit">Send message</ion-button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </ion-content>

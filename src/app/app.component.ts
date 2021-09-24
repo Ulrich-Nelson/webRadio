@@ -58,7 +58,7 @@ export class AppComponent {
               this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
               this.storageServive.clear();   
               this.toastMessage.presentToast("You have been disconnected", "success")
-              this.router.navigateByUrl('home')
+              this.router.navigateByUrl('home-page')
             },
             (error) => {
               this.toastMessage.presentToast(error.error.message, "danger")
@@ -102,7 +102,7 @@ async deleteAccount() {
             this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
             this.storageServive.clear();   
             this.toastMessage.presentToast("Your account has been deleted. Our team works for the processing of your data", "success")
-            this.router.navigateByUrl('login')
+            this.router.navigateByUrl('home-page')
           },
           (error) => {
             this.toastMessage.presentToast(error.error.message, "danger")
@@ -117,8 +117,8 @@ async deleteAccount() {
 }
 
 
-  /*--------------DECONNEXION DU CUSTOMER----------*/
-  async unSubscription() {
+  /*--------------SUPPRIMER LE COMPTE DU CUSTOMER DE STRIPE (DESABONNER)----------*/
+  async unSubscriptionAction() {
     this.ionDidClose()
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -128,7 +128,7 @@ async deleteAccount() {
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'cancel',
+          cssClass: 'secondary',
           handler: () => {
             this.toastMessage.presentToast("Good resolution", "warning")
           }
@@ -136,15 +136,10 @@ async deleteAccount() {
           text: 'Yes',
           cssClass: 'danger',
           handler: async () => {
-            this.authservice.unSubscription(await this.authservice.getToken())
+            this.authservice.unSubscription( await this.authservice.getToken())
             .pipe()
-            .subscribe(() =>{
-              // this.storageServive.removeStorageItem(AuthConstants.TOKEN)
-              // this.storageServive.removeStorageItem(AuthConstants.AUTH)
-              // this.storageServive.removeStorageItem(AuthConstants.SUBSCRIPTION)
-              // this.storageServive.clear();   
+            .subscribe(() =>{ 
               this.toastMessage.presentToast("Your account has been deleted. Our team works for the processing of your data", "success")
-              // this.router.navigateByUrl('login')
             },
             (error) => {
               this.toastMessage.presentToast(error.error.message, "danger")
@@ -154,10 +149,9 @@ async deleteAccount() {
         }
       ]
     });
-  
+
     await alert.present();
   }
-  
     
 
   

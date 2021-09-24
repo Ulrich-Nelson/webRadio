@@ -2,7 +2,7 @@
     <div class="header ion-padding">
         <div class="info">
             <ion-buttons slot="start">
-               <ion-icon routerLink="/subscribe" name="menu-outline"></ion-icon>
+                <!--<ion-icon routerLink="/subscribe" name="menu-outline"></ion-icon>-->
                 <ion-menu-button style="color: #ffff" menu="main-menu"></ion-menu-button>
             </ion-buttons>
             <ion-avatar>
@@ -28,19 +28,19 @@
                     <div class="update-Profil">
 
                         <div class="formfield">
-                            <input type="text" required [(ngModel)]="firstname" id="firstname" formControlName="firstname">
+                            <input type="text" [(ngModel)]="firstname" id="firstname" formControlName="firstname">
                             <label for="firstname" placeholder="First name">First name</label>
                         </div>
                         <div class="formfield">
-                            <input type="text" required [(ngModel)]="lastname" id="lastname" formControlName="lastname">
+                            <input type="text" [(ngModel)]="lastname" id="lastname" formControlName="lastname">
                             <label for="lastname" placeholder="Last name">Last name</label>
                         </div>
                         <div class="formfield">
-                            <input type="email" required [(ngModel)]="email" id="email" formControlName="email">
+                            <input type="email" [(ngModel)]="email" id="email" formControlName="email">
                             <label for="email" placeholder="email">Email</label>
                         </div>
                         <div class="formfield">
-                            <input type="date" required [(ngModel)]="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth">
+                            <input type="date" [(ngModel)]="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth">
                             <label for="dateOfBirth" placeholder="Date of birth">Date of birth</label>
                         </div>
                     </div>

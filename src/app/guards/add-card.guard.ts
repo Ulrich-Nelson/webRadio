@@ -22,7 +22,7 @@ export class AddCardGuard implements CanActivate {
           resolve(true);
           console.log(res)
         } else {
-          this.router.navigateByUrl('login')
+          this.router.navigateByUrl('home')
           resolve(false);
           
         }

@@ -33,8 +33,8 @@ public startPosition: any;
  
 
  //Variable pour la connexion classique des customers
- public email: ""
- public password: ""
+ public email: string =  ""
+ public password: string = ""
  public loginForm: FormGroup;
  public acceptTerms: boolean = false;
  public showPassword: boolean = false;

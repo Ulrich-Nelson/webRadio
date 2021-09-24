@@ -196,7 +196,7 @@ initForm(): void{
               this.email = "";
               this.dateOfBirth = "";
               this.avatar = "";
-              this.router.navigateByUrl('home')
+              this.router.navigateByUrl('home-page')
             },
             (error) => {
               this.toastMessage.presentToast(error.error.message, "danger")
