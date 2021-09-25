@@ -14,8 +14,8 @@ import { StorageCutomerService } from './storage-cutomer.service';
 // Authentification des customers à l'application
 export class AuthCustomerService {
 
-  public APIWebradio2: string =  "https://api-radio-world.herokuapp.com"
-  public APIWebradio: string =  "https://api-cust-mobile.herokuapp.com"
+  public APIWebradio: string =  "https://api-radio-world.herokuapp.com"
+  public APIWebradio2: string =  "https://api-cust-mobile.herokuapp.com"
 
   //public APIWebradio: string = "http://localhost:3000"
   //PORT PC: http://192.168.43.12:3000  tapinfoulrichnelson@yahoo.com Coucou@10!
@@ -142,7 +142,7 @@ export class AuthCustomerService {
 
       //Envoie d'email pour la rénitialisation du mot de passe des customers
       forgotPassword(customer: Customer): Observable<object> {
-        return this.httpClient.post(`${this.APIWebradio2}/customer/forgot`, {
+        return this.httpClient.post(`${this.APIWebradio}/customer/forgot`, {
           "email": customer.email,
         });
         }
