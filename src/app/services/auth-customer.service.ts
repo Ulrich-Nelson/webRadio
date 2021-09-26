@@ -14,13 +14,13 @@ import { StorageCutomerService } from './storage-cutomer.service';
 // Authentification des customers à l'application
 export class AuthCustomerService {
 
-  public APIWebradio: string =  "https://api-radio-world.herokuapp.com"
-  public APIWebradio2: string =  "https://api-cust-mobile.herokuapp.com"
+  public APIWebradio2: string =  "https://api-radio-world.herokuapp.com"
+  public APIWebradio: string =  "https://api-cust-mobile.herokuapp.com"
 
   //public APIWebradio: string = "http://localhost:3000"
   //PORT PC: http://192.168.43.12:3000  tapinfoulrichnelson@yahoo.com Coucou@10!
   //public APIWebradio: string = "http://10.10.10.52:3000"
- 
+  //const headers = { 'Authorization': 'Bearer ' + token };
   
   userData$ = new BehaviorSubject<any>([]);
   
@@ -64,7 +64,7 @@ export class AuthCustomerService {
 
         //Supprimer le compte d'un utilisateur
         deleteAccount(token: string): Observable<object> {
-          const headers = { 'Authorization': 'Bearer ' + token };
+          const headers = {'Authorization':  token };
           return this.httpClient.delete(`${this.APIWebradio}/customer/deleteAccount`, { headers });
         }
       
@@ -78,63 +78,64 @@ export class AuthCustomerService {
         
       //Souscription à l'abonnement mensuelle.
       subscription(token: string, cardData: any): Observable<object> {
-        const headers = { 'Authorization': 'Bearer ' + token };
+        const headers = {'Authorization':  token };
         return this.httpClient.post(`${this.APIWebradio}/customer/subscription`,cardData,  { headers });
        }
 
 
        unSubscription(token: string): Observable<object> {
-        const headers = { 'Authorization': 'Bearer ' + token };
+        const headers = {'Authorization':  token };
         return this.httpClient.delete(`${this.APIWebradio}/customer/unSubscription`,  { headers });
        }
         
         
       //Récupérer les informations de l'utilisateur connecté
       getProfil(token: string): Observable<object> {
-        const headers = { 'Authorization': 'Bearer ' + token };
+        const headers = {'Authorization':  token };
         return this.httpClient.get(`${this.APIWebradio}/customer/getProfil`, { headers });
       }
 
       //Mise à jour du profil des customers
       editProfil(token: string, customer: Customer): Observable<any>  {
-        const headers = { 'Authorization': 'Bearer ' + token };
+        const headers = {'Authorization':  token };
         return this.httpClient.put(`${this.APIWebradio}/customer/edit_profil`, customer, { headers });
         }
 
 
         sendMailToDeveloper(token: string, infoMessage: any): Observable<object>  {
-          const headers = { 'Authorization': 'Bearer ' + token };
+          const headers = {'Authorization':  token };
           return this.httpClient.post(`${this.APIWebradio}/customer/sendMail`, {infoMessage}, { headers });
           }
 
         //Récupération des factures du customer
         getBills(token: string): Observable<object> {
-          const headers = { 'Authorization': 'Bearer ' + token };
+          const headers = {'Authorization':  token };
           return this.httpClient.get(`${this.APIWebradio}/customer/bills`, {headers});  
           }
         
         //Ecouter les songs de la radio
         getSongRadio(token: string){
-          const headers = { 'Authorization': 'Bearer ' + token };
+          const headers = {'Authorization':  token };
           return this.httpClient.get(`${this.APIWebradio}/customer/getSongs`, {headers});  
         }
 
         //Ajouter un song en favorite  ${userID}
         addOneFavoriteSong(token: string, idSong: string){
-          const headers = { 'Authorization': 'Bearer ' + token };
+          const headers = {'Authorization':  token };
           return this.httpClient.delete(`${this.APIWebradio}/customer/addfavoris/${idSong}`, {headers});  
         }
 
 
         //Supprimer un song en favorite  ${userID}
         deleteOneFavoriteSong(token: string, idSong: string){
-          const headers = { 'Authorization': 'Bearer ' + token };
+          const headers = {'Authorization':  token };
           return this.httpClient.delete(`${this.APIWebradio}/customer/deletefavoris/${idSong}`, {headers});  
         }
 
          //Récupérer les songs mis en favorite lors de l'écoute de l radio
          getFavoriteSong(token: string){
-          const headers = { 'Authorization': 'Bearer ' + token };
+          const headers = {'Authorization':  token };
+
           return this.httpClient.get(`${this.APIWebradio}/customer/getFavorite`, {headers});  
         }
 
@@ -142,7 +143,7 @@ export class AuthCustomerService {
 
       //Envoie d'email pour la rénitialisation du mot de passe des customers
       forgotPassword(customer: Customer): Observable<object> {
-        return this.httpClient.post(`${this.APIWebradio}/customer/forgot`, {
+        return this.httpClient.post(`${this.APIWebradio2}/customer/forgot`, {
           "email": customer.email,
         });
         }
@@ -150,7 +151,7 @@ export class AuthCustomerService {
         
       //Déconnexion des customers
       logout(token: string): Observable<object> {
-        const headers = { 'Authorization': 'Bearer ' + token };
+          const headers = {'Authorization':  token };
           return this.httpClient.delete(`${this.APIWebradio}/customer/logout`, { headers });
         }
 

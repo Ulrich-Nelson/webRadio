@@ -1,3 +1,26 @@
+<ion-content>
+
+    <div class="img_box">
+        <img src="../../../assets/images/diopo10.jpg">
+    </div>
+
+    <div id="container">
+        <h2>Chapitre 3</h2>
+        <ion-range min="0" max="100" value="40" mode="md" color="warning"></ion-range>
+        <p>Temps restant: 13m 12s</p>
+    </div>
+
+    <div class="flex_box">
+        <ion-button shape="round" color="light" *ngIf="!isPlaying" (click)="play()">
+            <ion-icon slot="icon-only" name="play"></ion-icon>
+        </ion-button>
+        <ion-button shape="round" color="light" *ngIf="isPlaying" (click)="pause()">
+            <ion-icon slot="icon-only" name="pause"></ion-icon>
+        </ion-button>
+    </div>
+</ion-content>
+
+
 <!--<ion-content>
     <div class="img_box">
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas minus vel iste optio. Commodi ex ab placeat dicta a totam, aliquid modi nisi numquam fugiat veniam, nam in non alias. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
