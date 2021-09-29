@@ -108,7 +108,7 @@ export class AuthCustomerService {
           return this.httpClient.post(`${this.APIWebradio}/customer/sendMail`, {
             "email": Data.email,
             "object": Data.object,
-            "message": Data.message,}, { headers });
+            "message": Data.message}, { headers });
           }
 
         //Récupération des factures du customer
