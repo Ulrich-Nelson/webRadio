@@ -1,22 +1,41 @@
 <ion-content>
 
     <div class="img_box">
-        <img src="../../../assets/images/diopo10.jpg">
+        <img src="../../../assets/images/logomusicApp.png">
     </div>
 
     <div id="container">
-        <h2>Chapitre 3</h2>
-        <ion-range min="0" max="100" value="40" mode="md" color="warning"></ion-range>
-        <p>Temps restant: 13m 12s</p>
+        <h2>{{songsData[1]?.title}}</h2>
+        <ion-item lines="none">
+            <ion-range #range2 [(ngModel)]="currRangeTime" color="warning">
+                <ion-label slot="start">
+                    <ion-text>
+                        <b>
+                            {{currSecsText}}
+                        </b>
+                    </ion-text>
+                </ion-label>
+                <ion-label slot="end">
+                    <ion-text>
+                        <b>
+                            {{durationText}}
+                        </b>
+                    </ion-text>
+                </ion-label>
+            </ion-range>
+        </ion-item>
+        <p>{{songsData[1]?.artist}}</p>
     </div>
-
+    <ion-button shape="round" id="addFavorite" color="none">
+        <ion-icon class="head" name="heart" color="warning"></ion-icon>
+    </ion-button>
     <div class="flex_box">
-        <ion-button shape="round" color="light" *ngIf="!isPlaying" (click)="play()">
-            <ion-icon slot="icon-only" name="play"></ion-icon>
-        </ion-button>
-        <ion-button shape="round" color="light" *ngIf="isPlaying" (click)="pause()">
+        <ion-button id="playbutton" shape="round" color="light" (click)="playSong(songsData[1]?.title, songsData[1].artist, songsData[1].cover, songsData[1].url) ">
             <ion-icon slot="icon-only" name="pause"></ion-icon>
         </ion-button>
+        <!--<ion-button shape="round" color="light" *ngIf="isPlaying" (click)="pause()">
+            <ion-icon slot="icon-only" name="pause"></ion-icon>
+        </ion-button> -->
     </div>
 </ion-content>
 

@@ -11,7 +11,7 @@ import { ToastMessageService } from 'src/app/services/toast-message.service';
 })
 
 export class RadioPage implements OnInit {
-  @ViewChild("range", {static: false}) range: IonRange;
+  @ViewChild("range", {static: false}) range2: IonRange;
 
 //détails sur le song courant
 public currTitle: string;
@@ -46,7 +46,7 @@ public playIcon: string = 'pause';
   ) { }
 
   ngOnInit() {
-    // this.getSongRadioAction();
+    this.getSongRadioAction();
     // this.initRadio();
   }
 
@@ -58,6 +58,7 @@ pause() {
 
 play() {
   this.isPlaying = true;
+  this.playSong(this.songsData[0].title, this.songsData[0].artist, this.songsData[0].cover, this.songsData[0].url)
 }
 
 
