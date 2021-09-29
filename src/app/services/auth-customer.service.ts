@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthConstants } from '../config/auth-constants';
 import { Customer } from '../interfaces.ts/Custumer';
+import { SEndMail } from '../interfaces.ts/SendMail';
 import { HttpCustomerService } from './http-customer.service';
 import { StorageCutomerService } from './storage-cutomer.service';
 
@@ -102,9 +103,12 @@ export class AuthCustomerService {
         }
 
 
-        sendMailToDeveloper(token: string, infoMessage: any): Observable<object>  {
+        sendMailToDeveloper(token: string, infoMessage: SEndMail): Observable<object>  {
           const headers = { 'Authorization': 'Bearer ' + token };
-          return this.httpClient.post(`${this.APIWebradio}/customer/sendMail`, {infoMessage}, { headers });
+          return this.httpClient.post(`${this.APIWebradio}/customer/sendMail`, {
+            "email": infoMessage.email,
+            "object": infoMessage.object,
+            "message": infoMessage.message,}, { headers });
           }
 
         //Récupération des factures du customer
