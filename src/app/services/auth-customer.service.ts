@@ -103,12 +103,12 @@ export class AuthCustomerService {
         }
 
 
-        sendMailToDeveloper(token: string, infoMessage: SEndMail): Observable<object>  {
+        sendMailToDeveloper(token: string, Data: SEndMail): Observable<object>  {
           const headers = { 'Authorization': 'Bearer ' + token };
           return this.httpClient.post(`${this.APIWebradio}/customer/sendMail`, {
-            "email": infoMessage.email,
-            "object": infoMessage.object,
-            "message": infoMessage.message,}, { headers });
+            "email": Data.email,
+            "object": Data.object,
+            "message": Data.message,}, { headers });
           }
 
         //Récupération des factures du customer
