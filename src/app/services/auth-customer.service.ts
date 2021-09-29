@@ -17,7 +17,6 @@ export class AuthCustomerService {
 
   public APIWebradio2: string =  "https://api-radio-world.herokuapp.com"
   public APIWebradio: string =  "https://api-cust-mobile.herokuapp.com"
-
   //public APIWebradio: string = "http://localhost:3000"
   //PORT PC: http://192.168.43.12:3000  tapinfoulrichnelson@yahoo.com Coucou@10!
   //public APIWebradio: string = "http://10.10.10.52:3000"
@@ -46,7 +45,7 @@ export class AuthCustomerService {
     
       //Inscription des customers
       register(customer: Customer): Observable<object> {
-      return this.httpClient.post(`${this.APIWebradio}/customer/register`, {
+      return this.httpClient.post(`${this.APIWebradio2}/customer/register`, {
         "firstname": customer.firstname ,
         "lastname": customer.lastname ,
         "email": customer.email,
@@ -57,7 +56,7 @@ export class AuthCustomerService {
 
       // Connexion classique des customers
       login(customer: Customer): Observable<object> {
-        return this.httpClient.post(`${this.APIWebradio}/customer/login`, {
+        return this.httpClient.post(`${this.APIWebradio2}/customer/login`, {
           "email": customer.email,
           "password": customer.password
         });
@@ -66,12 +65,12 @@ export class AuthCustomerService {
         //Supprimer le compte d'un utilisateur
         deleteAccount(token: string): Observable<object> {
           const headers = { 'Authorization': 'Bearer ' + token };
-          return this.httpClient.delete(`${this.APIWebradio}/customer/deleteAccount`, { headers });
+          return this.httpClient.delete(`${this.APIWebradio2}/customer/deleteAccount`, { headers });
         }
       
       //Connexion des customers avec le compte Facebook
       facebookLogin(accessToken: string, userID: string): Observable<object> {
-          return this.httpClient.post(`${this.APIWebradio}/customer/facebook_login`, {
+          return this.httpClient.post(`${this.APIWebradio2}/customer/facebook_login`, {
             "accessToken": accessToken,
             "userID": userID
           });
@@ -80,32 +79,32 @@ export class AuthCustomerService {
       //Souscription à l'abonnement mensuelle.
       subscription(token: string, cardData: any): Observable<object> {
         const headers = { 'Authorization': 'Bearer ' + token };
-        return this.httpClient.post(`${this.APIWebradio}/customer/subscription`,cardData,  { headers });
+        return this.httpClient.post(`${this.APIWebradio2}/customer/subscription`,cardData,  { headers });
        }
 
 
        unSubscription(token: string): Observable<object> {
         const headers = { 'Authorization': 'Bearer ' + token };
-        return this.httpClient.delete(`${this.APIWebradio}/customer/unSubscription`,  { headers });
+        return this.httpClient.delete(`${this.APIWebradio2}/customer/unSubscription`,  { headers });
        }
         
         
       //Récupérer les informations de l'utilisateur connecté
       getProfil(token: string): Observable<object> {
         const headers = { 'Authorization': 'Bearer ' + token };
-        return this.httpClient.get(`${this.APIWebradio}/customer/getProfil`, { headers });
+        return this.httpClient.get(`${this.APIWebradio2}/customer/getProfil`, { headers });
       }
 
       //Mise à jour du profil des customers
       editProfil(token: string, customer: Customer): Observable<any>  {
         const headers = { 'Authorization': 'Bearer ' + token };
-        return this.httpClient.put(`${this.APIWebradio}/customer/edit_profil`, customer, { headers });
+        return this.httpClient.put(`${this.APIWebradio2}/customer/edit_profil`, customer, { headers });
         }
 
 
         sendMailToDeveloper(token: string, Data: SEndMail): Observable<object>  {
           const headers = { 'Authorization': 'Bearer ' + token };
-          return this.httpClient.post(`${this.APIWebradio}/customer/sendMail`, {
+          return this.httpClient.post(`${this.APIWebradio2}/customer/sendMail`, {
             "email": Data.email,
             "object": Data.object,
             "message": Data.message}, { headers });
@@ -120,26 +119,26 @@ export class AuthCustomerService {
         //Ecouter les songs de la radio
         getSongRadio(token: string){
           const headers = { 'Authorization': 'Bearer ' + token };
-          return this.httpClient.get(`${this.APIWebradio}/customer/getSongs`, {headers});  
+          return this.httpClient.get(`${this.APIWebradio2}/customer/getSongs`, {headers});  
         }
 
         //Ajouter un song en favorite  ${userID}
         addOneFavoriteSong(token: string, idSong: string){
           const headers = { 'Authorization': 'Bearer ' + token };
-          return this.httpClient.delete(`${this.APIWebradio}/customer/addfavoris/${idSong}`, {headers});  
+          return this.httpClient.delete(`${this.APIWebradio2}/customer/addfavoris/${idSong}`, {headers});  
         }
 
 
         //Supprimer un song en favorite  ${userID}
         deleteOneFavoriteSong(token: string, idSong: string){
           const headers = { 'Authorization': 'Bearer ' + token };
-          return this.httpClient.delete(`${this.APIWebradio}/customer/deletefavoris/${idSong}`, {headers});  
+          return this.httpClient.delete(`${this.APIWebradio2}/customer/deletefavoris/${idSong}`, {headers});  
         }
 
          //Récupérer les songs mis en favorite lors de l'écoute de l radio
          getFavoriteSong(token: string){
           const headers = { 'Authorization': 'Bearer ' + token };
-          return this.httpClient.get(`${this.APIWebradio}/customer/getFavorite`, {headers});  
+          return this.httpClient.get(`${this.APIWebradio2}/customer/getFavorite`, {headers});  
         }
 
 
@@ -155,7 +154,7 @@ export class AuthCustomerService {
       //Déconnexion des customers
       logout(token: string): Observable<object> {
         const headers = { 'Authorization': 'Bearer ' + token };
-          return this.httpClient.delete(`${this.APIWebradio}/customer/logout`, { headers });
+          return this.httpClient.delete(`${this.APIWebradio2}/customer/logout`, { headers });
         }
 
 
