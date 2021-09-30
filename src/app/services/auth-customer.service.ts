@@ -16,7 +16,9 @@ import { StorageCutomerService } from './storage-cutomer.service';
 export class AuthCustomerService {
 
   public APIWebradio2: string =  "https://api-radio-world.herokuapp.com"
-  public APIWebradio: string =  "https://api-cust-mobile.herokuapp.com"
+  public APIWebradio: string =  "https://api-radio-world.herokuapp.com"
+  // public APIWebradio2: string =  "https://api-radio-world.herokuapp.com"
+  // public APIWebradio: string =  "https://api-cust-mobile.herokuapp.com"
   //public APIWebradio: string = "http://localhost:3000"
   //PORT PC: http://192.168.43.12:3000  tapinfoulrichnelson@yahoo.com Coucou@10!
   //public APIWebradio: string = "http://10.10.10.52:3000"
